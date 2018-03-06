@@ -1,0 +1,34 @@
+.movie{
+	background:url('../images/black.png') 2000% 2000%;;
+}
+.banner ol li{
+	border:0px;
+	background:url('../images/db/d_g.png') no-repeat 0 0; 
+}
+.banner ol .current{
+	border:0px;
+	background:url('../images/db/d_g.png') no-repeat 0 -11px; 
+}
+.focus_right ul li i{
+	border:0;
+	background:url('../images/db/d_g.png') no-repeat -11px 0; 
+}
+.floor3 .floor2_centent ul li i{
+	background:url('../images/db/d_g.png') no-repeat -11px -13px;
+}
+.floor4_title i{
+	background:url('../images/db/d_g.png') no-repeat -0px -22px;
+}
+.advert{
+	background: url('../images/bg_color.png') 100% 254%;
+}
+.floor5_list_box{
+	background: url('../images/black.png') 500% 500%;
+	z-index: 9999999
+}
+.floor5_list_box:hover{
+	background: url('../images/green.png') 500% 500%;
+}
+.floor5_centent{
+	background: url('../images/black.png') 500% 500%;
+}
