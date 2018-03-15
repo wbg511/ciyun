@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>糖尿病风险评估/高血压心血管病风险评估/骨质疏松性骨折风险评估/缺血性心血管病风险评估</title>
+	<link rel="stylesheet" href="../modules/index/style/index.less">
+    <link rel="stylesheet" href="../modules/summary/style/index.less">
+    <link rel="stylesheet" href="../modules/physiology/style/index.less">
+    <link rel="stylesheet" href="../modules/behavior/style/index.less">
+    <link rel="stylesheet" href="../modules/obesity/style/index.less">
+    <link rel="stylesheet" href="../modules/stroke/style/index.less">
+    <link rel="stylesheet" href="../modules/diabetes/style/index.less">
+    <link rel="stylesheet" href="table.css">
+    <script src="index.js"></script>
+</head>
+<body>
+	<div class="summary">
+        <div class="summary_title">糖尿病风险评估</div>
+        <div class="obesity obesitys">
+
+          <p>我国是糖尿病大国，患病人数为全球之冠。根据2013年中华医学会糖尿病学分会公布的调查结果，我国30岁以上人群中糖尿病患病率已达11.6%，且糖尿病前期（IGT）患病率达到50.1%。降低糖尿病患病风险成为国人健康的重中之重。</p>
+          
+        </div>
+        <div class="summary_name_title">
+          <img src="../static/images/icon1.png" alt="图片加载失败" class="summary_name_title_icon"/>
+          <span class="summary_name_title_subtitle">危险因素</span>
+        </div>
+        <div class="summary_table one Results ">
+          <!-- <Table data = {dataList} wordWrap bordered={true} disabledScroll={true} height={json.height} headerHeight={0.8}>
+            <Column sort flexGrow={1} fixed>
+                <HeaderCell>危险因素</HeaderCell>
+                <Cell dataKey="project"></Cell>
+            </Column>
+          
+            <Column sort flexGrow={1}>
+                <HeaderCell>本次</HeaderCell>
+                <Cell dataKey="this"></Cell>
+            </Column>
+          
+            <Column sort flexGrow={1}>
+                <HeaderCell>上次</HeaderCell>
+                <Cell dataKey="last"></Cell>
+            </Column>
+            <Column sort flexGrow={1}>
+                <HeaderCell>参考范围</HeaderCell>
+                <Cell dataKey="Range"></Cell>
+            </Column>
+                  </Table> -->
+        <table>
+        	<tr>
+        		<th>危险因素</th>
+        		<th>本次</th>
+        		<th>上次</th>
+        		<th>参考范围</th>
+        	</tr>
+        	<tr>
+        		<td>年龄B4:BB4:B17</td>
+        		<td>28</td>
+        		<td>28</td>
+        		<td>年龄增加风险升高</td>
+        	</tr>
+        	<tr>
+        		<td>糖尿病家族史</td>
+        		<td></td>
+        		<td></td>
+        		<td>无</td>
+        	</tr>
+        	<tr>
+        		<td>高血压病史</td>
+        		<td></td>
+        		<td></td>
+        		<td>无</td>
+        	</tr>
+        	<tr>
+        		<td>体重指数（BMI）</td>
+        		<td></td>
+        		<td></td>
+        		<td>18.5≤BMI≤23.9</td>
+        	</tr>
+        	<tr>
+        		<td>腰围</td>
+        		<td></td>
+        		<td></td>
+        		<td>＜90cm</td>
+        	</tr>
+        	<tr>
+        		<td>高密度脂蛋白胆固醇</td>
+        		<td></td>
+        		<td></td>
+        		<td>≥0.91mmol/L</td>
+        	</tr>
+        	<tr>
+        		<td>甘油三酯</td>
+        		<td></td>
+        		<td></td>
+        		<td>≤2.22mmol/L</td>
+        	</tr>
+        	<tr>
+        		<td>空腹血糖</td>
+        		<td></td>
+        		<td></td>
+        		<td>＜5.6mmol/L</td>
+        	</tr>
+        	<tr>
+        		<td>吸烟</td>
+        		<td></td>
+        		<td></td>
+        		<td>吸烟</td>
+        	</tr>
+        	<tr>
+        		<td>体力活动水平</td>
+        		<td></td>
+        		<td></td>
+        		<td>充分</td>
+        	</tr>
+        	<tr>
+        		<td>蔬菜水果摄入</td>
+        		<td></td>
+        		<td></td>
+        		<td>≥500克/天</td>
+        	</tr>
+        	<tr>
+        		<td>长期应用抗精神病或抗抑郁症类药物</td>
+        		<td></td>
+        		<td></td>
+        		<td>无</td>
+        	</tr>
+        	<tr>
+        		<td>长期使用可的松类药物</td>
+        		<td></td>
+        		<td></td>
+        		<td>无</td>
+        	</tr>
+        	<tr>
+        		<td>多囊卵巢综合征病史</td>
+        		<td></td>
+        		<td></td>
+        		<td>无</td>
+        	</tr>
+        </table>
+
+        </div>
+
+        <div class="summary_name_title">
+          <img src="../static/images/icon1.png" alt="图片加载失败" class="summary_name_title_icon"/>
+          <span class="summary_name_title_subtitle">评估结果</span>
+        </div>
+        <div id="diabetes">
+        	<img src="images/e.png" alt="" style="width:100%;height:100%">
+        </div>
+        <div class="summary_name_title up diabetes">
+          <img src="../static/images/icon2.png" alt="图片加载失败" class="summary_name_title_icona"/>
+          <span class="summary_name_title_subtitles">您患糖尿病的风险等级</span>
+        </div>
+        <div class="grade">
+            <span>中等风险</span>
+        </div>
+        <div class="summary_name_title up diabetes">
+          <img src="../static/images/icon2.png" alt="图片加载失败" class="summary_name_title_icona"/>
+          <span class="summary_name_title_subtitles">当前风险</span>
+        </div>
+        <div class="obesity">
+          <p>按照您现有的危险因素水平，未来5年内，您的糖尿病发病风险为12</p>
+        </div>
+        <div class="summary_name_title up diabetes">
+          <img src="../static/images/icon2.png" alt="图片加载失败" class="summary_name_title_icona"/>
+          <span class="summary_name_title_subtitles">理想风险</span>
+        </div>
+        <div class="obesity">
+          <p>1.6‰。将所有可改变的危险因素控制在理想水平时的发病风险。如果您将现有可改变的危险因素控制到理想水平，您的发病风险可降至1.6‰。</p>
+        </div>
+        <div class="summary_name_title">
+          <img src="../static/images/icon1.png" alt="图片加载失败" class="summary_name_title_icon"/>
+          <span class="summary_name_title_subtitle">预防要点</span>
+        </div>
+        <!-- <TodoMain todos={json.cruces}></TodoMain> -->
+        <ul class="obesity" style="padding: 0.3rem 0.3rem 0.3rem 0.3rem">
+        	<li>
+	        	<i></i>
+	        	<p>倡导合理膳食、适量运动、戒烟限酒、心理平衡的生活方式，降低糖尿病的患病风险。</p>
+        	</li>
+        	<li>
+	        	<i></i>
+	        	<p>控制体重，保持BMI和腰围在理想范围。</p>
+        	</li>
+        	<li>
+	        	<i></i>
+	        	<p>持续规律的运动习惯，并注意肌肉训练，可提高胰岛素的敏感性，改善糖代谢水平。</p>
+        	</li>
+        	<li>
+	        	<i></i>
+	        	<p>有糖尿病风险者，至少每年去医院做一次静脉血的空腹血糖和/或口服葡萄糖耐量测定。</p>
+        	</li>
+        </ul>
+      </div>
+</body>
+</html>

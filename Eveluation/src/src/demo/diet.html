@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>推荐膳食</title>
+	<link rel="stylesheet" href="../modules/index/style/index.less">
+	  <link rel="stylesheet" href="../modules/summary/style/index.less">
+	  <link rel="stylesheet" href="../modules/physiology/style/index.less">
+	  <link rel="stylesh eet" href="../modules/behavior/style/index.less">
+	  <link rel="stylesheet" href="../modules/obesity/style/index.less">
+	  <link rel="stylesheet" href="../modules/stroke/style/index.less">
+	  <link rel="stylesheet" href="../modules/diabetes/style/index.less">
+	  <link rel="stylesheet" href="../modules/diet/style/index.less">
+	  <link rel="stylesheet" href="table.css">
+	  <script src="index.js"></script>
+</head>
+<body>
+	<div class="summary">
+        <div class="summary_title">推荐膳食方案</div>
+        <div class="obesity obesitys">
+          <p>合理膳食是健康“四大基石”中的第一基石。合理膳食是指一日三餐所提供的能量和营养素必须满足人的生长、发育和各种生理、体力活动的需要。合理的膳食可提供充足的营养，能提高人体的健康水平，预防多种疾病的发生发展。不合理的膳食会导致营养过度或不足，给健康带来不同程度的危害。《中国居民膳食指南》推荐：食物多样、谷类为主；多吃蔬菜、水果和薯类；每天吃奶类、大豆或豆制品；适量鱼、禽、蛋和瘦肉；少盐、少油、控糖限酒</p>
+        </div>
+
+        <div class="summary_name_title">
+          <img src="../static/images/icon1.png" alt="图片加载失败" class="summary_name_title_icon"/>
+          <span class="summary_name_title_subtitle">推荐方案</span>
+        </div>
+
+        <div class="summary_name_title up diabetes">
+          <img src="../static/images/icon2.png" alt="图片加载失败" class="summary_name_title_icona"/>
+          <span class="summary_name_title_subtitles">每日摄入总热量推荐：<span class="green">1400kcal</span></span>
+        </div>
+        <div class="summary_name_title up diabetes">
+          <img src="../static/images/icon2.png" alt="图片加载失败" class="summary_name_title_icona"/>
+          <span class="summary_name_title_subtitles">食物总份数：<span class="green">15份</span></span>
+        </div>
+        <div class="summary_table one Results diet">
+          <!-- <Table data = {dataList} wordWrap bordered={true} disabledScroll={true}  height={7.4} headerHeight={0.8}>
+            <Column sort flexGrow={1.4} fixed>
+                <HeaderCell>食物类别</HeaderCell>
+                <Cell dataKey="category"></Cell>
+            </Column>
+          
+            <Column sort flexGrow={1}  colSpan={3}>
+                <HeaderCell>早餐</HeaderCell>
+                <Cell dataKey="breakfast"></Cell>
+            </Column>
+          
+            <Column sort flexGrow={1} >
+                <HeaderCell>中餐</HeaderCell>
+                <Cell dataKey="lunch"></Cell>
+            </Column>
+            <Column sort flexGrow={1}>
+                <HeaderCell>晚餐</HeaderCell>
+                <Cell dataKey="dinner"></Cell>
+            </Column>
+            <Column sort flexGrow={1}>
+                <HeaderCell>加餐</HeaderCell>
+                <Cell dataKey="snack"></Cell>
+            </Column>
+          </Table> -->
+          <table>
+          	<tr>
+          		<th>食物类别</th>
+          		<th>早餐</th>
+          		<th>中餐</th>
+          		<th>晚餐</th>
+          		<th>加餐</th>
+          	</tr>
+          	<tr>
+          		<td>谷薯类</td>
+          		<td>1分</td>
+          		<td>2份</td>
+          		<td></td>
+          		<td></td>
+          	</tr>
+          	<tr>
+          		<td>蔬菜类</td>
+          		<td></td>
+          		<td>1份</td>
+          		<td></td>
+          		<td></td>
+          	</tr>
+          	<tr>
+          		<td>水果类</td>
+          		<td>1份</td>
+          		<td></td>
+          		<td></td>
+          		<td>1份</td>
+          	</tr>
+          	<tr>
+          		<td>大豆类</td>
+          		<td>1份</td>
+          		<td></td>
+          		<td></td>
+          		<td></td>
+          	</tr>
+          	<tr>
+          		<td>奶类</td>
+          		<td></td>
+          		<td></td>
+          		<td>2份</td>
+          		<td>1份</td>
+          	</tr>
+          	<tr>
+          		<td>肉蛋类</td>
+          		<td></td>
+          		<td></td>
+          		<td>1份</td>
+          		<td></td>
+          	</tr>
+          	<tr>
+          		<td>坚果、种子类</td>
+          		<td></td>
+          		<td>1份</td>
+          		<td></td>
+          		<td></td>
+          	</tr>
+          	<tr>
+          		<td>植物油</td>
+          		<td colspan="3">1份（10ml）</td>
+          		<td>1份</td>
+          	</tr>
+          </table>
+        </div>
+        <div class="summary_name_title up diabetes">
+          <img src="../static/images/icon2.png" alt="图片加载失败" class="summary_name_title_icona"/>
+          <span class="summary_name_title_subtitles">食物类别说明</span>
+        </div>
+        <div class="summary_table one Results diet">
+          <!-- <Table data = {Explain} wordWrap bordered={true} disabledScroll={true} height={13.6} headerHeight={0.8}>
+            <Column sort flexGrow={1} fixed>
+                <HeaderCell>食物类别</HeaderCell>
+                <Cell dataKey="category"></Cell>
+            </Column>
+          
+            <Column sort flexGrow={2}  fixed>
+                <HeaderCell>说明</HeaderCell>
+                <Cell dataKey="Explain"></Cell>
+            </Column>
+          </Table> -->
+          <table>
+          	<tr>
+          		<th style="width:30%">食物类别</th>
+          		<th style="width:60%">说明</th>
+          	</tr>
+          	<tr>
+          		<td>谷薯类</td>
+          		<td>谷薯类食物包括米、面、玉米、杂粮；马铃薯、甘薯、木薯类等，主要提供碳水化合物，少量蛋白质、矿物质及B族维生素</td>
+          	</tr>
+          	<tr>
+          		<td>蔬菜类</td>
+          		<td>蔬菜类主要提供膳食纤维、矿物质、维生素C和胡萝卜素等营养成分</td>
+          	</tr>
+          	<tr>
+          		<td>水果类</td>
+          		<td>如苹果、梨、桃、西瓜等可食用的植物果实，主要提供膳食纤维、矿物质、维生素C和胡萝卜素等营养成分</td>
+          	</tr>
+          	<tr>
+          		<td>大豆类</td>
+          		<td>包括大豆及其他干豆类及豆制品，主要提供优质的植物蛋白质、脂肪、膳食纤维</td>
+          	</tr>
+          	<tr>
+          		<td>奶类</td>
+          		<td>奶类可以提供较丰富的优质蛋白质、碳水化合物、矿物质及维生素</td>
+          	</tr>
+          	<tr>
+          		<td>肉蛋类</td>
+          		<td>肉类和蛋主要提供优质的动物蛋白质、脂肪、维生素A和B族维生素等</td>
+          	</tr>
+          	<tr>
+          		<td>坚果、种子类</td>
+          		<td>主要营养成分分为植物油脂，热量高，不宜多吃</td>
+          	</tr>
+          	<tr>
+          		<td>植物油</td>
+          		<td>主要提供能量，还可以提供维生素E和必需脂肪酸</td>
+          	</tr>
+          </table>
+        </div>
+        <div class="summary_name_title up diabetes">
+          <img src="../static/images/icon2.png" alt="图片加载失败" class="summary_name_title_icona"/>
+          <span class="summary_name_title_subtitles">食物类别说明</span>
+        </div>
+        <div class="obesity p" style={top}> 
+            <p>为了方便计算摄入热量和营养素比例，人为将食物分成不同类别，每类食物提供的营养素基本相同，同类别的食物中选择喜欢吃的食物不影响营养素比例的均衡；同时将能够提供的90kcal热量的食物算作1份，同等分量的食物调整，摄入总热量不变。</p>
+            <p>用食物交换的方法，按照膳食处方中各类食物应吃的分量进餐，同类食物等分量交换，可达到控制总热量和营养素比例均衡的管理目标。</p>
+        </div>
+        <div class="summary_name_title">
+          <img src="../static/images/icon1.png" alt="图片加载失败" class="summary_name_title_icon"/>
+          <span class="summary_name_title_subtitle">食物示例</span>
+        </div>
+        <div class="summary_table one Results ">
+          <div class="Header">
+            <span>食物类别</span>
+            <span>食物举例</span>
+            <span>食物分量</span>
+          </div>
+          <!-- <Box todos={Sample}></Box> -->
+          <div>
+          	<div class="centent">
+		        <div>谷薯类</div>
+		        <div>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        </div>
+		        <div>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        </div>
+	        </div>
+	        <div class="centent">
+		        <div>蔬菜类</div>
+		        <div>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        </div>
+		        <div>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        </div>
+	        </div>
+	        <div class="centent">
+		        <div>水果类</div>
+		        <div>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        </div>
+		        <div>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        </div>
+	        </div>
+	        <div class="centent">
+		        <div>大豆和豆制品类</div>
+		        <div>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        </div>
+		        <div>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        </div>
+	        </div>
+	        <div class="centent">
+		        <div>肉蛋类</div>
+		        <div>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        </div>
+		        <div>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        </div>
+	        </div>
+	        <div class="centent">
+		        <div>奶类</div>
+		        <div>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        </div>
+		        <div>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        </div>
+	        </div>
+	        <div class="centent">
+		        <div>植物油</div>
+		        <div>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        	<span>面条</span>
+		        </div>
+		        <div>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        	<span>1/3碗</span>
+		        </div>
+	        </div>
+	      </div>
+    <div class="Prompt">更多食品分量示例请参考慈云健康App记录饮食里各食物类别内容。</div>
+        </div>
+        <div class="summary_name_title">
+          <img src="../static/images/icon1.png" alt="图片加载失败" class="summary_name_title_icon"/>
+          <span class="summary_name_title_subtitle">餐具规格</span>
+        </div>
+        <!-- <TodoMain todos={json.Specifications}></TodoMain> -->
+        <ul class="obesity" style='padding:0.3rem 0.3rem 0.3rem 0.3rem'>
+        	<li><i></i><p>碗：6寸碗（直径约12cm，高6cm，容量相当于刚好盛1盒240ml的牛奶）</p></li>
+        	<li><i></i><p>杯：240ml容量杯</p></li>
+        	<li><i></i><p>匙：10ml</p></li>
+        	<li><i></i><p>盘：8寸深盘</p></li>
+        </ul>
+        <div class="summary_name_title">
+          <img src="../static/images/icon1.png" alt="图片加载失败" class="summary_name_title_icon"/>
+          <span class="summary_name_title_subtitle">饮食注意</span>
+        </div>
+        <!-- <TodoMain todos={json.cruces}></TodoMain> -->
+        <ul class="obesity" style='padding:0.3rem 0.3rem 0.3rem 0.3rem'>
+        	<li><i></i><p>全谷物食物富含B族维生素、矿物质和膳食纤维，对调节血脂、血糖及肠胃道功能十分重要，需注意粗细搭配</p></li>
+        	<li><i></i><p>高血压者每天盐摄入量不宜超过6克。控盐方法参考：不吃咸菜等高盐食品；每日含盐的食物如汤类、菜类，总量不要超过600ml。</p></li>
+        	<li><i></i><p>心脑血管疾病者应多吃富含维生素C的食物，如新鲜的绿叶蔬菜、水果等，少吃动物脂肪</p></li>
+        	<li><i></i><p>高尿酸血症者不要选择高嘌呤食物，如动物内脏，海鲜、啤酒等，畜肉类要注意限量，多吃蔬菜蜀国，保证充足饮水</p></li>
+        </ul>
+      </div>
+</body>
+</html>

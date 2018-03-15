@@ -1,0 +1,30 @@
+目录结构
+├── dist                        # 最后打包发布
+├── scripts                     # build目录清理
+├── src                         # 所有源码
+│   ├── common                  # 公用代码及组件
+│   ├── modules                 # 模块功能
+│   │   ├── main
+│   │   │    ├── Layout.js       # 公用wrapper外层组件
+│   │   │    ├── Main.js         # 入口组件
+│   │   │    ├── rootReducers.js # 根reducser文件
+│   │   │    ├── rootRoutes.js   # 根路由文件
+│   │   │    ├── userReducers.js # 登录相关信息reducer
+│   │   ├── products             # 模块products
+│   │   │    ├── actions         # products模块相关actions目录
+│   │   │    ├── component       # 表现组件
+│   │   │    ├── container       # 容器组件
+│   │   │    ├── reducers        # products模块相关reducers配置
+│   │   │    ├── style           # 样式(可选)
+│   │   │    ├── route.js        # 子路由(可选)
+│   │   ├── others               # 更多模块（带补充）
+│   ├── static                   # 静态文件
+│   ├── template                 #
+│       ├── index.html           # 入口文件
+├── webpack
+│    ├── base.js                  # 开发与生产公用webpack配置
+│    ├── dev.js                   # 开发环境webpack配置
+│    ├── pro.js                   # 正式生产环境webpack配置
+│── .babelrc                      # 设置转码规则和插件
+│─── package.json                 # 设置对应依赖包以及配置简写窗口命令
+

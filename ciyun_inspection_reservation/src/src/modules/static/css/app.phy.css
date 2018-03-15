@@ -1,0 +1,593 @@
+:-moz-placeholder{color:#cbcbcb;}
+::-moz-placeholder{color:#cbcbcb;}
+input:-ms-input-placeholder,textarea:-ms-input-placeholder{color:#cbcbcb;}
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#cbcbcb;}
+.phy-doc body{background-color:#f8f8f8;}
+.phy-doc .app-doc{background-color:#fff;}
+
+/* 定位 */
+
+.positionLoading {
+  width:100%;
+  height:100%;
+  z-index: 97;
+  position: absolute; left:0; top:0.76rem;
+  background-color:#f4f4f4;
+  text-align: center;
+  padding-top: 3.1rem;
+}
+.positionLoading p{
+  font-size: 0.3rem;
+  color:#999;
+}
+.positionLoading .app-loading {
+  margin-bottom: 0.86rem;
+}
+.app-loading {
+  display: inline-block;
+  width: 0.56rem;
+  height: 0.56rem;
+  -webkit-animation: loading-20 1.6s step-start infinite;
+  vertical-align: middle;
+  background-image: url("../images/loading.png");
+  background-size: 0.56rem 0.56rem;
+  overflow: hidden;
+  z-index: 870610;
+}
+@-webkit-keyframes loading-20 {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  8.333333333333332% {
+    -webkit-transform: rotate(30deg);
+  }
+  16.666666666666664% {
+    -webkit-transform: rotate(60deg);
+  }
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+  33.33333333333333% {
+    -webkit-transform: rotate(120deg);
+  }
+  41.66666666666667% {
+    -webkit-transform: rotate(150deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+  58.333333333333336% {
+    -webkit-transform: rotate(210deg);
+  }
+  66.66666666666666% {
+    -webkit-transform: rotate(240deg);
+  }
+  75% {
+    -webkit-transform: rotate(270deg);
+  }
+  83.33333333333334% {
+    -webkit-transform: rotate(300deg);
+  }
+  91.66666666666666% {
+    -webkit-transform: rotate(330deg);
+  }
+}
+/* 体检机构列表 */
+.orgArea-hd{height:0.76rem;overflow:hidden;line-height:0.76rem;padding:0 0.3rem;background-color: #fff;}
+.orgArea-hd:after{background:#cbcbcb!important;}
+.org-area{font-size:0.3rem;color:#666;}
+.org-area span{}
+.org-change{background-color: #fff;border:none;line-height:0.76rem;position:absolute;right:0;top:0;color:#B5B5B5;padding:0 0.3rem;font-size:0.26rem;padding-right:0.4rem;}
+.org-change:after{position:absolute;content:"";width:0.13rem;height:0.24rem;display:block;right:0.2rem;top:50%;margin-top:-0.12rem;background:url(../images/ico-arr-mini.png) 0 0 no-repeat;background-size:0.13rem 0.24rem;}
+.orgArea-bd{background-color:#f8f8f8;}
+.org-list{padding-top:0.2rem;}
+.org-list li{margin-bottom:0.2rem;}
+.org-info{display:block;position:relative;min-height:3.1rem;}
+.org-banner{}
+.org-banner img{width:7.5rem;height:2.5rem;display: block;}
+.org-address{min-height:0.60rem;background-color:#fff;}
+.org-address p{position:relative;color:#333;line-height:22px;padding:0.1rem 0.1rem 0.1rem 0.64rem;font-size:0.26rem;color:#333;}
+.org-address p:before{position:absolute;width:0.6rem;height:0.6rem;display:block;content:"";left:0;top:0;background:url(../images/icon-address.png) 0 0 no-repeat;background-size:0.6rem;}
+.org-position{opacity: 0.6;position:absolute;right:0;top:2.1rem;line-height:0.4rem;height:0.4rem;background:url(../images/icon-position.png) 0 0 no-repeat;background-size:auto 0.4rem;color:#fff;padding:0 0.13rem 0 0.4rem;font-size:0.24rem;}
+.org-position .unit-num{font-size:0.24rem;}
+.org-position .unit{font-size:0.2rem;}
+
+/* 城市列表 */
+.orgArea-dropMenu{background-color: #fff;position: absolute;top:0;width:100%;height:100%;left:0;z-index: 99;}
+.orgArea-dropMenu-hd{padding:0 0.3rem;line-height: 0.76rem;color:#a6a6a6;background-color:#f8f8f8;}
+.orgArea-dropMenu-hd a{background-color:#f8f8f8;position: absolute;right:0;top:0;text-align: center;display:block;line-height: 0.76rem;width:1.6rem;}
+.orgArea-dropMenu-bd{
+  }
+  .orgArea-letterShow {
+    width:1.2rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    border-radius: 1.2rem;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    left: 50%;
+    text-align: center;
+    z-index: 999;
+    background: #000;
+    opacity:0.4;
+  color:#fff;
+  font-size:.36rem;
+  }
+
+.orgArea-list{
+  display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    width: 7.5rem;
+    overflow: auto!important;
+        -webkit-overflow-scrolling: touch!important;
+}
+.app-list-item.cur {background:rgba(111, 186, 44, 0.08)}
+.orgArea-letter {position: absolute;top:2rem;right:.1rem;}
+.orgArea-dropMenu-hd p {color:#999;}
+.orgArea-dropMenu-hd p span {color:#000;font-weight: 700;}
+.orgArea-list .app-listScroll {width: 100%;height:100%;overflow: auto!important;
+    -webkit-overflow-scrolling: touch!important;}
+.orgArea-list .app-list:after, .app-list:before {height:0!important}
+.orgArea-list .app-list-item {padding:0.1rem 0.3rem;}
+.orgArea-list .app-item-hd {position: absolute;top: 0.2rem;left: .3rem;font-size: 0.26rem;font-size: 0.3rem;}
+.orgArea-list .app-item-hd.cur {color:#6fba2c;font-weight: 700;}
+.orgArea-list .app-item-hd~.app-item-bd {margin-left: .4rem;}
+.orgArea-list a{color:#333;font-size:0.28rem;}
+.orgArea-list a.cur{color:#6fba2c;font-weight: 700;}
+.cityList-item {}
+.cityList-item a {
+    line-height: .6rem;
+    display: block;
+    text-align:left;
+    padding-left: .15rem;
+    color: #333;
+    margin: 0 auto;
+    font-size: .26rem;
+}
+
+.orgArea-letter ul {}
+.orgArea-letter ul li {text-align: center;text-align: center;}
+.orgArea-letter ul li span {display: inline-block;width: 0.4rem;height: 0.4rem;line-height:0.4rem;text-align: center;color:#666;font-size: 0.22rem;}
+.orgArea-letter ul li.cur span {color:#fff;background:#6fba2c;border-radius:.3rem;}
+
+.orgArea-letterShow {
+
+}
+/* 套餐预约 */
+.phy-tab{}
+.phy-tab .app-tab{}
+.phy-tab .app-tab .app-tab-item{width:33.33%}
+.phy-tab .app-tab .app-tab-item{}
+.phy-tab .app-tab .app-tab-cur{}
+.app-doc .am-tabs-default-bar-tab-active {color: #6fba2c;}
+.app-doc .am-tabs-default-bar-underline{border: 1px solid #6fba2c;}
+
+/* 套餐预约排序筛选 */
+.bookingSort{}
+.bookingSort-tab{line-height:0.8rem;}
+.bookingSort-tab .app-sortTab{display:-webkit-box;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-box-align:center;background-color:#f8f8f8;}
+.bookingSort-tab .app-sortTab .app-sortTab-item{width:50%;display:block;-webkit-box-flex:1;text-align:center;line-height:0.86rem;position:relative;}
+.bookingSort-tab .app-sortTab .app-sortTab-item a{color:#676767;font-size:0.28rem;}
+.bookingSort-tab .app-sortTab .app-sortTab-cur a{color:#6fba2c;}
+.sortTab-filter{position:relative;}
+.filter-down:after,.filter-up:after{position:absolute;content:"";right:-0.3rem;top:50%;margin-top:-0.04rem;width:0.13rem;height:0.08rem;}
+.filter-down:after{background:url(../images/icon-arrMini-down.png) 0 0 no-repeat;background-size:0.13rem 0.08rem;}
+.filter-up:after{background:url(../images/icon-arrMini-up.png) 0 0 no-repeat;background-size:0.13rem 0.08rem;}
+.bookingSort-type{font-size:0.26rem;color:#676767;}
+.app-radio-arrPhy:checked + .bookingSort-type{color:#6fba2c;}
+.app-list-bookingSort .app-radio-arrPhy{float:right;}
+
+.sortmask {
+  position: absolute;
+  width:100%;
+  height:100%;
+  left:0;top:0;
+  background:#000;
+  opacity:0.3;
+  z-index: 98;
+}
+.bookingSort {position: absolute;top:0.86rem;width:100%;left:0;z-index: 99;}
+/* 预约记录排序筛选 */
+.phyHistroySort {position: absolute;top:0.86rem;width:100%;left:0;z-index: 99;}
+.phyHistroy-tab{line-height:0.8rem;}
+.phyHistroy-tab .app-sortTab{display:-webkit-box;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-box-align:center;background-color:#f8f8f8;}
+.phyHistroy-tab .app-sortTab .app-sortTab-item{width:50%;display:block;-webkit-box-flex:1;text-align:center;line-height:0.86rem;position:relative;}
+.phyHistroy-tab .app-sortTab .app-sortTab-item a{phyHistroy:#676767;font-size:0.28rem;}
+.phyHistroy-tab .app-sortTab .app-sortTab-cur a{color:#6fba2c;}
+.sortTab-filter{position:relative;}
+.filter-down:after,.filter-up:after{position:absolute;content:"";right:-0.3rem;top:50%;margin-top:-0.04rem;width:0.13rem;height:0.08rem;}
+.phyHistroy-type{font-size:0.26rem;color:#676767;}
+.app-radio-arrPhy:checked + .phyHistroy-type{color:#6fba2c;}
+.app-list-bookingSort .app-radio-arrPhy{float:right;}
+
+
+/* 多选arrow */
+.app-radio-arrPhy{width:0.44rem;height:0.44rem;display:inline-block;border:none;background-color:none;position:relative;overflow:visible;-webkit-appearance:none;vertical-align:middle;}
+.app-radio-arrPhy:before{content:'';width:0.44rem;height:0.44rem;border-radius:44rem;display:inline-block;border:none;background:none;-webkit-background-clip:padding-box;background-clip:padding-box;position:absolute;left:0;top:0;}
+.app-radio-arrPhy:checked:before{border:none;content:'';width:0.44rem;height:0.44rem;border-radius:44rem;display:inline-block;background-color:none;-webkit-background-clip:padding-box;background-clip:padding-box;position:absolute;left:0;top:0;}
+.app-radio-arrPhy:checked:after{border:none;content:" ";display:inline-block;height:0.44rem;width:0.44rem;background:#fff url(../images/icon-radioArr.png) center center no-repeat;background-size:0.24rem 0.19rem;position:absolute;top:0;left:0;}
+.app-radio-filter{display:inline-block;border:none;width:0;height:0;background:none;position:relative;overflow:visible;-webkit-appearance:none;vertical-align:middle;}
+.app-radio-filter:after{content:'';width:0.13rem;height:0.08rem;display:inline-block;background-color:none;-webkit-background-clip:padding-box;background-clip:padding-box;position:absolute;content:"";left:50%;margin-left:0.4rem;top:50%;margin-top:-0.04rem;width:0.13rem;height:0.08rem;background:url(../images/icon-arrMini-down.png) 0 0 no-repeat;background-size:0.13rem 0.08rem;}
+.app-radio-filter:checked:after{background:url(../images/icon-arrMini-up.png) 0 0 no-repeat;background-size:0.13rem 0.08rem;}
+.app-radio-filter + label{position:absolute;width:100%;height:100%;left:0;top:0;}
+.app-radio-filter:checked + label{color:#6fba2c;}
+
+.app-radio-Histroyfilter{display:inline-block;width:0;height:0;border:none;background:none;position:relative;overflow:visible;-webkit-appearance:none;vertical-align:middle;}
+.app-radio-Histroyfilter + label{position:absolute;width:100%;height:100%;left:0;top:0;display: block;}
+.app-radio-Histroyfilter:checked + label{color:#6fba2c;}
+.app-radio-Histroyfilter:checked + label:after{
+  position: absolute; content: ""; background-color: #6fba2c; bottom: 0; left: 10%;right:10%; height: 3px;
+   width:80%;}
+
+.bookingSort-bd {}
+.bookingSort-bd .bookingSort-list {padding:0.3rem;position: relative;}
+.bookingSort-bd .bookingSort-list:last-child:after {
+  content: " "; position: absolute; top: 0; right: 0.3rem; height: 1px; left: 0.3rem; background-color: #eee;
+}
+.bookingSort-title {color:#a6a6a6;font-size: 0.24rem;}
+.bookingSort-titleMain {padding-top:0.3rem; }
+.sort-list {overflow: hidden;margin-bottom: -0.2rem;}
+.sort-list li {float: left;margin-right:0.2rem;margin-bottom: 0.2rem;}
+
+.bookingSort-btn-group{display:-webkit-box;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-box-align:center;}
+.bookingSort-btn-group .bookingSort-btn{display:block;-webkit-box-flex:1;border:none;}
+.bookingSort-cancelBtn,.bookingSort-confirmBtn{line-height:0.84rem;height:0.84rem;text-align:center;font-size:0.3rem;}
+.bookingSort-cancelBtn{color:#333;background-color:#e8e8e8;}
+.bookingSort-confirmBtn{color:#fff;background-color:#6FBA2C;}
+
+/* 列表 */
+.app-arr-phy{position:relative;padding-right:0.3rem;text-align:right;}
+.app-arr-phy:after{content:" ";display:inline-block;height:0.42rem;width:0.42rem;position:absolute;top:50%;right:0;margin-top:-0.21rem;background:url(../images/ico-arr-normal.png) center right no-repeat;background-size:50%;border:none;}
+.phy-list-booking  .app-list:before{height:0;background-color:none!important;}
+.phy-list-booking  .app-list:after{left:0.3rem;right:0.3rem;}
+.phy-list-booking .app-list-item{padding:0.3rem;}
+.booking-infoBox{height:1.55rem;overflow:hidden;position:relative;}
+.booking-infoBox .booking-img{position:absolute;width:1.2rem;height:1.2rem;border: 1px solid #eee;border-radius:.1rem;}
+.booking-infoBox .booking-intro{padding-left:1.6rem;}
+.booking-img img{width:1.2rem;height:1.2rem;border-radius:.1rem;}
+.booking-name{font-size:0.3rem;color:#333;margin-bottom: .1rem;height: 0.8rem;}
+.booking-name-1{font-size:0.3rem;color:#333;margin-bottom: .4rem;height: 0.4rem;}
+.booking-price{}
+.price-sale{margin-right:0.5rem;}
+.price-old{}
+.rmb{color:#ff6600;font-size:0.3rem;font-style:normal;margin-right:0.05rem;}
+.rmb-sale{color:#ff6600;font-size:0.34rem;}
+.rmbOld{color:#999;font-size:0.22rem;font-style:normal;}
+.rmbOld-sale{color:#999;font-size:0.22rem;}
+.booking-groupPerson{position: relative;}
+.booking-groupPerson p{font-size:0.26rem;color:#8e8e8e;}
+.count-price{position:absolute;right:0rem;top:0}
+.count-price-sale{font-size:0.32rem;color:#ff6600;}
+/* 单位体检 */
+.phy-list-company{}
+.phy-list-company .app-list-item{border:1px solid #eee;padding:0.3rem;margin:0.2rem 0.3rem;border-radius:5px;}
+.phy-list-company .app-list-item:before,.phy-list-company .app-list:before,.phy-list-company .app-list:after{height:0;background-color:none!important;}
+.company-infoBox{position:relative;}
+.company-infoBox .company-img{position:absolute;width:0.64rem;height:0.64rem;}
+.company-infoBox .company-intro{padding-left:0.84rem;}
+.company-name{font-size:0.28rem;color:#333;}
+.company-booking-name{font-size:0.28rem;color:#6fba2c;}
+.company-address{font-size:0.22rem;color:#afafaf;}
+
+/* 套餐详情 */
+.bookingDetails-bd{background-color:#f0f0f0;}
+.bookingDetails-Intro{padding:.3rem .3rem 0rem .3rem;background-color:#fff;}
+.bookingDetails-org{margin-bottom:0.2rem;color:#333;}
+.bookingDetails-org .app-list-item{padding-top: .16rem;padding-bottom: .16rem;}
+.bookingDetails-org .app-item-hd{}
+.bookingDetails-org .app-item-bd{font-size:0.26rem;color:#333;}
+.bookingDetails-org .app-list:before{left:0.3rem;right:0.26rem;}
+.bookingDetails-org .app-list:after{height:0;background-color:none!important;}
+.bookingDetails-notice{margin-bottom:0.2rem;background-color:#fff;}
+.bookingDetails-notice  .app-list:before{height:0;background-color:none!important;}
+.bookingDetails-notice  .app-list:after{left:0.3rem;right:0.3rem;}
+.bookingDetails-notice .app-list-item{padding-left: .46rem}
+.notice-title{font-size:0.3rem;color: #333}
+.notice-more {}
+.bookingDetails-notice-intro{padding:.3rem 0.46rem;font-size:0.28rem;color:#333;position:relative}
+.notice-most-btn{position: absolute;right: .6rem;color:#b5b5b5;font-size: .24rem;}
+.notice-most-btn:after{position:absolute;content:"";width:0.13rem;height:0.24rem;display:block;right:-0.3rem;top:50%;margin-top:-0.12rem;background:url(../images/ico-arr-mini.png) 0 0 no-repeat;background-size:0.13rem 0.24rem;}
+.bookingDetails-items{margin-bottom:0.2rem;}
+.bookingDetails-itemsOther .app-list-item .app-item-bd{padding-left: .16rem;}
+.bookingDetails-items a.app-list-item .app-item-bd{padding-left: .16rem;}
+.bookingDetails-items-total{background-color:#fff;padding:0 0.3rem;height:0.9rem;line-height:0.9rem;overflow:hidden;position:relative;
+}
+.bookingDetails-items-total::before,.bookingDetails-notice .app-list-item::after{
+      position: absolute;
+    content: "";
+    background:url(../images/icon-line.png) 0 0 no-repeat;
+    background-size: .07rem .3rem;
+    width: .07rem;
+    height: .3rem;
+    left: .3rem;
+    top: 50%;
+    margin-top: -.15rem;
+}
+.bookingDetails-items-total:after {
+    content: " ";
+    position: absolute;
+    left: .3rem;
+    right: .3rem;
+    bottom: 0;
+    height: 1px;
+    background-color: #cbcbcb;
+  }
+
+.total-title{font-size:0.3rem;padding-left: .16rem;}
+.total-price{position:absolute;right:0.3rem;top:0}
+.total-price-title{font-size:0.28rem;color:#8e8e8e;}
+.total-price-sale{font-size:0.32rem;color:#ff6600;}
+.bookingDetails-itemsOther{margin-bottom:0.2rem;}
+.bookingDetails-items .app-list:before,.bookingDetails-itemsOther .app-list:before{height:0;background-color:none!important;}
+.bookingDetails-items .app-list-item:before{background-color: #f0f0f0;}
+.remove-items{width:0.3rem;height:0.3rem;display:block;background:url(../images/icon-remove.png) 0 0 no-repeat;background-size:100%;}
+.phy-ft{/* height:0.95rem; */}
+.phy-ft-total{line-height:0.96rem;height:0.96rem;position:relative;}
+.total-all{padding:0 0.3rem;}
+.total-all-title{font-size:0.28rem;color:#333;}
+.total-price-all{font-size:0.30rem;color:#ff6600;}
+.phy-aliPayBtn,.phy-wxPayBtn,.phy-payOrderBtn,.phy-recommendBtn,.phy-confirmAddBtn,.phy-addItemBtn,.phy-bookingBtn{width:2.22rem;display:block;height:0.96rem;border:none;position:absolute;top:0;color:#fff;text-align:center;font-size:0.3rem;}
+.phy-addItemBtn{right:2.22rem;background-color:#FA7D3B;}
+.phy-bookingBtn{right:0;background-color:#6FBA2C;}
+.phy-payOrderBtn{right:0;background-color:#6FBA2C;}
+.phy-recommendBtn{right:2.22rem;background-color:#FA7D3B;}
+.phy-confirmAddBtn{right:0;background-color:#6FBA2C;}
+.phy-aliPayBtn{right:2.22rem;background-color:#009FE8;}
+.phy-wxPayBtn{right:0;background-color:#75AC47;}
+.am-modal-body-text{padding: .1rem;text-align: left}
+
+/* 添加项目 */
+.bookingDetails-itemsAdd .app-list:before,.bookingDetails-itemsAdd .app-list:after{height:0;background-color:none!important;}
+.bookingDetails-itemsAdd .app-list-item{padding:0.25rem 0.3rem 0.25rem 0.38rem;}
+
+/* checkBox */
+.app-checkBox-phy,.app-checkBox-phy:disabled{width:0.3rem;height:0.3rem;display:inline-block;border:none;background:none;position:relative;overflow:visible;-webkit-appearance:none;vertical-align:middle;}
+.app-checkBox-phy:before{content:'';
+background:url(../images/icon-checkbox.png) 0 0 no-repeat;
+background-size:0.3rem;
+display:block;width:0.3rem;height:0.3rem;border:none;display:inline-block;-webkit-background-clip:padding-box;background-clip:padding-box;position:absolute;left:0;top:0;}
+.app-checkBox-phy:checked:before{width:0.3rem;height:0.3rem;display:inline-block;content:'';-webkit-background-clip:padding-box;background-clip:padding-box;position:absolute;left:0;top:0;background:url(../images/icon-checkbox-checked.png) 0 0 no-repeat;background-size:100%;}
+.app-checkBox-phy:disabled:before{opacity:.4;width:0.3rem;height:0.3rem;display:inline-block;content:'';-webkit-background-clip:padding-box;background-clip:padding-box;position:absolute;left:0;top:0;opacity:0.2;background:url(../images/icon-checkbox.png) 0 0 no-repeat;background-size:100%;}
+.app-checkBox-phy:checked:disabled:before{opacity:.4;width:0.3rem;height:0.3rem;
+  display:inline-block;content:'';-webkit-background-clip:padding-box;background-clip:padding-box;position:absolute;left:0;top:0;background:url(../images/icon-checkbox-disabled.png) 0 0 no-repeat;background-size:100%;}
+
+/* 推荐体检项目 */
+.bookingDetails-recommend{margin-bottom:0.2rem;}
+
+/* 个性推荐 */
+.phy-specialBtn{width:100%;display:block;height:0.95rem;line-height:0.95rem;color:#fff;background-color:#6FBA2C;font-size:0.4rem;text-align:center;border: none}
+.special-bd{background-color:#f8f8f8;}
+.special-title{background-color:#fff;height:2rem;color:#6FBA2C;text-align:center;padding-top:0.32rem;margin-bottom:0.2rem;}
+.special-title p{font-size:0.28rem;}
+.special-items{margin-bottom:0.16rem;}
+.ico-special{height:0.46rem;background:url(../images/icon-smile.png) center center no-repeat;background-size:0.46rem;margin-bottom:0.2rem;}
+.special-items-hd{padding:0.3rem;background-color:#fff;position:relative;}
+.special-items-hd:after{content:" ";position:absolute;bottom:0;right:0.3rem;height:1px;left:0.3rem;background-color:#eee;}
+.special-items-hd h3{padding-left:0.16rem;color:#333;font-size:0.3rem;}
+.special-items-hd h3:before{position:absolute;content:"";background:url(../images/icon-line.png) 0 0 no-repeat;background-size:0.07rem 0.3rem;width:0.07rem;height:0.3rem;left:0.2rem;top:50%;margin-top:-0.15rem;}
+.icon-toggle{width:0.41rem;height:0.22rem;display:block;position:absolute;right:0.3rem;top:50%;margin-top:-0.11rem;}
+.toggle-down{background:url(../images/icon-arr-down.png) 0 0 no-repeat;background-size:0.41rem 0.22rem;}
+.toggle-up{background:url(../images/icon-arr-up.png) 0 0 no-repeat;background-size:0.41rem 0.22rem;}
+.special-items-bd{}
+.special-items-list{}
+.special-items-list .app-list:before,.special-items-list .app-list:after{height:0;background-color:none!important;}
+
+/* 体检套餐预约 */
+.bookingForm-bd{background-color:#f8f8f8;}
+.phy-bookingFormBtn{display:block;height:0.95rem;line-height:0.95rem;color:#fff;background-color:#6FBA2C;font-size:0.36rem;text-align:center;}
+.bookingForm-intro{background-color:#fff;padding:.45rem .3rem .3rem .3rem;text-align:center;font-size:.3rem;}
+.bookingForm-introItem{}
+.bookingForm-introItem .app-list:before,.bookingForm-introItem .app-list:after{height:0;background-color:none!important;}
+.bookingForm-introItem .app-list .app-list-item{padding:0.1rem 0.2rem;}
+.bookingForm-introItem .app-list .app-list-item:before,.bookingForm-introItem .app-list .app-list-item:after{height:0;background-color:none!important;}
+.app-list-form .app-item-hd{color:#666;font-size:0.28rem;width: 1.7rem;white-space: nowrap;text-align: left;}
+.bookingForm-phyForm .app-list-form .app-item-hd {color: #222;}
+.bookingForm-item-notice{background-color:#fff;padding:0.1rem 0.2rem 0.2rem 0.2rem;margin-bottom:0.2rem;}
+.icon-notice{color:#6FBA2C;position:relative;display:inline-block;height:0.3rem;line-height:0.3rem;padding-left:0.35rem;}
+.icon-notice:before{position:absolute;content:"";left:0;top:0;width:0.3rem;height:0.3rem;background:url(../images/icon-notice.png) 0 center no-repeat;background-size:0.3rem;}
+.bookingForm-phyForm{}
+.bookingForm-phyForm .app-list:before,.bookingForm-phyForm .app-list:after{height:0;background-color:none!important;}
+.bookingForm-phyForm .app-list-form .app-item-hd{width:1.7rem;text-align:left;}
+
+/* radio */
+.app-radio-phy,.app-checkBox-phy:disabled{width:0.32rem;border:none;height:0.32rem;display:inline-block;border:none;position:relative;overflow:visible;-webkit-appearance:none;vertical-align:middle;}
+.app-radio-phy:before{border:none;content:'';background:#fff url(../images/icon-radio.png) 0 0 no-repeat;background-size:100%;width:0.32rem;height:0.32rem;display:inline-block;-webkit-background-clip:padding-box;background-clip:padding-box;position:absolute;left:0;top:0;}
+.app-radio-phy:checked:before{border:none;width:0.32rem;height:0.32rem;border:none;display:inline-block;content:'';-webkit-background-clip:padding-box;background-clip:padding-box;position:absolute;left:0;top:0;background:#fff url(../images/icon-radio-checked.png) 0 0 no-repeat;background-size:100%;}
+.app-radio-phy:disabled:before{border:none;opacity:.4;width:0.32rem;height:0.32rem;display:inline-block;content:'';-webkit-background-clip:padding-box;background-clip:padding-box;position:absolute;left:0;top:0;opacity:0.2;background:url(../images/icon-radio.png) 0 0 no-repeat;background-size:100%;}
+.app-radio-phy:checked:disabled:before{opacity:.4;border:none;}
+.radioGroup{}
+.radioGroup .radioGroup-item{float:left;}
+.radioGroup-sex .radioGroup-item{width:50%;}
+.radioGroup-sex .radioGroup-item .app-radio-phy{margin-right:0.1rem;}
+.app-radio-phy + label{font-size:0.28rem;color:#333;vertical-align:middle;}
+.bookingForm-message{margin-bottom:0.2rem;}
+.bookingForm-message .app-list:before,.bookingForm-message .app-list:after{height:0;background-color:none!important;}
+.bookingForm-message .app-list .app-list-item{padding:0.1rem 0.2rem;}
+.bookingForm-message .app-list .app-list-item:before,.bookingForm-message .app-list .app-list-item:after{height:0;background-color:none!important;}
+.notice-title-normal{color:#666;position:relative;display:block;height:0.3rem;line-height:0.3rem;}
+.phy-ft-btn-group{display:-webkit-box;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-box-align:center;}
+.phy-ft-btn-group .phy-btn{display:block;-webkit-box-flex:1;}
+.phy-btnHistroy,.phy-btnGoPay,
+.phy-btnCancel,.phy-btnSave
+{line-height:0.95rem;height:0.95rem;text-align:center;font-size:0.32rem;border:none;}
+.phy-btnHistroy{color:#6FBA2C;background-color:#fff;}
+.phy-btnGoPay{color:#fff;background-color:#6FBA2C;}
+.confirmOrder-bd{background-color:#f8f8f8;}
+
+.phy-btnCancel{color:#6FBA2C;background-color:#fff;}
+.phy-btnSave{color:#fff;background-color:#6FBA2C;}
+.phy-btnSave:disabled {opacity: 0.2;background: #000}
+
+/* 提交订单 */
+.confirmOrder-list-total{}
+.confirmOrder-list-total{margin-bottom:0.2rem;}
+.confirmOrder-list-total .app-list:before,.confirmOrder-list-total .app-list:after{height:0;background-color:none!important;}
+.confirmOrder-list-total .total-price{top:50%;margin-top:-0.2rem;}
+.confirmOrder-list-num{border-top:1px solid #eee;background-color:#fff;padding:0 0.3rem;height:0.9rem;line-height:0.9rem;color:#8e8e8e;overflow:hidden;position:relative;text-align:right;}
+.confirmOrder-list-bill{}
+.confirmOrder-list-bill .app-list:before,.confirmOrder-list-bill .app-list:after{height:0;background-color:none!important;}
+.no-bill{color:#8e8e8e;font-size:0.28rem;}
+.confirmOrder-intro{position:relative;background-color:#fff;padding:0.3rem;margin-bottom:0.2rem;}
+.order-status{position:absolute;right:0.2rem;top:0.2rem;}
+.status-1 {color:#75ac47;}/* 支付状态 1：已支付，2：未支付 */
+.status-2{color:#EF2B34;}/* 待付款 */
+
+
+
+
+
+/* 预约记录 */
+.phyHistroy-hd{}
+.phyHistroy-hd:after{height:0;}
+.phyDetails-bd{background-color:#f8f8f8;}
+.phyDetails-bd .bookingDetails-Intro{position:relative;display:block;}
+.phyDetails-bd .app-arr-phy{position:absolute;right:0.3rem;top:50%;}
+.booking-status span, .histroy-status span{display:inline-block;line-height:0.4rem;border-radius:0.4rem;font-size:0.22rem; margin-right: .2rem;}
+.status-booked{background-color:#6fba2c;color:#fff;}
+.bookingSort-content{background: #fff;}
+/* 已预约 */
+.status-booking{border:1px solid #6fba2c;color:#6fba2c;background-color:#fff;padding:0 .1rem;}
+
+/* 待预约 */
+.status-phyed{border:1px solid #6fba2c;color:#6fba2c;background-color:#fff;padding:0 .1rem;}
+.status1-phyed{color:#6fba2c;}
+
+/* 已体检 */
+.status-payed{border:1px solid #6fba2c;color:#6fba2c;background-color:#fff;padding:0 .1rem;}
+
+/* 已线上支付 */
+.status-exp{border:1px solid #6fba2c;color:#6fba2c;background-color:#fff;padding:0 .1rem;}
+
+/* 已过期 */
+.status-cancel{border:1px solid #DBDBDB;color:#DBDBDB;background-color:#fff;padding:0 .1rem;}
+.status1-phyedno{color:#999999;}
+.status1-cancel{color:#cccccc;}
+/* 已取消 */
+.phyDetails-bd .bookingForm-introItem .app-list:before{height:1px!important;left:0.3rem;right:0.3rem;}
+.phyDetails-bd .bookingForm-introItem .app-list{padding-top:0.2rem;}
+.phyDetails-bd .bookingForm-introItem .app-list .app-list-item{padding:0.1rem 0.3rem;}
+.phyDetails-bd .bookingForm-item-notice{padding:0.1rem 0.3rem 0.2rem 0.3rem;}
+.confirmOrder-list-codes{margin-bottom:0.2rem;}
+.confirmOrder-list-codes .app-list:before,.confirmOrder-list-codes .app-list:after{height:0;background-color:none!important;}
+.codes-status{font-size:0.28rem;}
+.codes-status-1{color:#6fba2c;}
+
+/* 没有数据 */
+.no-data{width:5rem;position: absolute; top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  left: 50%; text-align: center;}
+.no-text{background:url(../images/no-data.png) no-repeat; background-position: top; background-size: 2.5rem;
+    padding-top: 2rem; color: #A9A9A9;}
+.know-data{width: 30%;position: absolute;top: 70%;
+  transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  left: 50%;text-align: center;}
+.konw-btn{background: rgb(76, 192, 171);padding: 0.1rem 0.3rem;color: #f8f8f8}
+/* 预约记录 */
+.phyHistroy-tab{}
+.phyHistroy-tab .app-tab{background-color:#F8F8F8;}
+.phyHistroy-tab .app-tab .app-tab-item{width:50%}
+.phyHistroy-tab .app-tab .app-tab-item{}
+.phyHistroy-tab .app-tab .app-tab-cur{}
+.app-list-phyHistroy{}
+.phyHistroy-intro{position:relative;}
+.histroy-phyName{font-size:0.32rem;}
+.histroy-orgName{font-size:0.26rem;color:#8e8e8e;}
+.histroy-time{font-size:0.26rem;color:#8e8e8e;}
+.histroy-status{position:absolute;right:0;top:0;text-align:right;}
+.histroy-status ul li{margin-bottom: .1rem;}
+.histroy-go{position:absolute;right:0;bottom:0;font-size:0.26rem;}
+.phyHistroy-over .histroy-phyName{color:#8e8e8e;}
+
+.app-list-gray{background-color:#f0f0f0;overflow:hidden;position:relative;}
+.app-list-histroy{padding:.2rem .3rem 0rem .3rem;position:relative;text-decoration:none;display:-webkit-box;display:-webkit-flex;display:flex;background: #f0f0f0;}
+.app-list-histroy:active .app-list-inner {
+  background-color: #f8f8f8;
+}
+.app-list-inner{background: #fff; width: 100%; padding: .25rem; border-radius: .1rem;}
+.app-histroy-img{float: left; width: 20%;}
+.app-histroy-img img {width:1.2rem;height: 1.2rem;border:1px solid #eee;border-radius: .1rem;}
+.app-histroy-link{float: left; padding-left: .25rem;width: 80%;}
+.app-histroy-about{border-bottom: 1px solid #eee;}
+.app-histroy-name,.app-histroy-phy,.app-histroy-time{display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;-webkit-line-clamp:1;}
+.app-histroy-name{font-size:.3rem;}
+.app-histroy-phy{margin: .1rem 0rem; color: #afafaf;}
+.app-histroy-time{color: #666666; padding-bottom: .1rem;}
+.app-histroy-state{padding-top: .1rem;}
+.app-histroy-state span{ padding-right: .25rem; }
+
+.app-arr-histroy{position:absolute;right:.5rem;top:50%;margin-top:-.3rem;}
+.app-arr-histroy:after{content:" ";display:inline-block;height:.42rem;width:.42rem;position:absolute;top:50%;right:0;margin-top:-.21rem;background:url(../images/ico-arr-normal.png) 100% no-repeat;background-size:50%;border:none;}
+
+/* 时间排班 */
+.timeList-box {padding:0.2rem;}
+.timeList-box p {color:#999;margin-bottom: .1rem;}
+.timeList {}
+.timeList .timeList-lab {float: left;line-height: 0.6rem;padding:0.1rem;width: 33%;text-align:center;}
+.timeList-item {display: inline-block;padding:0 0.1rem;line-height: 0.6rem;border:1px solid #bebebe;border-radius: 0.6rem;}
+
+
+/* 预约记录fix */
+.histroy_fixGo {
+  width:1.4rem;
+  height:1.4rem;
+  text-align: center;
+  line-height: 1.4rem;
+  border-radius: 1.4rem;
+  position: fixed;
+  right:0.5rem;
+  bottom:0.5rem;
+  background-color:#75ac47;
+  opacity:0.9;
+  color:#fff;
+  font-size: 0.22rem;
+  z-index: 102;
+}
+/* 体检项目详情 */
+.itemDetails-modal {overflow-y: auto;text-align: left;}
+.itemDetails-modal li {}
+.itemDetails-modal li span {color:#000;margin-left:0.1rem;}
+.itemDetails-modal li em {font-style: normal;color:#999;}
+
+/* 体检注意事项 */
+.app-notice-doc {
+  padding:0.36rem .3rem;
+  font-size: .3rem;
+  color: #333;
+}
+
+
+.scLine span {color: #333;font-size: 0.3rem;padding-left: 0.16rem;}
+.scLine span:before{position:absolute;content:"";
+background:url(../images/icon-line.png) 0 0 no-repeat;background-size:0.07rem 0.3rem;
+width:0.07rem;height:0.3rem;left:0.2rem;top:50%;margin-top:-0.15rem;
+}
+.app-tips{text-align: center; padding: .1rem;}
+
+.calendarShow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left: 0;
+  z-index: 999;
+}
+.am-list-view-scrollview-content {width: 100%;}
+.am-list-view-scrollview {-webkit-overflow-scrolling: touch;}
+
+.showLoadingInit {
+  position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0.76rem;
+    left:0;
+}
+.bookingSort-tabMain {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}

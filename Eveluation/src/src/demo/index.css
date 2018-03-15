@@ -1,0 +1,47 @@
+.summary_table ul{
+	width:100%;
+	height:auto;
+	overflow: hidden;
+	margin:0 auto;
+	padding:0;
+	border:0.02rem solid #dbdbdb;
+}
+.summary_table ul li{
+	width: 100%;
+	height:auto;
+	overflow: hidden;
+	border-top:0.02rem solid #dbdbdb;
+}
+.summary_table ul li:first-child{
+	background:#f4f3f8;
+	border:0;
+	display: table;
+}
+.summary_table ul li span{
+	float:left;
+	width:20%;
+	height:auto;
+	border-right:0.02rem solid #dbdbdb;
+	padding:0.27rem 0.3rem 0.27rem 0.3rem;
+	word-wrap: break-word;
+	overflow: hidden;
+	display: flex;
+    justify-content: center;
+    align-items: Center;
+    font-size:0.26rem;
+}
+.summary_table ul li span:first-child{
+	width: 22%;
+}
+.summary_table ul li span:last-child{
+	width: 38%;
+	border:0;
+}
+.sl{
+	width:100%;
+	height:auto;
+	overflow: hidden;
+	padding:0.3rem;
+}
+
+

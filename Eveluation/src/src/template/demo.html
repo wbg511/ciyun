@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        var LBD = function (i) {
+            this.get = function (success, error) {
+
+                return [
+                    function () {
+                        var json = {
+                            name: "陈翔六点半"
+                        };
+
+                        if (i > 1) {
+                            if (typeof success == "function") {
+                                success(json);
+                            }
+                        } else {
+                            error("错误！");
+                        }
+                    }, function () {
+                        return ["我们是："];
+                    }
+                ]
+            }
+        }
+        var s= "";
+        var success = function(json){
+            s+=json.name;
+        }
+        var sss = new LBD(2);
+        var bbb = sss.get(success,null);
+        bbb[0]();
+        s=bbb[1]()[0]+s;
+        console.log(s);
+        // function success(o) {
+        //     return o.name
+        // }; 
+        // function error(str)
+        //  { return (str) }; 
+        //  var l = new LBD(2); 
+        //  var arr = l.get(success, error);
+        //   console.log(arr[1](), arr[0]);
+    </script>
+</body>
+
+</html>

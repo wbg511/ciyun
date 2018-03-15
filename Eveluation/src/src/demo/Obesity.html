@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>肥胖症风险评估</title>
+	<link rel="stylesheet" href="../modules/index/style/index.less">
+    <link rel="stylesheet" href="../modules/summary/style/index.less">
+    <link rel="stylesheet" href="../modules/physiology/style/index.less">
+    <link rel="stylesheet" href="../modules/behavior/style/index.less">
+    <link rel="stylesheet" href="../modules/obesity/style/index.less">
+    <link rel="stylesheet" href="../modules/stroke/style/index.less">
+    <link rel="stylesheet" href="../modules/diabetes/style/index.less">
+    <link rel="stylesheet" href="table.css">
+    <script src="index.js"></script>
+</head>
+<body>
+	<div class="summary">
+        <div class="summary_title">肥胖症风险评估</div>
+        <div class="obesity obesitys">
+          <p>肥胖症（obesity）是由于体内脂肪的体积和（或）脂肪细胞数量的增加导致的体重增加，或体脂占体重的百分比异常增高，并在某些局部过多沉积脂肪。判定肥胖的指标通常有体重指数（BMI）、腰围（WC）、腰臀比（WHR）及体脂肪率、内脏脂肪指数等。</p>
+          <p>肥胖是糖尿病、心血管疾病及其他代谢性疾病和肿瘤的潜在危险因素。健康肥胖者不会一直健康，随着年龄增长，他们患病的风险会逐渐加大。</p>
+        </div>
+        <div class="summary_name_title">
+          <img src="../static/images/icon1.png" alt="图片加载失败" class="summary_name_title_icon"/>
+          <span class="summary_name_title_subtitle">评估结果</span>
+        </div>
+        <div class="Result">
+          <div class="summary_name_centent_title">
+            <img src="../static/images/icon2.png" alt="" class="icon"/>
+            <span>全身性肥胖评估</span>
+          </div>
+          <div class="resule_in">
+            <div class="Identification">
+            	<span class="statea">偏低</span>
+            	<span class="statesa"></span>
+            </div>
+            <img src="../static/images/in.png" alt="" class="resule_in_img"/>
+          </div>
+          <div class="summary_name_centent_title">
+            <img src="../static/images/icon2.png" alt=""  class="icon"/>
+            <span>中心性肥胖评估</span>
+          </div>
+          <div class="resule_in">
+            <div class="Identification">
+            	<span class="statea">偏低</span>
+            	<span class="statesa"></span>
+            </div>
+            <img src="../static/images/in.png" alt="" class="resule_in_img"/>
+          </div>
+          
+        </div>
+        <div class="summary_name_title">
+          <img src="../static/images/icon1.png" alt="图片加载失败" class="summary_name_title_icon"/>
+          <span class="summary_name_title_subtitle">肥胖者放生相关疾病的危险度</span>
+        </div>
+        <div class="summary_table one Results ">
+          <!-- <Table data = {dataList} wordWrap bordered={true} disabledScroll={true}  height={7.8} headerHeight={1}>
+            <Column sort flexGrow={1} fixed>
+                <HeaderCell>发病危险高3倍以上的疾病</HeaderCell>
+                <Cell dataKey="project"></Cell>
+            </Column>
+          
+            <Column sort flexGrow={1}>
+                <HeaderCell>发病危险高2-3倍的疾病</HeaderCell>
+                <Cell dataKey="this"></Cell>
+            </Column>
+          
+            <Column sort flexGrow={1}>
+                <HeaderCell>发病危险高1-2倍的疾病</HeaderCell>
+                <Cell dataKey="last"></Cell>
+            </Column>
+                  </Table> -->
+            <table>
+            	<tr>
+            		<th>发病危险高3倍以上的疾病</th>
+            		<th>发病危险高2-3倍的疾病</th>
+            		<th>发病危险高1-2倍的疾病</th>
+            	</tr>
+            	<tr>
+            		<td>胰岛素抵抗及2型糖尿病</td>
+            		<td>高血压</td>
+            		<td>乳腺癌/子宫癌（女）前列腺癌/结直肠癌（男）</td>
+            	</tr>
+            	<tr>
+            		<td>胆囊疾病</td>
+            		<td>冠心病</td>
+            		<td>生殖激素异常/生育功能受损</td>
+            	</tr>
+            	<tr>
+            		<td>血脂异常</td>
+            		<td>高尿酸血症及痛风</td>
+            		<td>多囊卵巢综合征</td>
+            	</tr>
+            	<tr>
+            		<td>睡眠呼吸暂停综合征</td>
+            		<td>脂肪肝</td>
+            		<td>背下部疼痛</td>
+            	</tr>
+            	<tr>
+            		<td>气喘</td>
+            		<td>骨关节病</td>
+            		<td>麻醉并发症</td>
+            	</tr>
+            </table>
+        </div>
+
+
+        <div class="summary_name_title">
+          <img src="../static/images/icon1.png" alt="图片加载失败" class="summary_name_title_icon"/>
+          <span class="summary_name_title_subtitle">不同减重措施对健康指标的影响</span>
+        </div>
+        <div class="summary_table one Results">
+          <!-- <Table data = {dataListtwo} wordWrap bordered={true} disabledScroll={true} headerHeight={0.8} height={7.8}>
+            <Column sort flexGrow={1} fixed>
+                <HeaderCell>指标</HeaderCell>
+                <Cell dataKey="project"></Cell>
+            </Column>
+          
+            <Column sort flexGrow={1}>
+                <HeaderCell>单独控制饮食</HeaderCell>
+                <Cell dataKey="this"></Cell>
+            </Column>
+          
+            <Column sort flexGrow={1}>
+                <HeaderCell>适当控制饮食结合运动</HeaderCell>
+                <Cell dataKey="last"></Cell>
+            </Column>
+                  </Table> -->
+            <table>
+            	<tr>
+            		<th>指标</th>
+            		<th>单独控制饮食</th>
+            		<th>适当控制饮食结合运动</th>
+            	</tr>
+            	<tr>
+            		<td>最大氧吸取量（VO2max)</td>
+            		<td>降低</td>
+            		<td>改善</td>
+            	</tr>
+            	<tr>
+            		<td>瘦体重（FFM）</td>
+            		<td>损失</td>
+            		<td>增加或保持</td>
+            	</tr>
+            	<tr>
+            		<td>体脂肪（%）</td>
+            		<td>下降少</td>
+            		<td>下降多</td>
+            	</tr>
+            	<tr>
+            		<td>营养缺乏</td>
+            		<td>容易发生</td>
+            		<td>一般不会发生</td>
+            	</tr>
+            	<tr>
+            		<td>胰岛素敏感度</td>
+            		<td>不确定</td>
+            		<td>改善</td>
+            	</tr>
+            	<tr>
+            		<td>肌肉和韧带力量</td>
+            		<td>降低</td>
+            		<td>改善</td>
+            	</tr>
+            	<tr>
+            		<td>体力</td>
+            		<td>下降</td>
+            		<td>改善，耐力提高</td>
+            	</tr>
+            	<tr>
+            		<td>静息代谢率（RMR）</td>
+            		<td>下降</td>
+            		<td>保持或增加</td>
+            	</tr>
+            	<tr>
+            		<td>减重计划</td>
+            		<td>不易坚持</td>
+            		<td>容易坚持</td>
+            	</tr>
+            	<tr>
+            		<td>减重后反弹</td>
+            		<td>易发生</td>
+            		<td>不易发生</td>
+            	</tr>
+            	<tr>
+            		<td>精神状态</td>
+            		<td>不佳</td>
+            		<td>改善</td>
+            	</tr>
+            </table>
+        </div>
+
+        <div class="summary_name_title">
+          <img src="../static/images/icon1.png" alt="图片加载失败" class="summary_name_title_icon"/>
+          <span class="summary_name_title_subtitle">体重控制建议</span>
+        </div>
+        <div class="obesity p" style="padding:0.3rem 0.3rem 0.3rem 0.3rem">
+          <p>每天安排进行体力活动的量和时间应按减体重目标计算，对于需要亏空的能量，一般多考虑采用增加体力活动量和控制饮食相结合的方法，其中 50%（40%−60%）应该由增加体力活动的能量消耗来解决，其他 50% 可由减少饮食总能量和减少脂肪的摄入量以达到需要亏空的总能量。增加体力活动的时间，可以有意识地结合日常活动来安排。</p>
+          
+        </div>
+      </div>
+</body>
+</html>

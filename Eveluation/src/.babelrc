@@ -1,0 +1,10 @@
+{
+  "presets": ["es2015", "stage-0", "react"],
+  "plugins": [
+  	"transform-object-assign",
+  	"react-html-attrs",
+  	"transform-es2015-classes",
+  	"add-module-exports",
+    ["import", { libraryName: "antd", style: true }]
+  ]
+}
