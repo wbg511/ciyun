@@ -1,0 +1,586 @@
+<!--pages/detail/detail.wxml-->
+<!--导航条-->
+<view class="navbar">
+  <view class="item" wx:for="{{navbar}}" data-idx="{{index}}" class="item {{navbarIndex==index ? 'active' : ''}}" bindtap="navbarTap" wx:key="{{navbar}}">
+    <text>
+      {{item}}  
+    </text>
+  </view>
+</view>
+<!-- 基本信息 -->
+<view class="report-content" hidden="{{0!==navbarIndex}}">
+  <view class="form form-view">
+    <view class="form-group">
+      <text class="form-label">体检日期</text>
+      <view class="form-val">
+        <view class="text-l">{{data.medExamRpt.preMedDate || ''}}</view>
+      </view>
+    </view>
+    <view class="form-group">
+      <text class="form-label">体检机构</text>
+      <view class="form-val">
+        <view class="text-l">{{data.medExamRpt.medCorpName}}</view>
+      </view>
+    </view>
+    <view class="form-group">
+      <view class="form-label">体检人姓名</view>
+      <view class="form-val">
+        <view class="text-l">{{data.medExamRpt.name}}</view>
+      </view>
+    </view>
+    <view class="form-group">
+      <view class="form-label">体检名称</view>
+      <view class="form-val">
+        <view class="text-l">{{data.medExamRpt.medExamType}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='infomation-footer'>
+    体检报告以纸质报告为准
+  </view>
+  <block wx:if="{{!data.medExamRpt.personId && data}}">
+    <view class='watermark'>示例</view>
+  </block>
+</view>
+<!-- 汇总分析  -->
+<view class="report-content" hidden="{{1!==navbarIndex}}">
+  <block wx:if="{{data}}">
+    <view class="new-report-app">
+      <block wx:if="{{data.adviceList.length>0}}">
+        <view class="new-report-app-hd">
+          <view class="title">汇总分析</view>
+        </view>
+        <view class="new-report-app-bd">
+          <view class="table">
+            <view class="new-report-total">
+              <view wx:for="{{data.adviceList}}" wx:key='adviceList'>({{index+1}})、
+                <text class='bold' wx:if="{{item.summary}}"> {{item.summary}}</text>
+                <view>
+                  <text>{{item.advice}}</text>
+                </view>
+              </view>
+            </view>
+            <block wx:if="{{data.medExamRpt.hmoId != 'CYH8891606510000'}}">
+              <view class="new-report-other" wx:if="{{data.adviceList[0].doctorLast}}">
+                <text>汇总医师：</text>{{data.adviceList[0].doctorLast}}
+              </view>
+              <view class="new-report-other" wx:if="{{data.adviceList[0].preCreateTime}}">
+                <text>主检日期：</text>{{data.adviceList[0].preCreateTime}}
+              </view>
+            </block>
+            <block wx:else>
+              <view class="new-report-other" wx:if="{{data.adviceList[0].doctorBegin}}" style='width:70%;float:left'>
+                <text>总检医生：{{data.adviceList[0].doctorBegin}}</text>
+              </view>
+              <view class="new-report-other" wx:if="{{data.adviceList[0].preBeginTime && data.adviceList[0].doctorBegin}}" style='width:30%;float:left;'>
+                <text>{{data.adviceList[0].preBeginTime}}</text>
+              </view>
+              <view class="new-report-other" wx:if="{{data.adviceList[0].doctorLast}}" style='width:70%;float:left;'>
+                <text>审核医生：{{data.adviceList[0].doctorLast}}</text>
+              </view>
+              <view class="new-report-other" wx:if="{{data.adviceList[0].preCreateTime && data.adviceList[0].doctorLast}}"style='width:30%;float:left;'>
+                <text>{{data.adviceList[0].preCreateTime}}</text>
+              </view>
+            </block>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{data.summaryVoList && data.summaryVoList.length > 0}}">
+        <view class="new-report-app-hd">
+          <view class="title">
+            检查所见
+          </view>
+        </view>
+        <view class="new-report-app-hd">
+          <view class="new-report-app-tbody table" wx:for="{{data.summaryVoList}}" wx:for-item="summaryVo">
+            <!-- 科室 -->
+            <view class="flex">
+              <view class="report-name">{{summaryVo.organName}}</view>
+              <view class="report-value">
+                <!-- 项目组 -->
+                <!-- 项目组小结 -->
+                <block wx:if="{{summaryVo.summaryList && summaryVo.summaryList.length > 0}}">
+                  <view wx:for="{{summaryVo.summaryList}}" wx:for-item="summary" class="report-line">
+                    <view class="p" wx:if="{{summary.summary}}">
+                      <text>{{summary.summary}}</text>
+                    </view>
+                    <view class="new-report-other p" wx:if="{{summary.doctor}}">
+                      <text>检查医师：{{summary.doctor}}</text>
+                    </view>
+                    <view class="new-report-other p" wx:if="{{summary.revDoctor}}">
+                      <text>审核医师：{{summary.revDoctor}}</text>
+                    </view>
+                  </view>
+                </block>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+
+      <!-- 既往史 航天机构专有  -->
+      <block wx:if="{{data.medExamRpt.hmoId=='CYH3211204110000' && data.extrasContsVo != null}}">
+        <view wx:if="{{data.extrasContsVo.listJsonObject != null && data.extrasContsVo.listJsonObject[0] != null && data.extrasContsVo.listJsonObject[0].type6[0] != null }}">
+          <view class="new-report-app-hd">
+            <view class='title'>既往史</view>
+          </view>
+          <view class="new-report-app-hd">
+            <view class='new-report-app-tbody table'>
+              <view class='flex-tr'>
+                <view class='report-name'>既往疾病</view>
+                <view class='report-value'>
+                  <view class='app-check-group  clearfix'>
+
+                    <view class='app-check-list'>
+                      <view class="app-check-box">
+                        <view class="app-check">
+                          <view type="checkbox" name="p" class="checkbox checked" value="" disabled="disabled" checked="checked" wx:if="{{data.extrasContsVo.listJsonObject[0].type6[0].jwgxy != null}}"></view>
+                          <view type="checkbox" name="p" class="checkbox disabled" value="" disabled="disabled" checked="checked" wx:else></view>
+                        </view>
+                        <view class="app-check-item">高血压</view>
+                      </view>
+                    </view>
+
+                    <view class='app-check-list'>
+                      <view class="app-check-box">
+                        <view class="app-check">
+                          <view type="checkbox" name="p" class="checkbox checked" value="" disabled="disabled" checked="checked" wx:if="{{data.extrasContsVo.listJsonObject[0].type6[0].jwtnb != null}}"></view>
+                          <view type="checkbox" name="p" class="checkbox disabled" value="" disabled="disabled" checked="checked" wx:else></view>
+                        </view>
+                        <view class="app-check-item">糖尿病</view>
+                      </view>
+                    </view>
+
+                    <view class='app-check-list'>
+                      <view class="app-check-box">
+                        <view class="app-check">
+                          <view type="checkbox" name="p" class="checkbox checked" value="" disabled="disabled" checked="checked" wx:if="{{data.extrasContsVo.listJsonObject[0].type6[0].jwgxb != null}}"></view>
+                          <view type="checkbox" name="p" class="checkbox disabled" value="" disabled="disabled" checked="checked" wx:else></view>
+                        </view>
+                        <view class="app-check-item">冠心病</view>
+                      </view>
+                    </view>
+
+                    <view class='app-check-list'>
+                      <view class="app-check-box">
+                        <view class="app-check">
+                          <view type="checkbox" name="p" class="checkbox checked" value="" disabled="disabled" checked="checked" wx:if="{{data.extrasContsVo.listJsonObject[0].type6[0].jwzf != null}}"></view>
+                          <view type="checkbox" name="p" class="checkbox disabled" value="" disabled="disabled" checked="checked" wx:else></view>
+                        </view>
+                        <view class="app-check-item">中风</view>
+                      </view>
+                    </view>
+
+                    <view class='app-check-list'>
+                      <view class="app-check-box">
+                        <view class="app-check">
+                          <view type="checkbox" name="p" class="checkbox checked" value="" disabled="disabled" checked="checked" wx:if="{{data.extrasContsVo.listJsonObject[0].type6[0].jwgy != null}}"></view>
+                          <view type="checkbox" name="p" class="checkbox disabled" value="" disabled="disabled" checked="checked" wx:else></view>
+                        </view>
+                        <view class="app-check-item">肝炎</view>
+                      </view>
+                    </view>
+
+                    <view class='app-check-list'>
+                      <view class="app-check-box">
+                        <view class="app-check">
+                          <view type="checkbox" name="p" class="checkbox checked" value="" disabled="disabled" checked="checked" wx:if="{{data.extrasContsVo.listJsonObject[0].type6[0].jwzl != null}}"></view>
+                          <view type="checkbox" name="p" class="checkbox disabled" value="" disabled="disabled" checked="checked" wx:else></view>
+                        </view>
+                        <view class="app-check-item">肿瘤</view>
+                      </view>
+                    </view>
+
+                  </view>
+                </view>
+              </view>
+              <view class='flex-tr'>
+                <view class='report-name'>家族史</view>
+                <view class='report-value'>
+                  <view class='app-check-group  clearfix'>
+
+                    <view class='app-check-list'>
+                      <view class="app-check-box">
+                        <view class="app-check">
+                          <view type="checkbox" name="p" class="checkbox checked" value="" disabled="disabled" checked="checked" wx:if="{{data.extrasContsVo.listJsonObject[0].type6[0].jzgxy != null}}"></view>
+                          <view type="checkbox" name="p" class="checkbox disabled" value="" disabled="disabled" checked="checked" wx:else></view>
+                        </view>
+                        <view class="app-check-item">高血压</view>
+                      </view>
+                    </view>
+
+                    <view class='app-check-list'>
+                      <view class="app-check-box">
+                        <view class="app-check">
+                          <view type="checkbox" name="p" class="checkbox checked" value="" disabled="disabled" checked="checked" wx:if="{{data.extrasContsVo.listJsonObject[0].type6[0].jztnb != null}}"></view>
+                          <view type="checkbox" name="p" class="checkbox disabled" value="" disabled="disabled" checked="checked" wx:else></view>
+                        </view>
+                        <view class="app-check-item">糖尿病</view>
+                      </view>
+                    </view>
+
+                    <view class='app-check-list'>
+                      <view class="app-check-box">
+                        <view class="app-check">
+                          <view type="checkbox" name="p" class="checkbox checked" value="" disabled="disabled" checked="checked" wx:if="{{data.extrasContsVo.listJsonObject[0].type6[0].jzgxb != null}}"></view>
+                          <view type="checkbox" name="p" class="checkbox disabled" value="" disabled="disabled" checked="checked" wx:else></view>
+                        </view>
+                        <view class="app-check-item">冠心病</view>
+                      </view>
+                    </view>
+
+                    <view class='app-check-list'>
+                      <view class="app-check-box">
+                        <view class="app-check">
+                          <view type="checkbox" name="p" class="checkbox checked" value="" disabled="disabled" checked="checked" wx:if="{{data.extrasContsVo.listJsonObject[0].type6[0].jzzf != null}}"></view>
+                          <view type="checkbox" name="p" class="checkbox disabled" value="" disabled="disabled" checked="checked" wx:else></view>
+                        </view>
+                        <view class="app-check-item">脑血管疾病</view>
+                      </view>
+                    </view>
+
+                    <view class='app-check-list'>
+                      <view class="app-check-box">
+                        <view class="app-check">
+                          <view type="checkbox" name="p" class="checkbox checked" value="" disabled="disabled" checked="checked" wx:if="{{data.extrasContsVo.listJsonObject[0].type6[0].jzzl != null}}"></view>
+                          <view type="checkbox" name="p" class="checkbox disabled" value="" disabled="disabled" checked="checked" wx:else></view>
+                        </view>
+                        <view class="app-check-item">恶性肿瘤</view>
+                      </view>
+                    </view>
+
+                  </view>
+                </view>
+              </view>
+
+              <view class='flex-tr'>
+                <view class='report-name'>过敏史</view>
+                <view class='report-value'>
+                  <view class='app-check-group  clearfix'>
+
+                    <view class='app-check-list'>
+                      <view class="app-check-box">
+                        <view class="app-check">
+                          <view type="checkbox" name="p" class="checkbox checked" value="" disabled="disabled" checked="checked" wx:if="{{data.extrasContsVo.listJsonObject[0].type6[0].gmsy != null}}"></view>
+                          <view type="checkbox" name="p" class="checkbox disabled" value="" disabled="disabled" wx:else></view>
+                        </view>
+                        <view class="app-check-item">有</view>
+                      </view>
+                    </view>
+
+                    <view class='app-check-list'>
+                      <view class="app-check-box">
+                        <view class="app-check">
+                          <view type="checkbox" name="p" class="checkbox checked" value="" disabled="disabled" checked="checked" wx:if="{{data.extrasContsVo.listJsonObject[0].type6[0].gmsy == null}}"></view>
+                          <view type="checkbox" name="p" class="checkbox disabled" value="" disabled="disabled" wx:else></view>
+                        </view>
+                        <view class="app-check-item">无</view>
+                      </view>
+                    </view>
+
+                    <view class='app-check-list'>
+                      <view class="app-check-box">
+                        <view class="app-check-item">过敏物质/药物</view>
+                      </view>
+                    </view>
+
+                    <view class='app-check-list' wx:if="{{data.extrasContsVo.listJsonObject[0].type6[0].gmwzyw != null}}">
+                      <view class="app-check-box">
+                        <view class="app-check-item">{{data.extrasContsVo.listJsonObject[0].type6[0].gmwzyw}}</view>
+                      </view>
+                    </view>
+
+                  </view>
+                </view>
+              </view>
+
+              <view class='flex-tr'>
+                <view class='report-name'>目前药物</view>
+                <view class='report-value'>
+                  <view class='app-check-group  clearfix'>
+                    <view class='app-check-list'>
+                      <view class="app-check-box">
+                        <view class="app-check-item" wx:if="{{data.extrasContsVo.listJsonObject[0].type6[0].mqyw != null}}">{{data.extrasContsVo.listJsonObject[0].type6[0].mqyw}}</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+
+            </view>
+          </view>
+        </view>
+
+        <view wx:if="{{data.extrasContsVo.listJsonObject != null && data.extrasContsVo.listJsonObject[0] != null && data.extrasContsVo.listJsonObject[0].type7 != null}}">
+          <view class="new-report-app-hd">
+            <view class='title'>健康危险因素提示</view>
+          </view>
+          <view class="new-report-app-hd">
+            <view class='new-report-app-tbody table' wx:for="{{data.extrasContsVo.listJsonObject[0].type7}}" wx:key="item">
+              <view class='flex-tr new-report-total'>
+                {{index+1}}、
+                <block wx:if="{{item.sdname != null}}">{{item.sdname}}</block>：
+                <block wx:if="{{item != null}}">{{item.sdtext}}</block>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+
+    </view>
+  </block>
+
+  <view class='infomation-footer'>
+    体检报告以纸质报告为准
+  </view>
+  <block wx:if="{{!data.medExamRpt.personId && data}}">
+    <view class='watermark'>示例</view>
+  </block>
+</view>
+<!-- 超标项  -->
+<view class="report-content" hidden="{{2!==navbarIndex}}">
+
+  <view class="report-table">
+
+    <view class="report-table-tr fixed">
+      <view class="th">项目名</view>
+      <view class="th">结果</view>
+      <view class="th">单位</view>
+      <view class="th">下限/上限</view>
+    </view>
+    <view class="tbody">
+      <view class="report-table-tr" wx:for="{{data.exceptionItems}}" wx:key="exceptionItems">
+        <view class="report-table-td">{{item.itemName}}</view>
+        <view class="report-table-td" wx:if="{{item.isNormal == 3}}">
+          <text class="down">{{item.itemResult || ''}}↓</text>
+        </view>
+        <view class="report-table-td" wx:if="{{item.isNormal == 4}}">
+          <text class="up">{{item.itemResult || ''}}↑</text>
+        </view>
+        <view class="report-table-td" wx:if="{{item.isNormal == 2}}">
+          <text class="up">{{item.itemResult || ''}}</text>
+        </view>
+        <view class="report-table-td" wx:if="{{item.isNormal == 1}}">
+          <text>{{item.itemResult || ''}}</text>
+        </view>
+        <view class="report-table-td">
+          <text class="r-unit">{{item.itemUnit || ''}}</text>
+        </view>
+        <view class="report-table-td">
+          <text class="r-reference">{{item.itemLow || ''}}-{{item.itemHight || ''}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='infomation-footer'>
+      体检报告以纸质报告为准
+    </view>
+
+  </view>
+  <block wx:if="{{!data.medExamRpt.personId && data}}">
+    <view class='watermark'>示例</view>
+  </block>
+</view>
+
+<!-- 报告详情  -->
+<view class="report-content" hidden="{{3!==navbarIndex}}" style='{{detailStyle}}'>
+
+  <view class="report-table">
+    <view class="report-table-tr fixed" style='{{detail_th}}'>
+      <view class="th">项目名</view>
+      <view class="th">结果</view>
+      <view class="th">单位</view>
+      <view class="th">下限/上限</view>
+    </view>
+  </view>
+  <!-- 分表 -->
+  <view wx:key="idx" wx:for-index="idx" data-idx='{{idx}}' class="detail-table {{index == 0 ?  first : ''}}" wx:for="{{data.medDetails}}" hidden="{{idx != currentClassifyId && currentClassifyId != '0'}}">
+
+    <block wx:if="{{item.rptMode == 0}}">
+      <view class="detail-title">
+        <view class="cap-lev1">{{item.organName}}
+          <image data-idx='{{idx}}' bindtap="previewImage" src='images/previewImage.png' class="readPicBtn" title="图片预览" wx:if="{{item.mediaList.length>0}}"></image>
+        </view>
+      </view>
+      <view class="detail-body" wx:if='{{item.summaryList.length>0}}' wx:for="{{item.summaryList}}" wx:for-item="summaryItem" wx:key="summaryList">
+        <!-- 项目组级小结开始 -->
+        <block wx:if="{{summaryList.summary != 'ciyun'}}">
+          <view class="report-table-tr">
+            <view class="td w100 lv-2">
+              <view class="lv-2-tit">
+                <em>{{summaryItem.summary}}</em>
+              </view>
+              <view class="lv-2-main">
+
+                <view class="lv-2-doctor" wx:if="{{summaryItem.doctor}}">检查医师：{{summaryItem.doctor}}</view>
+                <view class="lv-2-doctor" wx:if="{{summaryItem.revDoctor}}">审核医师：{{summaryItem.revDoctor}}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+    <!-- 科室 大小 项目  -->
+    <block wx:if="{{item.rptMode == 1}}">
+      <view class="detail-title">
+        <view class="cap-lev1">{{item.organName}}
+          <image data-idx='{{idx}}' bindtap="previewImage" src='images/previewImage.png' class="readPicBtn" title="图片预览" wx:if="{{item.mediaList.length>0}}"></image>
+        </view>
+
+        <view class="cap-lev2" wx:for-index="lev2_idx" wx:for="{{item.itemClassList}}" wx:for-item="itemName" wx:key="productName">
+          <view class="cap-lev2-title">{{itemName.organName}}
+            <image data-idx='{{idx}}' data-lev='{{lev2_idx}}' bindtap="previewImage" src='images/previewImage.png' class="readPicBtn" title="图片预览" wx:if="{{itemName.mediaList.length>0}}"></image>
+          </view>
+          <view class='cap-lev3 report-table-tr' wx:for="{{itemName.itemList}}" wx:for-item="lev3Item" wx:key="lev3Item">
+
+            <block wx:if="{{lev3Item.itemUnit == ''}}">
+              <block wx:if="{{lev3Item.itemLow == null}}">
+                <view class="td r-item  itemName">{{lev3Item.itemName || ''}}</view>
+                <view class="td itemResult">{{lev3Item.itemResult || ''}}</view>
+              </block>
+              <block wx:else>
+                <view class="td r-item">{{lev3Item.itemName || ''}}</view>
+                <view class="td">{{lev3Item.itemResult || ''}}</view>
+                <view class="td r-unit">{{lev3Item.itemUnit || ''}}</view>
+                <view class="td r-reference">{{lev3Item.itemLow || ''}}-{{lev3Item.itemHight || ''}}</view>
+              </block>
+            </block>
+            <block wx:else>
+              <block wx:if="{{lev3Item.itemLow == null}}">
+                <view class="td r-item itemName">{{lev3Item.itemName || ''}}</view>
+                <view class="td itemResult">{{lev3Item.itemResult || ''}}</view>
+              </block>
+              <block wx:else>
+                <view class="td r-item">{{lev3Item.itemName || ''}}</view>
+                <view class="td">{{lev3Item.itemResult || ''}}</view>
+                <view class="td r-unit">{{lev3Item.itemUnit || ''}}</view>
+                <view class="td r-reference">{{lev3Item.itemLow || ''}}-{{lev3Item.itemHight || ''}}</view>
+              </block>
+            </block>
+
+          </view>
+          <view class="detail-body" wx:if='{{itemName.summaryList.length>0}}' wx:for="{{itemName.summaryList}}" wx:for-item="summaryItem" wx:key="summaryList">
+        <!-- 项目组级小结开始 -->
+        <block wx:if="{{summaryList.summary != 'ciyun'}}">
+          <view class="report-table-tr">
+            <view class="td w100 lv-2">
+              <view class="lv-2-tit">
+                <em>{{summaryItem.summary}}</em>
+              </view>
+              <view class="lv-2-main">
+
+                <view class="lv-2-doctor" wx:if="{{summaryItem.doctor}}">检查医师：{{summaryItem.doctor}}</view>
+                <view class="lv-2-doctor" wx:if="{{summaryItem.revDoctor}}">审核医师：{{summaryItem.revDoctor}}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+        </view>
+      </view>
+      <view class="detail-body" wx:if='{{item.summaryList.length>0}}' wx:for="{{item.summaryList}}" wx:for-item="summaryItem" wx:key="summaryList">
+        <!-- 项目组级小结开始 -->
+        <block wx:if="{{summaryList.summary != 'ciyun'}}">
+          <view class="report-table-tr">
+            <view class="td w100 lv-2">
+              <view class="lv-2-tit">
+                <em>{{summaryItem.summary}}</em>
+              </view>
+              <view class="lv-2-main">
+
+                <view class="lv-2-doctor" wx:if="{{summaryItem.doctor}}">检查医师：{{summaryItem.doctor}}</view>
+                <view class="lv-2-doctor" wx:if="{{summaryItem.revDoctor}}">审核医师：{{summaryItem.revDoctor}}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+    <!-- 科室小项目 || 大小项目  -->
+    <block wx:if="{{item.rptMode == 2 || item.rptMode == 3}}">
+      <view class="detail-title">
+        <view class="cap-lev1">{{item.organName}}
+          <image data-idx='{{idx}}' bindtap="previewImage" src='images/previewImage.png' class="readPicBtn" title="图片预览" wx:if="{{item.mediaList.length>0}}"></image>
+        </view>
+
+        <view class="cap-lev2" wx:for="{{item.itemList}}" wx:for-item="lev3Item" wx:key="lev3Item">
+          <view class='cap-lev3 report-table-tr'>
+            <block wx:if="{{lev3Item.itemUnit == ''}}">
+              <block wx:if="{{lev3Item.itemLow == null}}">
+                <view class="td r-item itemName">{{lev3Item.itemName || ''}}</view>
+                <view class="td itemResult">{{lev3Item.itemResult || ''}}</view>
+              </block>
+              <block wx:else>
+                <view class="td r-item">{{lev3Item.itemName}}</view>
+                <view class="td">{{lev3Item.itemResult || ''}}</view>
+                <view class="td r-unit">{{lev3Item.itemUnit || ''}}</view>
+                <view class="td r-reference">{{lev3Item.itemLow || ''}}-{{lev3Item.itemHight || ''}}</view>
+              </block>
+            </block>
+            <block wx:else>
+              <block wx:if="{{lev3Item.itemLow == null}}">
+                <view class="td r-item itemName">{{lev3Item.itemName}}</view>
+                <view class="td itemResult">{{lev3Item.itemResult || ''}}</view>
+              </block>
+              <block wx:else>
+                <view class="td r-item">{{lev3Item.itemName}}</view>
+                <view class="td">{{lev3Item.itemResult || ''}}</view>
+                <view class="td r-unit">{{lev3Item.itemUnit || ''}}</view>
+                <view class="td r-reference">{{lev3Item.itemLow || ''}}-{{lev3Item.itemHight || ''}}</view>
+              </block>
+            </block>
+
+          </view>
+        </view>
+      </view>
+      <view class="detail-body" wx:if='{{item.summaryList.length>0}}' wx:for="{{item.summaryList}}" wx:for-item="summaryItem" wx:key="summaryList">
+        <!-- 项目组级小结开始 -->
+        <block wx:if="{{summaryList.summary != 'ciyun'}}">
+          <view class="report-table-tr">
+            <view class="td w100 lv-2">
+              <view class="lv-2-tit">
+                <em>{{summaryItem.summary}}</em>
+              </view>
+              <view class="lv-2-main">
+                <view class="lv-2-doctor" wx:if="{{summaryItem.doctor}}">检查医师：{{summaryItem.doctor}}</view>
+                <view class="lv-2-doctor" wx:if="{{summaryItem.revDoctor}}">审核医师：{{summaryItem.revDoctor}}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+
+  <!-- searchIcon  -->
+  <block wx:if="{{data}}">
+    <view id="report-tab-search" class="report-tab-search" bindtap="openSearchList"></view>
+  </block>
+
+  <view class='infomation-footer'>
+    体检报告以纸质报告为准
+  </view>
+
+  <block wx:if="{{!data.medExamRpt.personId && data}}">
+    <view class='watermark'>示例</view>
+  </block>
+</view>
+
+
+
+<!--  分類列表 -->
+<view id="report-tab-search-list" class="report-tab-search-list" hidden="{{!searchSwich}}" style="height:{{reportListHeight}}">
+  <view class="report-item-list-cover"></view>
+  <view class="report-item-list" style="height:{{reportListHeight}}">
+    <view class="close-content">
+      <view class="floatL ft-12 color-8">选择科室项目</view>
+      <view class="report-item-close ft-12 color-8" bindtap="openSearchList">关闭</view>
+    </view>
+    <view id="report-list" class="report-list">
+      <view class="item" data-name='0' bindtap="openSearchList">全部项目</view>
+      <!--dO.rptMode不为1  -->
+      <view class="item" data-name="{{idx}}" wx:for="{{data.medDetails}}" wx:for-index="idx" bindtap="openSearchList" wx:key="product_list">{{item.organName}}</view>
+
+    </view>
+  </view>
+</view>

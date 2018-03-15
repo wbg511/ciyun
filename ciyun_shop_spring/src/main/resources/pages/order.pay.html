@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+<div class="page-group">
+    <!-- page 容器 -->
+    <div class="page page-headhand" id="orderPay">
+        <div id="orderPay_tpl_data"></div>
+        <input type="hidden" id="showBack"  value="1"/>
+        <span id="shareShop" data-linkUrl="http://newshop.lovehealth.com.cn/" data-title="慈云健康商城" data-imgUrl="http://static.ciyun.cn/staticpage/zixun/logo-for-share.jpg" data-desc="高端就医服务、私人定制健康管理服务、健康智能硬件等精选产品，尽在慈云健康商城" data-type="" data-dataUrl=""></span>
+    </div>
+    <script id="orderPay_tpl" type="text/template7">
+    <input type="hidden" name="hideTitle" id="hideTitle" value="{{title}}"/>
+    {{#unless isUpdate}}
+        <!-- 支付 -->
+        <div class="app-btn-fixed-order bar bar-tab bar bar-tab">
+            <div class="orderDes-fixed-btn">
+                <div class="app-btn-group">
+                    {{#js_compare "this.os == 'wx'"}}
+                    <!-- 微信支付 -->
+                        {{#item}}
+                            {{#js_compare "this.state == '1'"}}
+                                {{#if isPointPay}}
+                                    <button type="button" data-type="point" class="shop-pay-order" id="app-btn-pointpay"><span class="icon-point">积分兑换</span></button>
+                                {{/if}}
+                                {{#if isNormalPay}}
+                                    <button type="button" data-type="wx" class="shop-pay-order" id="app-btn-wxpay"><span class="icon-wx">微信支付</span></button>
+                                {{/if}}
+                                {{#if isZeroPay}}
+                                 <button type="button" id="app-btn-zeropay" class="shop-pay-order" data-type="zero"><span class="icon-zero">0元支付</span></button>
+                                {{/if}}
+                            {{else}}
+                                <p class="app-btn-group-state">
+                                    <span class="status-{{state}}">{{status}}</span>
+                                </p>
+                            {{/js_compare}}
+                        {{/item}}
+                    {{else}}
+                    <!-- app 支付 -->
+                        {{#item}}
+							 {{#js_compare "this.state == '1'"}}
+                           		 {{#if isPointPay}}
+                           				 <button type="button" id="app-btn-pointpay" class="shop-pay-order" data-type="point"><span class="icon-point">积分兑换</span></button>
+                           		 {{/if}}
+                         		   {{#if isZeroPay}}
+                            			<button type="button" id="app-btn-zeropay" class="shop-pay-order" data-type="zero"><span class="icon-zero">0元支付</span></button>
+                        		    {{/if}}
+                          		  {{#if isNormalPay}}
+                            		    <button type="button" id="app-btn-alipay" class="shop-pay-order" data-type="app-ali"><span class="icon-ali">支付宝支付</span></button>
+                            		    <button type="button" id="app-btn-wxpay" class="shop-pay-order" data-type="app-wx"><span class="icon-wx">微信支付</span></button>
+                          		  {{/if}}
+							 {{else}}
+                                <p class="app-btn-group-state">
+                                    <span class="status-{{state}}">{{status}}</span>
+                                </p>
+                            {{/js_compare}}
+                        {{/item}}
+                    {{/js_compare}}
+                </div>
+             </div>
+        </div>
+        {{#item}}
+        {{#share}}
+        <span id="shareShop" data-linkUrl="{{shareurl}}"  data-title="{{sharename}}" data-imgUrl="{{shareimage}}" data-desc="{{sharedesc}}" data-type="" data-dataUrl=""></span>
+        {{/share}}
+        <div class="content">
+            <input type="hidden"  id="hide-orderId" value="{{orderId}}" /> 
+            <input type="hidden"  id="hide-doctorId" value="{{doctorId}}" /> 
+            <input type="hidden"  id="hide-serviceId" value="{{serviceId}}" /> 
+            <!-- 订单号信息 -->
+            <div class="orderDes-introInfo app-shop-box">
+                <span class="orderDes-introStatus">
+                    <span class="status-{{state}}">{{status}}</span>
+                </span>
+                <p class="orderDes-no">订单编号：<span class="app-enNo">{{orderId}}</span></p>
+                <p class="orderDes-date">下单时间：<span class="app-enNo">{{orderTime}}</span></p>
+            </div>
+            <!-- 收货地址信息 -->
+            {{#address}}
+            <div class="orderDes-addressInfo">
+                <div class="app-address-box">
+                    <div class="address-info clearfix">
+                        <span class="name">{{name}}</span><span class="tel">{{tel}}</span>
+                     </div>
+                     <div class="address-info clearfix">
+                        <p class="address"><em class="address-defTip">{{#if isDefault}}[默认地址]{{/if}}</em>{{address}}</p>
+                    </div>
+                </div>
+            </div>
+            {{/address}}
+            <!-- 订单商品明细 -->
+            <div class="orderDes-shopInfo app-shop-box">
+                <div class="app-shop-box-hd">订单明细</div>
+                <div class="app-shop-box-bd">
+                    {{#goods}}
+                     <div class="order-goods-info" style="padding:0;min-height: 3.6rem;">
+                        <div class="order-goods-img">
+                            <div class="img-64"><img src="{{img}}" alt="{{name}}" /></div>
+                        </div>
+                        <div class="order-goods-intro">
+                            <div class="order-goods-name">{{name}}</div>
+                            <div class="order-goods-price">
+                                <p class="price-now">
+                                {{#if price}}
+                                <span class="now"><em class="unit">¥</em>{{price}}</span>
+                                {{#unless point}}{{else}}<i class="unit-i">+</i>{{/unless}}
+                                {{/if}}
+                                {{#if point}}
+                                <span class="int"><span class="i">{{point}}</span>积分</span>
+                                {{/if}}
+                                </p>
+                                <!-- 原价 -->
+								{{#js_compare "this.price != this.priceOld"}}
+                        		<p class="price-old">原价<del><em class="unit">¥</em>{{priceOld}}</del></p>
+								{{/js_compare}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/goods}}
+                </div>
+                {{#account}}
+                <div class="app-shop-box-ft">
+                    <div class="app-form-box">
+                        <div class="app-form-list">
+                            <div class="app-form-item">共计</div>
+                            <div class="app-form-val"><span class="rmb">{{number}}</span>件商品</div>
+                        </div>
+                        {{#if point}}
+                        <div class="app-form-list">
+                            <div class="app-form-item">积分</div>
+                            <div class="app-form-val"><span class="points">{{point}}</span></div>
+                        </div>
+                        {{/if}}
+                        {{#if couponAmount}}
+                        <div class="app-form-list">
+                            <div class="app-form-item">代金券抵扣</div>
+                            <div class="app-form-val"><span class="rmb"><em>¥</em>{{couponAmount}}</span></div>
+                        </div>
+                        {{/if}}
+                        {{#if total}}
+                        <div class="app-form-list">
+                            <div class="app-form-item">应付</div>
+                            <div class="app-form-val"><span class="rmb"><em>¥</em>{{total}}</span></div>
+                        </div>
+                        {{/if}}
+                        <div class="app-form-list">
+                            <div class="app-form-item">实付</div>
+                            <div class="app-form-val"><span class="rmb"><em>¥</em>{{pay}}</span></div>
+                        </div>
+                    </div>
+                </div>
+                {{/account}}
+            </div>
+            {{#invoice}}
+            <!-- 发票信息 -->
+            <div class="orderDes-payInfo app-shop-box">
+                <div class="app-shop-box-hd">
+                    发票信息
+                </div>
+                <div class="app-shop-box-bd">
+                    <p>类型：
+                    {{#if isCompany}}
+                        {{#js_compare "'titleType === 2'"}}公司发票{{/js_compare}}
+                    {{/if}}
+                    {{#if isPerson}}
+                        {{#js_compare "'titleType === 1'"}}个人发票{{/js_compare}}
+                    {{/if}}
+                    </p>
+                    <p>发票抬头：{{title}}</p>
+					{{#if isCompany}}
+                        {{#js_compare "'titleType === 2'"}}<p>纳税人识别号：{{taxpayerIdNumber}}</p>{{/js_compare}}
+                    {{/if}}
+                </div>
+            </div>
+            {{/invoice}}
+        </div>
+        {{else}}
+            <div class="page-noDate">
+                <p>{{itemInfo}}</p>
+            </div>
+        {{/item}}
+        {{else}}
+            <div class="page-upDate">
+                <p>{{updateInfo}}</p>
+            </div>
+        {{/unless}}
+    </script>
+</div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/shop.config" src= "style/js/require.js"></script>
+</body>
+</html>

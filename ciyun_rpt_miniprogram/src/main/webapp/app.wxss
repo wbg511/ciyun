@@ -1,0 +1,61 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+} 
+view,scroll-view,text,textarea{
+  box-sizing: border-box;
+  font-size: 15px;
+  font-family: "Helvetica Neue", Helvetica, STHeiTi,"Microsoft YaHei",微软雅黑,"Apple LiGothic Medium",\5b8b\4f53,SimSun,STSong,tahoma,arial,simsun,sans-serif;
+}
+input,::after,::before{
+  box-sizing: border-box;
+}
+.clear{
+  clear: both;
+}
+.floatL{
+  float: left;
+}
+.floatR{
+  float: right;
+}
+.fixed{
+  position: fixed;
+  z-index: 11;
+}
+.none{
+  display: none;
+}
+.fixed:after{
+  overflow: hidden;
+  clear: both;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+.btn-wrap{
+  padding:0 30rpx 0 30rpx;
+
+}
+.btn{
+  color: #fff;
+  background: #6fba2c;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+.ft-12{
+  font-size: 12px;
+}
+.ft-15{
+  font-size: 15px;
+}
+.color-8{
+  color: #888888;
+}
+.color-2{
+  color: #222222;
+}

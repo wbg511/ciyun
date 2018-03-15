@@ -1,0 +1,20 @@
+<!--pages/register/register.wxml-->
+  <view class="box_title">
+    <!-- <view class="title">尊敬的用户</view>
+    <view class="notes">请验证您的手机号码，完成微信绑定</view> -->
+    <image src="images/logo.png" class="logo"></image>
+    <image src="images/font.png" class="font"></image>
+    <!-- <text>中金慈云·连接人与健康</text> -->
+  </view>
+  <view class="container">
+    <view class="box">
+      <input value="" type="text" placeholder="请输入手机号" placeholder-style="color:#bbbbbb" class="tel" bindinput ="userNameInput"/>
+    </view>
+    <view class="box">
+      <input value="" type="text" placeholder="请输入验证码" placeholder-style="color:#bbbbbb" class="code" bindinput="Verification"/> 
+    <view class="btn" style="color:{{color}};" bindtap="code">{{verifyInfo}}</view>
+    </view>
+    <button class="login" disabled="{{disabled}}" bindtap="nexts" style="background:{{background}}">{{state}}</button>
+    <!-- 如果手机号不存在则走这一步 -->
+    <!-- <button class="login" bindtap="nexts">下一步</button> -->
+  </view>

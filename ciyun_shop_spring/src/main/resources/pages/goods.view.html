@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+<div class="page-group">
+    <!-- page 容器 -->
+    <div class="page page-headhand" id="goodsViewDes">
+        <div id="goodsViewDes_tpl_data"></div>
+        <input type="hidden" id="showBack"  value="1"/>
+    </div>
+    <div class="imgzoom-pack none" id="imgzoom-pack">
+        <div class="imgzoom-x" style="display:none" id="imgzoom-x">关闭</div>
+        <div class="imgzoom-img"><img src="style/images/lazyload/default.gif"  id="imgzoom-item"/></div>
+    </div>
+    <!-- 商品详情模板 -->
+    <script id="goodsViewDes_tpl" type="text/template7">
+    <input type="hidden" name="hideTitle" id="hideTitle" value="{{title}}"/>
+    {{#unless isUpdate}}
+        {{#item}}
+            {{#if isOnSell}}
+            {{#share}}
+            <span id="shareShop" data-linkUrl="{{shareurl}}"  data-title="{{sharename}}" data-imgUrl="{{shareimage}}" data-desc="{{sharedesc}}" data-type="" data-dataUrl=""></span>
+            <!-- app 调用 -->
+            <input type="hidden" name="sharename" id="sharename" value="{{sharename}}" />
+            <input type="hidden" name="sharedesc" id="sharedesc" value="{{sharedesc}}"/>
+            <input type="hidden" name="shareremark" id="shareremark" value="{{sharedesc}}"/>
+            <input type="hidden" name="shareimage" id="shareimage" value="{{shareimage}}"/>
+            <input type="hidden" id="share"  value="1"/>
+            {{/share}}
+            <div class="content">
+                <!-- 头图 -->
+                <div id="goodsDes_swiper">
+                    <div class="swiper-container swiper-container-goodsDes">
+                        <div class="swiper-wrapper">
+                            {{#each topGoods}}
+                            <div class="swiper-slide">
+                                <div class="goodsDes">
+                                    <img class="swiper-lazy" data-src="{{img}}" src="{{img}}" alt="{{alt}}"  data-no-cache="true">
+                                </div>
+                                <div class="swiper-lazy-preloader"><div class="preloader"></div></div>
+                            </div>
+                            {{else}}
+                            <div class="swiper-slide">
+                                <a href="#" data-no-cache="true">
+                                    <img class="swiper-lazy" data-src="style/images/lazyload/default-goods-swiper.gif">
+                                </a>
+                                <div class="swiper-lazy-preloader"><div class="preloader"></div></div>
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div class="swiper-pagination-goodsDes"></div>
+                    </div>
+                </div>
+                <!-- 商品内容 -->
+                <div class="goodsDes-into">
+                    <div class="goodsDes-name">{{goodsName}}</div>
+                </div>
+                <!-- 商品价格 -->
+                <div class="goodsDes-price">
+                    <p class="price-now">
+                    {{#if price}}
+                    <span class="now"><em class="unit">¥</em>{{price}}</span>
+                    {{#unless point}}{{else}}<i class="unit-i">+</i>{{/unless}}
+                    {{/if}} 
+                    {{#if point}}
+                    <span class="int"><span class="i">{{point}}</span>积分</span>
+                    {{/if}}
+                    {{#if isSnap}}
+                        <span class="tagSnap">限时抢购</span>
+                    {{/if}}
+                    </p>
+                    <!-- 原价 -->
+                    {{#js_compare "this.price != this.priceOld"}}
+                                <p class="price-old">原价<del><em class="unit">¥</em>{{priceOld}}</del></p>
+								{{/js_compare}}
+                </div>
+                <!-- 工作组 -->
+                {{#js_compare "this.doctorGroup"}}
+                    <div class="goodsDes-doctorGroup">
+                        <div class="goodsDes-doctorGroup-hd">医生工作组</div>
+                        {{#each doctorGroup}}
+                        <div class="goodsDes-doctorGroup-bd">
+                            <div class="doctorGroup-list">
+                                <a href="{{href}}" class="external doctorGroup-item">
+                                    <div class="doctorGroup-img img-48">
+                                        <img src="{{img}}" alt="" />
+                                    </div>
+                                    <div class="doctorGroup-info">
+                                        <p class="doctorGroup-name">{{name}}</p>
+                                        <p class="doctorGroup-number">已服务{{number}}人</p>
+                                    </div>
+                                    <!-- 新增机构 -->
+                                    {{#if orgName}}
+                                    <div class="doctorGroup-org">
+                                        <span>所属机构：</span>{{orgName}}
+                                    </div>
+                                    <span class="icon icon-right"></span>
+                                    {{/if}}
+                                </a>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                {{/js_compare}}
+                <!-- 服务说明-->
+                {{#goodsIntro}}
+                <div class="goodsDes-intro">
+                    <div class="goodsDes-intro-hd">
+                         <p>{{name}}</p>
+                    </div>
+                    <div class="goodsDes-intro-bd">
+                    <!-- 以下是富文本 后面编辑处理-->
+                        {{info}}
+                    </div>
+                </div>
+               {{/goodsIntro}}
+                <!-- 商品详情 -->
+                <div class="goodsDes-content">
+                    <div class="goodsDes-content-hd">
+                         <p>商品详情</p>
+                    </div>
+                    <div class="goodsDes-content-bd">
+                        <!-- 默认是文字+图片 上下排列 -->
+                        <ul class="goodsDes-content-lis">
+                            {{#each goodsContent}}
+                            <li>
+                                <div class="pic-view-box">
+                                    <img src="style/images/lazyload/default.gif" data-original="{{img}}"  width="100%" alt="{{alt}}"  class="pic-view lazy"/>
+                                </div>
+                                {{#if alt}}
+                                <p>
+                                    {{alt}}
+                                </p>
+                                {{/if}}
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+            <div class="page-noDate">
+                <p>{{isOnSellInfo}}</p>
+            </div>
+            {{/if}}
+        {{else}}
+            <div class="page-noDate">
+                <p>{{itemInfo}}</p>
+            </div>
+        {{/item}}
+    {{else}}
+        <div class="page-upDate">
+            <p>{{updateInfo}}</p>
+        </div>
+    {{/unless}}
+    </script>
+</div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/shop.config" src= "style/js/require.js"></script>
+</body>
+</html>

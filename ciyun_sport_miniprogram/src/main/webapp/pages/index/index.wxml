@@ -1,0 +1,5 @@
+<!--index.wxml-->
+
+<view class='bg'>
+ <image src="images/loading.gif" class="bg-img"></image>
+</view>

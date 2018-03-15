@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.centrin.ciyun.step.mapper.WeixinStepMapper">
+    <sql id = "base_column_list">
+		person_id, every_timestamp, every_step 
+    </sql>
+    
+    <sql id = "table">
+        minipro_weixin_step
+    </sql>
+    
+	<!-- 批量添加 -->
+    <insert id = "saveWeixinStepList" parameterType="java.util.List" >
+        insert into
+        <include refid="table"/>
+        (
+        <include refid="base_column_list"/>
+        )
+        values
+        <foreach collection ="weixinStepList" item="weixinStep" index="index" separator=",">
+             (
+                  #{weixinStep.personId},
+		          #{weixinStep.everyTimestamp},
+		          #{weixinStep.everyStep}
+              )
+        </foreach >
+    </insert>
+    
+    <!-- 去重 -->
+    <!-- <delete id="deleteRepeatData" parameterType="java.lang.Integer">
+        delete a from <include refid="table"/> a,( 
+        	SELECT max(c.id) AS bid FROM <include refid="table"/> c WHERE c.reservation_id = ${_parameter} GROUP BY reservation_id, person_id HAVING count(c.id) > 1 
+         ) b where a.id=b.bid
+    </delete> -->
+    
+    <!-- 删除 -->
+    <delete id="deleteWeixinStepById" parameterType="java.lang.Integer">
+        delete from <include refid="table"/> 
+        <where>
+           <if test= "id != null" >
+            	id = #{id}
+           </if>
+        </where>
+    </delete>
+
+	<!-- 更新用户步数 -->
+    <update id="updateWeixinStep" parameterType="com.centrin.ciyun.entity.step.WeixinStep">
+        update
+        <include refid="table"/>
+        <set>
+        	<if test="everyStep != null">
+             	every_step = #{everyStep},
+        	</if>
+        </set>
+        <where>
+        	<choose>
+        		<when test="id != null and id != 0">
+        			and id = #{id}
+        		</when>
+        		<otherwise>
+        			<if test="personId != null">
+		        		and person_id = #{personId}
+		        	</if>
+		        	<if test="everyTimestamp != null">
+		             	and every_timestamp = #{everyTimestamp}
+		        	</if>
+        		</otherwise>
+        	</choose>
+        </where>
+    </update>
+
+	<!-- 查询用户步数 -->
+    <select id="getWeixinStepList" resultType="com.centrin.ciyun.entity.step.WeixinStep" parameterType="com.centrin.ciyun.step.domain.req.WeixinStepParam$WeixinStepViewParam">
+        select id,
+        <include refid="base_column_list"/>
+        from
+        <include refid="table"/>
+        <where>
+        	<if test="personId != null and personId != ''">
+        		and person_id = #{personId}
+        	</if>  
+        	<if test="beginTimestamp != null and endTimestamp != null">
+        		and every_timestamp  between #{beginTimestamp} and #{endTimestamp}
+        	</if>  	        	  
+        </where>
+        order by every_timestamp desc;
+    </select>
+    
+</mapper>

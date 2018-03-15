@@ -1,0 +1,21 @@
+<!--pages/list/list.wxml-->
+<view class="container">
+  <view class="list_box" wx:for="{{datas}}">
+    <view class="list_centent" data-id="{{item.id}}" bindtap="details"> 
+      <view class="list_right" data-id="{{item.id}}"> 
+        <view class="list_title" data-id="{{item.id}}">
+          <text class="title" data-id="{{item.id}}">体检报告</text>
+          <text class="shi" data-id="{{item.id}}" wx:if='{{item.medExamType=="体检报告示例"}}'>示例</text>
+        </view>
+        <view class="list_mechanism" data-id="{{item.id}}">{{item.medCorpName}}</view>
+        <view class="list_times" data-id="{{item.id}}">
+          <text class="list_times_left" data-id="{{item.id}}" wx:if='{{item.preMedDate}}'>{{item.preMedDate}}</text>
+          <text class="list_times_right" data-id="{{item.id}}" wx:if='{{item.medExamType=="体检报告"}}'>{{item.name}}</text>
+        </view>
+      </view> 
+    </view>
+  </view>
+</view>
+<view class="btn_box">
+    <button class="btn" bindtap="mechanism">查报告</button>
+</view>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+<div class="page-group">
+    <!-- page 容器 -->
+    <div class="page" id="goodsDesShare">
+        <div id="goodsDesShare_tpl_data"></div>
+        <input type="hidden" id="showBack"  value="1"/>
+    </div>
+    <div class="imgzoom-pack none" id="imgzoom-pack">
+        <div class="imgzoom-x" style="display:none" id="imgzoom-x">关闭</div>
+        <div class="imgzoom-img"><img src="style/images/lazyload/default.gif"  id="imgzoom-item"/></div>
+    </div>
+    <!-- 商品详情模板 -->
+    <script id="goodsDesShare_tpl" type="text/template7">
+    <input type="hidden" name="hideTitle" id="hideTitle" value="{{title}}"/>
+    {{#unless isUpdate}}
+        {{#item}}
+            <div class="content">
+                <!-- 商品详情 -->
+                <div class="goodsDes-content">
+                    <div class="goodsDes-content-bd">
+                        <!-- 默认是文字+图片 上下排列 -->
+                        <ul class="goodsDes-content-lis">
+                            {{#each goodsContent}}
+                            <li>
+                                <div class="pic-view-box">
+                                    <img src="{{img}}" width="100%" alt="{{alt}}"  class="pic-view"/>
+                                </div>
+                                {{#if alt}}
+                                <p>
+                                    {{alt}}
+                                </p>
+                                {{/if}}
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {{else}}
+            <div class="page-noDate">
+                <p>{{itemInfo}}</p>
+            </div>
+        {{/item}}
+    {{else}}
+        <div class="page-upDate">
+            <p>{{updateInfo}}</p>
+        </div>
+    {{/unless}}
+    </script>
+</div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/shop.config" src= "style/js/require.js"></script>
+</body>
+</html>

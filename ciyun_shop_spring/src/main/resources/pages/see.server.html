@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+
+<body>
+    <div class="page-group">
+        <!-- page 容器 -->
+        <div class="page page-headhand" id="seeServer">
+            <div id="seeServer_tpl_data">
+
+
+
+
+            </div>
+            <input type="hidden" id="showBack" value="1" />
+        </div>
+        <script id="seeServer_tpl" type="text/template7">
+            {{#item}}
+            <div class="content infinite-scroll infinite-scroll-bottom" data-distance="55">
+            <div class="app-shop-box">
+                <div class="app-shop-box-bd-list orderDes-shopInfo">
+                    <div class="order-goods-info">
+
+                        <div class="order-goods-info-list">
+                            <div class="order-goods-img">
+                                <div class="img-64"><img src="{{listPic}}" alt="{{goodsName}}"></div>
+                            </div>
+                            <div class="order-goods-intro">
+                                <div class="order-goods-name">{{goodsName}}</div>
+                                <div class="order-goods-price">
+                                    <p class="price-count"><span class="unit">x</span>{{goodsCount}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="app-shop-box">
+                <div class="app-shop-box-hd clearfix"><span class="apply-reason">详情</span><span class="apply-history"><a href="server.history.html?orderId={{orderId}}">申请历史<i class="icon"></i></a></span></div>
+                <div class="app-shop-box-bd">
+                    <div class="price_wrap">
+                        <span class="box-title">申请原因:</span><span class="box-content">{{afterSaleApplyReason}}</span>
+                    </div>
+                    <div class="price_wrap">
+                        <span class="box-title">联系方式:</span><span class="box-content">{{applicantMobile}}</span>
+                    </div>
+                    <div class="price_wrap">
+                        <span class="box-title">申请时间:</span><span class="box-content">{{applyTime}}</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="pd-lr-5 ft">
+                客服人员将会在1-3个工作日内联系您
+            </div>
+            <div class="change-apply-wrap">
+                <div class="change-apply-btn">修改申请</div>
+            </div>
+            </div>
+            {{/item}}
+        </script>
+    </div>
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script data-main="style/js/shop.config" src="style/js/require.js"></script>
+</body>
+
+</html>

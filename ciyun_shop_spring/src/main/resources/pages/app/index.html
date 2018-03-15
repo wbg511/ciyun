@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+<div class="page-group">
+    <!-- 图文健康咨询 -->
+    <div class="page" id="appServiceList">
+        <div id="appServiceList_tpl_data">
+            
+        </div>
+    </div>
+    <!-- 服务模板 -->
+    <script id="appServiceList_tpl" type="text/template7">
+    {{#unless isUpdate}}
+        {{#item}}
+            <div class="app-btn-fixed-order bar bar-tab bar bar-tab">
+                <div class="appServicePrice">
+                    <div class="appServicePrice_totalBox">
+                        <div class="price-now">
+                        {{#if isPoint}}
+                            <span class="int"><span class="i">{{payPoint}}</span>积分/{{chargeType}}</span>
+                        {{else}}
+                            <span class="now"><em class="unit">¥</em><span>{{payPrice}}<em class="unit-t">/{{chargeType}}</em></span></span>
+                        {{/if}}
+                        </div>
+                    </div>
+                </div>
+                <div class="app-btn-group">
+                    {{#if isPoint}}
+                        {{#if pointDisabled}}
+                        <button type="button" id="app-btn-pointpay" data-type="point" disabled="disabled"><span class="icon-point">积分不足</span></button>
+                        {{else}}
+                            <button type="button" id="app-btn-pointpay" data-type="point"><span class="icon-point">积分兑换</span></button>
+                        {{/if}}
+                    {{else}}
+                        <button type="button" id="app-btn-alipay" class="shop-pay-order" data-type="app-ali"><span class="icon-ali">支付宝支付</span></button>
+                        <button type="button" id="app-btn-wxpay" class="shop-pay-order" data-type="app-wx"><span class="icon-wx">微信支付</span></button>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="content">
+            <input type="hidden" id="hide-serviceId" value="{{serviceId}}" />
+            <input type="hidden" id="hide-isUrl" value="{{isUrl}}" />
+            <input type="hidden" id="hide-goTolUrl" value="{{url}}" />
+                {{#js_compare "this.type == '1'"}}
+                <!-- 图文健康咨询 -->
+                <div class="content-appService">
+                    <img data-original="style/app/service/tuwenjiankangzixun/1.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" alt="" />
+                    <img data-original="style/app/service/tuwenjiankangzixun/2.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" alt="" />
+                    <img data-original="style/app/service/tuwenjiankangzixun/3.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" alt="" />
+                    <img data-original="style/app/service/tuwenjiankangzixun/4.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" alt="" />
+                    <img data-original="style/app/service/tuwenjiankangzixun/5.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" alt="" />
+                    <img data-original="style/app/service/tuwenjiankangzixun/6.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" alt="" />
+                </div>
+                {{/js_compare}}
+                {{#js_compare "this.type == '7'"}}
+                <!-- 视频咨询服务 -->
+                <div class="content-appService">
+                    <img data-original="style/app/video/images/service-2-1.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy"/>
+                    <img data-original="style/app/video/images/service-2-2.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy"/>
+                    <img data-original="style/app/video/images/service-2-3.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy"/>
+                    <img data-original="style/app/video/images/service-2-4.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy"/>
+                </div>
+                {{/js_compare}}
+                {{#js_compare "this.type == '4'"}}
+                <!-- 定制健康计划 -->
+                <div class="content-appService">
+                    <img data-original="style/app/service/jiankangcujinjihua/1.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/jiankangcujinjihua/2.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/jiankangcujinjihua/3.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/jiankangcujinjihua/4.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/jiankangcujinjihua/5.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                </div>
+                {{/js_compare}}
+                {{#js_compare "this.type == '3'"}}
+                <!-- 定制健康方案 -->
+                <div class="content-appService">
+                    <img data-original="style/app/service/dingzhitijianfangan/1.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/dingzhitijianfangan/2.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/dingzhitijianfangan/3.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/dingzhitijianfangan/4.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/dingzhitijianfangan/5.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/dingzhitijianfangan/6.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                </div>
+                {{/js_compare}}
+                {{#js_compare "this.type == '5'"}}
+                <!-- 就医协助服务 -->
+                <div class="content-appService">
+                    <img data-original="style/app/service/gaoduanjiuyifuwu/1.png"  src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/gaoduanjiuyifuwu/2.png"  src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/gaoduanjiuyifuwu/3.png"  src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/gaoduanjiuyifuwu/4.png"  src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/gaoduanjiuyifuwu/5.png"  src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/gaoduanjiuyifuwu/6.png"  src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/gaoduanjiuyifuwu/7.png"  src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                </div>
+                {{/js_compare}}
+                {{#js_compare "this.type == '2'"}}
+                <!-- 体检报告解读 -->
+                <div class="content-appService">
+                    <img data-original="style/app/service/tijianbaogaojiedu/1.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/tijianbaogaojiedu/2.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/tijianbaogaojiedu/3.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/tijianbaogaojiedu/2.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/tijianbaogaojiedu/5.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/tijianbaogaojiedu/6.png" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                </div>
+                {{/js_compare}}
+                {{#js_compare "this.type == '8'"}}
+                <!-- 体检报告转换 -->
+                <div class="content-appService">
+                    <img data-original="style/app/service/tijianbaogaozhuanhuan/1.jpg" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/tijianbaogaozhuanhuan/2.jpg" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/tijianbaogaozhuanhuan/3.jpg" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                    <img data-original="style/app/service/tijianbaogaozhuanhuan/4.jpg" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" />
+                </div>
+                {{/js_compare}}
+                {{#js_compare "this.type == '0'"}}
+                <!-- 家庭医生介绍 -->
+                <div class="content-appService">
+                    <div class="content-appService-doctor">
+                        <div class="appService-doctor-info">
+                            <h2>{{groupName}}为您服务</h2>
+                            <p>服务有效期{{chargeWay}}</p>
+                        </div>
+                        <img src="style/app/doctor/1.jpg" alt="" />
+                    </div>
+                    <div class="content-appService-doctor-list">
+                        <h4><span>包含以下项目</span></h4>
+                        {{#services}}
+                        <div class="appService-doctor-list">
+                            {{#if twjk}}
+                            <div class="doctor-list-intro">
+                                <dl class="intro">
+                                    <dt><img src="style/app/doctor/icon-tuwenjiankangzixun.png" alt="" /></dt>
+                                    <dd>
+                                        <h5>图文健康咨询 <span class="num-service">{{twjk}}</span></h5>
+                                        <p>支持文本、语音、图片等多种方式与您的私人医生沟通</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            {{/if}}
+                            {{#if spzx}}
+                            <div class="doctor-list-intro">
+                                <dl class="intro">
+                                    <dt><img src="style/app/doctor/icon-shipinzixunfuwu.png" alt="" /></dt>
+                                    <dd>
+                                        <h5>视频咨询服务 <span class="num-service">{{spzx}}</span></h5>
+                                        <p>一对一的视频咨询服务，拉进您与医生间的距离，让医生为您提供更全面的诊断和建议</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            {{/if}}
+                            {{#if dzjk}}
+                            <div class="doctor-list-intro">
+                                <dl class="intro {{#if dzjk}}{{else}}disabled{{/if}}">
+                                    <dt><img src="style/app/doctor/icon-jiankangjihus.png" alt="" /></dt>
+                                    <dd>
+                                        <h5>定制健康计划 <span class="num-service">{{dzjk}}</span></h5>
+                                        <p>为您量身定制日常饮食、运动
+                                        体征监测方案并督导执行改善</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            {{/if}}
+                            {{#if dztj}}
+                            <div class="doctor-list-intro">
+                                <dl class="intro">
+                                    <dt><img src="style/app/doctor/icon-dingzhitijanfangan.png" alt="" /></dt>
+                                    <dd>
+                                        <h5>定制体检方案 <span class="num-service">{{dztj}}</span></h5>
+                                        <p>为您制定个性化的体检方案，推荐可靠安全的体检中心</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            {{/if}}
+                            {{#if jyxz}}
+                            <div class="doctor-list-intro">
+                                <dl class="intro">
+                                    <dt><img src="style/app/doctor/icon-jiuyixiezhu.png" alt="" /></dt>
+                                    <dd>
+                                        <h5>就医协助服务 <span class="num-service">{{jyxz}}</span></h5>
+                                        <p>为您预约安排专家资源，进行线上视频问诊或线下VIP诊室面诊</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            {{/if}}
+                            {{#if tjbgjd}}
+                            <div class="doctor-list-intro">
+                                <dl class="intro">
+                                    <dt><img src="style/app/doctor/icon-tijianbaogaojiedu.png" alt="" /></dt>
+                                    <dd>
+                                        <h5>体检报告解读 <span class="num-service">{{tjbgjd}}</span></h5>
+                                        <p>为您一对一解读体检报告，诠释报告结论解答疑惑</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            {{/if}}
+                            {{#if tjbgzh}}
+                            <div class="doctor-list-intro">
+                                <dl class="intro ">
+                                    <dt><img src="style/app/doctor/icon-tijianbaogaozhuanhuan.png" alt="" /></dt>
+                                    <dd>
+                                        <h5>体检报告转换 <span class="num-service">{{tjbgzh}}</span></h5>
+                                        <p>我们可以为您将拍照升级为分析版，分析版可以进行分析比对</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            {{/if}}
+                        </div>
+                        {{/services}}
+                    </div>
+                </div>
+                {{/js_compare}}
+            </div>
+        {{else}}
+            <div class="page-noDate">
+                <p>{{itemInfo}}</p>
+            </div>
+        {{/item}}
+    {{else}}
+        <div class="page-upDate">
+            <p>{{updateInfo}}</p>
+        </div>
+    {{/unless}}
+    </script>
+</div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/appService.config" src= "style/js/require.js"></script>
+</body>
+</html>

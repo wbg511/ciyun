@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+<div class="page-group">
+    <!-- page 容器 -->
+    <div class="page page-headhand" id="addressList">
+        <div id="addressList_tpl_data" class="content"></div>
+        <input type="hidden" id="showBack"  value="1"/>
+    </div>
+    <script id="addressList_tpl" type="text/template7">
+    <input type="hidden" name="hideTitle" id="hideTitle" value="{{title}}"/>
+      {{#unless isUpdate}}
+            {{#item}}
+            {{#share}}
+            <span id="shareShop" data-linkUrl="{{shareurl}}"  data-title="{{sharename}}" data-imgUrl="{{shareimage}}" data-desc="{{sharedesc}}" data-type="" data-dataUrl=""></span>
+            {{/share}}
+            <!-- 新增 -->
+            <div class="bar bar-tab">
+              <button type="button" class="btn-buy addressList-opr">新增地址</button>
+            </div>
+            <div class="content">
+              <div class="address-list-box">
+                    <ul class="address-list">
+                      {{#addressList}}
+                        <li id="address_list_{{addressId}}">
+                          <div class="address-select setOrderAddress" data-id="{{addressId}}">
+                            <div class="app-radio-box address-select-radio">
+                                <input class="app-radio" type="radio" {{#if checked}}checked="checked"{{/if}} value="" name="radioAddress" id="radioAddress-{{addressId}}" data-name="{{name}}" data-tel="{{tel}}" data-address="{{address}}"/><span class="icon icon-check"></span>
+                            </div>
+                            <div class="address-select-info">
+                              <div class="address-info clearfix">
+                                <span class="name">{{name}}</span><span class="tel">{{tel}}</span>
+                              </div>
+                              <div class="address-info clearfix">
+                                <p class="address"><em id="address_list_def_{{addressId}}" class="address-defTip">{{#if isDefault}}[默认地址]{{/if}}</em>{{address}}</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="address-opr">
+                              <div class="row">
+                                  <div class="col-50 address-opr-setDef">
+                                  {{#if isDefault}}
+                                    <a class="address-opr-link-def setDefaultAddress" data-addressId={{addressId}} href="javascript:;" >
+                                      <span class="icon"></span><em>&nbsp;</em>
+                                    </a>
+                                    {{else}}
+                                      <a class="address-opr-link setDefaultAddress" data-addressId={{addressId}}  href="javascript:;" >
+                                      <span class="icon icon-check"></span><em>设为默认</em>
+                                    </a>
+                                    {{/if}}
+                                  </div>
+                                  <div class="col-50 address-opr-set">
+                                    <a class="address-opr-link addressList-opr" data-id="{{addressId}}" href="javascript:;">
+                                      <span class="icon icon-edit"></span>编辑
+                                    </a>
+                                    <a class="address-opr-link delAddress" href="javascript:;" data-id="{{addressId}}">
+                                      <span class="icon icon-remove"></span>删除
+                                    </a>
+                                  </div>
+                              </div>
+                          </div>
+                        </li>
+                      {{else}}
+                      <div class="page-noDate">
+                          <p>您还没有添加收货地址</p>
+                      </div>
+                      {{/addressList}}
+                    </ul>
+              </div>
+            </div>
+            {{/item}}
+      {{else}}
+          <div class="page-upDate">
+              <p>{{updateInfo}}</p>
+          </div>
+      {{/unless}}
+    </script>
+    <!-- 添加编辑地址 -->
+    <div class="popup popup-address" id="goodsAddressOpr_tpl_data"></div>
+    <!-- 地址模板 -->
+    <script id="goodsAddressOpr_tpl" type="text/template7">
+      {{#if item}}
+      {{#item}}
+      <!-- 编辑 -->
+      <div class="app-btn-fixed-bottom bar bar-tab app-btn-fixed-address">
+       <div class="address-btn-group">
+        <div class="row">
+                    <div class="col-35"><button type="button" class="app-btn btn-cancel close-popup">取消</button></div>
+          <div class="col-65"><button type="button" class="app-btn" id="address-save"  data-url="address.html">保存并使用</button></div>
+
+        </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="addressAddEdit-box">
+          <input type="hidden" id="addressId" value="{{addressId}}" />
+           <div class="app-form-box">
+                <div class="app-form-list">
+                    <div class="app-form-item">收货人</div>
+                    <div class="app-form-val"><input type="text" value="{{name}}" id="userName" class="app-txt" placeholder="请输入收货人姓名" maxlength="12" /></div>
+                </div>
+                <div class="app-form-list">
+                    <div class="app-form-item">联系电话</div>
+                    <div class="app-form-val"><input type="text" value="{{tel}}" id="userTel" class="app-txt" placeholder="请输入联系电话" maxlength="11" /></div>
+                </div>
+                <div class="app-form-list">
+                  <div class="app-form-item">所在省/市</div>
+                  <div class="app-form-val">
+                    <div class="app-form-val-sel">
+                      <div class="row">
+                        <div class="col-33">
+                          <input type="hidden" id="hid-userProvince" value="{{provAreaId}}" />
+                          <select name="" id="userProvince" class="app-select">
+                            <option value="-1">请选择</option>
+                          </select>
+                        </div>
+                        <div class="col-33">
+                           <input type="hidden" id="hid-userCity" value="{{dijiAreaId}}" />
+                           <select name="" id="userCity" class="app-select">
+                            <option value="-1">请选择</option>
+                          </select>
+                        </div>
+                        <div class="col-33">
+                          <input type="hidden" id="hid-userArea" value="{{quxianAreaId}}" />
+                          <select name="" id="userArea" class="app-select">
+                        <option value="-1">请选择</option>
+                      </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+                <div class="app-form-list">
+                    <div class="app-form-item">详细地址</div>
+                    <div class="app-form-val">
+                      <textarea class="app-txtArea" id="userAreaDes" placeholder="请输入详细地址">{{addressSimple}}</textarea>
+                    </div>
+                </div>
+                <div class="app-form-list">
+                    <div class="app-form-item">设置为默认地址</div>
+                    <div class="app-form-val">
+                      <label class="label-switch">
+                      <input type="checkbox" id="userAddressDefault" {{#if isDefault}}checked="checked"{{/if}}>
+                      <div class="checkbox"></div>
+                    </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    {{/item}}
+      {{else}}
+     <div class="app-btn-fixed-bottom bar bar-tab app-btn-fixed-address">
+       <div class="address-btn-group">
+        <div class="row">
+                    <div class="col-35"><button type="button" class="app-btn btn-cancel close-popup">取消</button></div>
+          <div class="col-65"><button type="button" class="app-btn" id="address-save"  data-url="address.html">保存并使用</button></div>
+
+        </div>
+        </div>
+      </div>
+      <div class="content">
+      <div class="addressAddEdit-box">
+         <div class="app-form-box">
+              <div class="app-form-list">
+                  <div class="app-form-item">收货人</div>
+                  <div class="app-form-val"><input type="text" value="" id="userName" class="app-txt" placeholder="请输入收货人姓名" maxlength="20" /></div>
+              </div>
+              <div class="app-form-list">
+                  <div class="app-form-item">联系电话</div>
+                  <div class="app-form-val"><input type="text" value="" id="userTel" class="app-txt" placeholder="请输入联系电话" maxlength="11" /></div>
+              </div>
+              <div class="app-form-list">
+                  <div class="app-form-item">所在省/市</div>
+                  <div class="app-form-val">
+                    <div class="app-form-val-sel">
+                      <div class="row">
+                        <div class="col-33">
+                          <input type="hidden" id="hid-userProvince" value="{{provAreaId}}" />
+                          <select name="" id="userProvince" class="app-select">
+                            <option value="-1">请选择</option>
+                          </select>
+                        </div>
+                        <div class="col-33">
+                           <input type="hidden" id="hid-userCity" value="{{dijiAreaId}}" />
+                           <select name="" id="userCity" class="app-select">
+                            <option value="-1">请选择</option>
+                          </select>
+                        </div>
+                        <div class="col-33">
+                          <input type="hidden" id="hid-userArea" value="{{quxianAreaId}}" />
+                          <select name="" id="userArea" class="app-select">
+                        <option value="-1">请选择</option>
+                      </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="app-form-list">
+                  <div class="app-form-item">详细地址</div>
+                  <div class="app-form-val">
+                    <textarea class="app-txtArea" id="userAreaDes" placeholder="请输入详细地址"></textarea>
+                  </div>
+              </div>
+              <div class="app-form-list">
+                  <div class="app-form-item">设置为默认地址</div>
+                  <div class="app-form-val">
+                    <label class="label-switch">
+                    <input type="checkbox" id="userAddressDefault">
+                    <div class="checkbox"></div>
+                  </label>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+      {{/if}}
+    </script>
+</div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/shop.config" src= "style/js/require.js"></script>
+</body>
+</html>

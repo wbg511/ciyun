@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>支付宝支付</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-headhand" id="orgAliPay">
+        <div class="content" id="orgAliPay_tpl_data"></div>
+    </div>
+    <script id="orgAliPay_tpl" type="text/template7">
+        {{#unless isUpdate}}
+            {{#item}}
+                <form action="/toali" id="formAliPay">
+                    <div class="app-btn-fixed-order bar bar-tab">
+                        <div class="app-btn-group">
+                                <button type="button" id="app-btn-alipay" class="shop-pay-order" data-type="ali"><span class="icon-ali">支付宝支付</span></button>
+                        </div>
+                    </div>
+                    <div class="orgPay-form">
+                        <div class="orgPay-shoperName">
+                          <span class="orgPay-logo"><img src="{{image}}" /></span>
+						 <span class="orgPay-name">{{name}}</span>
+                        </div>
+                        <div class="orgPay-val">
+                              <input type="number" name="price" class="orgPay-num" id="orgPayNum" placeholder="消费金额" />
+                        </div>
+                        <div class="orgPay-info">
+                            {{detail}}
+                        </div>
+                    </div>
+                </form>
+            {{else}}
+                <div class="page-noDate">
+                    <p>{{itemInfo}}</p>
+                </div>
+            {{/item}}
+        {{else}}
+            <div class="page-upDate">
+                <p>{{updateInfo}}</p>
+            </div>
+        {{/unless}}
+    </script>
+</div>
+<script data-main="style/js/orgPay.config" src= "style/js/require.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!--pages/import/import.wxml-->
+<view class="app-form-title">
+    <view class=''>请填写查询条件</view>
+</view>
+
+<!-- 证件  -->
+<view class="app-form">
+    <block wx:if="{{idCard_boo}}">
+        <view class="app-form-item clearfix">
+            <view class="lab-item">证件类型：</view>
+            <view class="lab-item-val">
+                <view style="display: block;" for="idCardType">
+                    <view id="idCardType" name="idCardType" class="app-select-rul">
+                        <picker bindchange="bindCardTypeChange" value="{{cardTypeIndex}}" range="{{ruleCardCaptions}}">
+                            <view class="picker app-select-rul">{{ruleCardCaptions[cardTypeIndex]}}</view>
+                        </picker>
+                    </view>
+                </view>
+                <view class="item-arr-right item-arr"></view>
+            </view>
+        </view>
+        <view class="app-form-item clearfix">
+            <view class="lab-item">证件号码：</view>
+            <view class="lab-item-val">
+                <view style="display: block;" for="idCardType">
+                    <view id="idCardType" name="idCardType" class="app-select-rul">
+                        <view class="section">
+                            <input placeholder-class="phcolor" class="app-select-rul" type="text" placeholder="请输入证件号码" value='{{idCardValue}}' bindinput="changeIdCardValue" />
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <!-- 性别  -->
+    <block wx:if="{{sex_boo}}">
+        <view class="app-form-item clearfix">
+            <view class="lab-item">性别</view>
+            <view class="lab-item-val">
+                <view style="display: block;" for="sex">
+                    <view id="sex" name="sex" class="app-select-rul">
+                        <picker bindchange="bindSexChange" value="{{sexIndex}}" range="{{sexCardCaptions}}">
+                            <view class="picker app-select-rul">{{sexCardCaptions[sexIndex]}}</view>
+                        </picker>
+                    </view>
+                </view>
+                <view class="item-arr-right item-arr"></view>
+            </view>
+        </view>
+    </block>
+    <!-- 报告关联手机号  -->
+    <block wx:if="{{mobile_boo}}">
+        <view class="app-form-item clearfix">
+            <view class="lab-item disabled-color">关联手机号：</view>
+            <view class="lab-item-val">
+                <view style="display: block;" for="idCardType">
+                    <view id="idCardType" name="idCardType" class="app-select-rul">
+                        <view class="section">
+                            <input placeholder-class="phcolor" class="app-select-rul" type="text" disabled placeholder="{{datas.telephone}}" />
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <!-- 体检日期  -->
+    <block wx:if="{{medDate_boo}}">
+        <view class="app-form-item clearfix">
+            <view class="lab-item">体检日期</view>
+            <view class="lab-item-val">
+                <view class="section">
+                    <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+                        <view class="picker app-select-rul">
+                            {{date}}
+                        </view>
+                    </picker>
+                </view>
+                <view class="item-arr-right item-arr"></view>
+            </view>
+        </view>
+    </block>
+    <!-- 档案ID  -->
+    <block wx:if="{{medPersonNo_boo}}">
+        <view class="app-form-item clearfix">
+            <view class="lab-item">档案ID:</view>
+            <view class="lab-item-val">
+                <view style="display: block;" for="idCardType">
+                    <view id="idCardType" name="idCardType" class="app-select-rul">
+                        <view class="section">
+                            <input placeholder-class="phcolor" class="app-select-rul" type="idcard" placeholder="请输入档案ID" value='{{medPersonNo}}'  bindinput="changeMedPersonNoValue" />
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <!-- 体检人姓名  -->
+    <block wx:if="{{userName_boo}}">
+        <view class="app-form-item clearfix">
+            <view class="lab-item">体检人姓名:</view>
+            <view class="lab-item-val">
+                <view style="display: block;" for="idCardType">
+                    <view id="idCardType" name="idCardType" class="app-select-rul">
+                        <view class="section">
+                            <input placeholder-class="phcolor" class="app-select-rul" value='{{datas.username}}' type="text" placeholder="请输入体检人姓名"  bindinput="changeuserNameValue" />
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+
+
+
+    <!--  查询报告按钮  -->
+    <!-- <view class="app-form-item-btn">
+    <view type="button" name="search-import-btn" id="search-import-btn" class="app-btn-lg app-btn-save" bindtap="queryimport">查询并导入</view>
+  </view> -->
+    <view class="btn_box">
+        <!-- aboat  -->
+    <view class="app-form app-about">您可以下载慈云健康APP，在【个人中心】和【亲情关爱】模块 中分别对本人和亲友的个人信息进行修改。</view>
+        <button class='btn' size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="queryimport" hover-class="other-button-hover"> 查询并导入 </button>
+    </view>
+</view>
+
+<view class="toast_mask" wx:if="{{isShowMiniToast}}"></view> 
+<!--以下为自定义toast显示的内容-->
+<view class="toast_content_box" wx:if="{{isShowMiniToast}}"> 
+ <view class="toast_content"> 
+ <view class="toast_content_text"> 
+  {{toastMiniText}}
+ </view> 
+ </view> 
+</view> 

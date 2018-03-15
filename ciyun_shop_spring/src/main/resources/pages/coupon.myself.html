@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">  
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no, email=no"/>
+  <link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+  <div class="page-group">
+    <div class="page page-headhand" id="couponMyself">
+    <!-- app 微信引导下载 -->
+      <div id="page-appDown" class="bar bar-nav none">
+        <div class="appDown-box">
+          <a href="javascript:;" id="appDownClose" class="appDown-close">关闭</a>
+          <div class="appDown-logo"><img src="style/images/logo/logo.png" alt="慈云健康" /></div>
+          <div class="appDown-info">
+            <p>下载APP领更多代金券！</p>
+          </div>
+          <div class="appDown-action"><a class="external" href="http://a.app.qq.com/o/simple.jsp?pkgname=com.ciyun.lovehealth&g_f=991653">立即下载</a></div>
+        </div>
+      </div>       
+      <div id="couponMyself_tpl_data"></div>
+      <input type="hidden" id="showBack"  value="1"/>
+    </div>
+  <script id="couponMyself_tpl" type="text/template7">
+    <input type="hidden" name="hideTitle" id="hideTitle" value="{{title}}"/>
+    {{#unless isUpdate}}
+      {{#item}}
+        {{#share}}
+          <span id="shareShop" data-linkUrl="{{shareurl}}"  data-title="{{sharename}}" data-imgUrl="{{shareimage}}" data-desc="{{sharedesc}}" data-type="" data-dataUrl=""></span>
+        {{/share}}
+        <div class="bar bar-tab app-btn-fixed-bottom">
+          <div class="coupon-add-box clearfix">
+            <div class="coupon-key">
+              <input type="text" class=" app-mini-txt" id="couponCode"  placeholder="请输入代金券号码" />
+            </div>
+            <button class="app-mini-btn coupon-add" id="coupon-save" type="button">添加代金券</button>
+          </div>
+        </div>
+        <div class="content" id="page-appDown-coupon">
+          <div class="coupon-list-box">
+            <ul class="coupon-list">
+              {{#each couponList}}
+              <li {{#js_compare "this.couponState=='3'"}}class="used"{{/js_compare}}>
+                <div class="coupon-item">
+                  <div class="setOrderCoupon">
+                    <div class="couponPrice">
+                      <div class="couponPriceType">
+                        {{#js_compare "this.couponType=='1'"}}
+                          <em class="rmb">¥</em>{{couponPrice}}
+                        {{else}}
+                          {{couponPrice}}折
+                        {{/js_compare}}
+                      </div>
+                    </div>
+                    <div class="couponInfo">
+                      <div class="couponName">{{couponName}}</div>
+                      <div class="couponExpTime">有效期至{{endTime}}</div>
+                      {{#js_compare "this.limitPrice===0"}}
+                        <div class="couponDes">不限金额</div>
+                      {{else}}
+                        {{#js_compare "this.couponType===2"}}
+                          <div class="couponDes">满{{limitPrice}}享{{couponPrice}}折优惠</div>
+                        {{else}}
+                          <div class="couponDes">满{{limitPrice}}享{{couponPrice}}元优惠</div>
+                        {{/js_compare}}
+                      {{/js_compare}}
+                    </div>
+                  </div>
+                </div>
+              </li>
+              {{/each}}
+              <li style="position: relative;padding-top: 2rem;">
+                  <div class="page-noDate"><a href="coupon.expire.html">查看过期券>></a></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      {{/item}}
+    {{else}}
+      <div class="page-upDate">
+        <p>{{updateInfo}}</p>
+      </div>
+    {{/unless}}
+  </script>
+  </div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/shop.config" src= "style/js/require.js"></script>
+</body>
+</html>

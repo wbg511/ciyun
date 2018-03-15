@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/column/column",
+    "pages/mechanism/mechanism",
+          
+    "pages/list/list",
+    "pages/register/register",
+
+      "pages/detail/detail",
+    "pages/report/report",
+    "pages/lower/lower"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#6fba2c",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "#fff"
+    
+  }
+}

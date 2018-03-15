@@ -1,0 +1,27 @@
+<view class="container">
+  <view class='header-container'>
+    <view class="{{knowClass}}">
+      <span>每天打开小程序，才能上传记步数据</span>
+      <span class="know" bindtap="clickKnow">知道了</span>
+    </view>
+    <view class='bushu-content'>
+      <view class='content'>
+        <view class='num'>{{jinribushu}}</view>
+        <view class='title'>今日步数</view>
+      </view>
+      
+    </view>
+    <view class='source'>数据来自微信运动</view>
+  </view>
+  <view class='fengexian'></view>
+      <!-- 图表部分  -->
+  <view class='canvas-title'>最近7天数据</view>
+
+
+</view>
+<view class='canvas'>
+
+<canvas canvas-id="columnCanvas" id="columnCanvas" bindtouchstart="touchHandler"></canvas>
+
+</view>
+  

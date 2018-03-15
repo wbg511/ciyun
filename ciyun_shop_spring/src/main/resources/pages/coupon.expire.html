@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-headhand" id="couponExpire">
+        <div id="couponExpire_tpl_data"></div>
+        <input type="hidden" id="showBack"  value="1"/>
+    </div>
+    <script id="couponExpire_tpl" type="text/template7">
+    <input type="hidden" name="hideTitle" id="hideTitle" value="{{title}}"/>
+    {{#unless isUpdate}}
+     {{#item}}
+        {{#share}}
+        <span id="shareShop" data-linkUrl="{{shareurl}}"  data-title="{{sharename}}" data-imgUrl="{{shareimage}}" data-desc="{{sharedesc}}" data-type="" data-dataUrl=""></span>
+        {{/share}}
+          <div class="content">
+            <div class="coupon-list-box">
+              <ul class="coupon-list">
+              {{#each couponList}}
+                <li class="disabled">
+                    <div class="coupon-item">
+                        <div for="coupon{{couponId}}" class="setOrderCoupon" data-id="{{couponId}}">
+                          <div class="couponPrice"><div class="couponPriceType">
+								{{#js_compare "this.couponType=='1'"}}
+									<em class="rmb">¥</em>{{couponPrice}}
+								{{else}}
+									{{couponPrice}}折
+								{{/js_compare}}
+							</div></div>
+                            <div class="couponInfo">
+                                <div class="couponName">{{couponName}}
+                                </div>
+                                <div class="couponExpTime">有效期至{{endTime}}</div>
+                                {{#js_compare "this.limitPrice===0"}}
+									<div class="couponDes">不限金额</div>
+								{{else}}
+									{{#js_compare "this.couponType===2"}}
+										<div class="couponDes">满{{limitPrice}}享{{couponPrice}}折优惠</div>
+									{{else}}
+										<div class="couponDes">满{{limitPrice}}享{{couponPrice}}元优惠</div>
+									{{/js_compare}}
+								{{/js_compare}}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+              {{else}}
+               <div class="page-noDate">
+                  <p>暂无过期代金券</p>
+              </div>
+              {{/each}}
+              </ul>
+            </div>
+          </div>
+     {{/item}}
+     {{else}}
+            <div class="page-upDate">
+                <p>{{updateInfo}}</p>
+            </div>
+    {{/unless}}
+    </script>
+</div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/shop.config" src= "style/js/require.js"></script>
+</body>
+</html>

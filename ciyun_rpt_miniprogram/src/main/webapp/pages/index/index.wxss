@@ -1,0 +1,14 @@
+/**index.wxss**/
+
+.bg{
+  width:750rpx;
+  height:1040rpx;
+}
+.btn{
+  display: block;
+  width:650rpx;
+  height:88rpx;
+  position: fixed;
+  bottom: 20rpx;
+  left:50rpx;
+}

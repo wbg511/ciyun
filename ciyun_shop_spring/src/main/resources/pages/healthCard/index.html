@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+<div class="page-group">
+    <!-- 图文健康咨询 -->
+    <div class="page" id="healthCard">
+        <div id="healthCard_tpl_data">
+            
+        </div>
+    </div>
+    <div class="imgzoom-pack none" id="imgzoom-pack">
+        <div class="imgzoom-x" style="display:none" id="imgzoom-x">关闭</div>
+        <div class="imgzoom-img"><img src="style/images/lazyload/default.gif"  id="imgzoom-item"/></div>
+    </div>
+    <!-- 服务模板 -->
+    <script id="healthCard_tpl" type="text/template7">
+    {{#unless isUpdate}}
+        {{#item}}
+        {{#unless isBuy}}
+            <div class="bar bar-tab">
+                <div class="app-btn-fixed">
+                    <div class="app-btn-fixed-tips">
+                        请在到达体检中心时，领取并出示消费码。
+                    </div>
+                    <button type="button" class="btn-buy healthCard-get">领取消费码</button>
+                </div>
+            </div>
+            <div class="content">
+                <div class="healthCard-info">
+                    {{#each goodsContent}}
+                        <img data-original="{{img}}" src="style/images/lazyload/default-goods.gif"  width="100%" class="pic-view lazy"/>
+                    {{/each}}
+                </div>
+            </div>
+         {{else}}
+            <div class="content">
+                {{#consume}}
+                <div class="healthCard-status">
+                    <div class="healthCard-box">
+                        <div class="healthCardBox">
+                            <div class="healthCardCode">
+                                <span>消费码</span>
+                                {{#js_compare "this.state == '1'"}}
+                                    <p class="status-no">{{code}}</p>
+                                {{/js_compare}}
+                                {{#js_compare "this.state == '2'"}}
+                                  <p class="status-yes">{{code}}</p>
+                                {{/js_compare}}
+                            </div>
+                            <div class="healthCardStatus">
+                                <span>消费状态</span>
+                                {{#js_compare "this.state == '1'"}}
+                                    <p class="status-no">{{status}}</p>
+                                {{/js_compare}}
+                                {{#js_compare "this.state == '2'"}}
+                                   <p class="status-yes">{{status}}</p>
+                                {{/js_compare}}
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/consume}}
+                <div class="healthCard-info">
+                    {{#each goodsContent}}
+                        <img data-original="{{img}}" src="style/images/lazyload/default-goods.gif"  width="100%" class="pic-view lazy"/>
+                    {{/each}}
+                </div>
+            </div>
+        {{/unless}}
+        {{else}}
+            <div class="page-noDate">
+                <p>{{itemInfo}}</p>
+            </div>
+        {{/item}}
+    {{else}}
+        <div class="page-upDate">
+            <p>{{updateInfo}}</p>
+        </div>
+    {{/unless}}
+    </script>
+</div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/healthCard.config" src= "style/js/require.js"></script>
+</body>
+</html>

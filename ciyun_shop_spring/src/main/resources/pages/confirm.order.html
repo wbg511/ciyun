@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+<div class="page-group">
+    <!-- page 容器 -->
+    <div class="page page-headhand" id="confirmOrder">
+        <div class="content1" id="confirmOrder_tpl_data"></div>
+        <input type="hidden" id="showBack"  value="1"/>
+    </div>
+    <script id="confirmOrder_tpl" type="text/template7">
+    <input type="hidden" name="hideTitle" id="hideTitle" value="{{title}}"/>
+    {{#unless isUpdate}}
+        {{#item}}
+        {{#share}}
+        <span id="shareShop" data-linkUrl="{{shareurl}}"  data-title="{{sharename}}" data-imgUrl="{{shareimage}}" data-desc="{{sharedesc}}" data-type="" data-dataUrl=""></span>
+        {{/share}}
+        <!-- 提交订单 -->
+        {{#if isBuy}}
+        <div class="bar bar-tab app-btn-fixed-bottom">
+          <button type="button" data-no-cache="true" class="btn-buy" id="goTo-order">提交订单</button>
+        </div>
+        {{else}}
+          <div class="bar bar-tab app-btn-fixed-bottom">
+           <button type="button" disabled="disabled" class="btn-buy" id="goTo-order">{{isBuyInfo}}</button>
+         </div>
+        {{/if}}
+        <div class="content">
+          {{#if isBuy}}
+          {{else}}
+            <div class="page-noDate">
+                  <p>{{isBuyInfo}}</p>
+            </div>
+          {{/if}}
+          <!-- 地址 -->
+          {{#if isAddress}}
+          <div class="confirmOrder-address">
+              {{#address}}
+                <input type="hidden" id="hide-addressId" value="{{addressId}}" />
+                <!-- 有地址 -->
+                <a class="confirmOrder-address-info app-address-box" href="address.html?form=order">
+                  <div class="address-info clearfix">
+                      <span class="name">{{name}}</span><span class="tel">{{tel}}</span>
+                   </div>
+                   <div class="address-info clearfix">
+                      <p class="address"><em class="address-defTip">{{#if isDefault}}[默认地址]{{/if}}</em>{{address}}</p>
+                  </div>
+                </a>
+                <span class="icon icon-right"></span>
+              {{else}}
+              <input type="hidden" id="hide-addressId" value="0" />
+                <!-- 没有地址 -->
+                <div class="confirmOrder-address-none ">
+                    <a href="javascript:;" class="addressList-opr confirmOrder-address-add app-address-box">
+                      <p class="address-info clearfix">请先添加地址</p>
+                    </a>
+                </div>
+              {{/address}}
+          </div>
+          {{/if}}
+          <!-- 商品信息 -->
+          {{#goods}}
+          <input type="hidden" id="hide-goodsId" value="{{goodsId}}"/>
+          <input type="hidden" id="hide-goodsImg" value="{{img}}"/>
+          <input type="hidden" id="hide-goodsName" value="{{name}}"/>
+          <input type="hidden" id="hide-isSnap" value="{{isSnap}}"/>
+          <div class="confirmOrder-goods">
+              <div class="confirmOrder-goods-info">
+                    <div class="confirmOrder-goods-img">
+                        <div class="img-128"><img src="{{img}}" alt="{{name}}" /></div>
+                    </div>
+                    <div class="confirmOrder-goods-intro">
+                        <div class="confirmOrder-goods-name">{{name}}</div>
+                        <div class="confirmOrder-goods-price">
+                            <p class="price-now">
+                                {{#if price}}
+                                <span class="now"><em class="unit">¥</em>{{price}}</span>
+                                {{#unless point}}{{else}}<i class="unit-i">+</i>{{/unless}}
+                                {{/if}} 
+                                {{#if point}}
+                                <span class="int"><span class="i">{{point}}</span>积分</span>
+                                {{/if}}
+                                </p>
+                                <!-- 原价 -->
+                                {{#js_compare "this.price != this.priceOld"}}
+                        			<p class="price-old">原价<del><em class="unit">¥</em>{{priceOld}}</del></p>
+								{{/js_compare}}
+                        </div>
+                    </div>
+                </div>
+          </div>
+          {{/goods}}
+          <!-- 发票 -->
+          {{#if isAddress}}
+          <div class="confirmOrder-invoice">
+            <a class="invoice-info" data-no-cache="true" href="bill.html">
+              <div class="invoice">发票信息</div>
+              {{#invoice}}
+               <input type="hidden" id="hide-invoiceId" value="{{invoiceId}}" />
+               <em class="invoice-item">已开发票</em>
+               {{else}}
+               <input type="hidden" id="hide-invoiceId" value="0" />
+               <em class="invoice-item">不开发票</em>
+              {{/invoice}}
+            </a>
+              <span class="icon icon-right"></span>
+          </div>
+          {{/if}}
+          <!-- 合计 -->
+          <div class="confirmOrder-account">
+            {{#account}}
+            <input type="hidden" id="hide-price" value="{{#if total}}{{total}}{{else}}0{{/if}}"/>
+          <input type="hidden" id="hide-point" value="{{#if point}}{{point}}{{else}}0{{/if}}"/>
+ 				<input type="hidden" id="hide-number" value="{{number}}"/>
+              <div class="confirmOrder-account-box">
+                <div class="confirmOrder-list-box clearfix">
+                    <label class="confirmOrder-item">
+                        共计
+                    </label>
+                    <div class="confirmOrder-val">
+                        <span class="numTotal">{{number}}</span>件商品
+                    </div>
+                </div>
+                {{#if point}}
+                <div class="confirmOrder-list-box clearfix">
+                    <label class="confirmOrder-item">
+                        积分
+                    </label>
+                    <div class="confirmOrder-val">
+                         <span class="points">{{point}}</span>
+                    </div>
+                </div>
+                {{/if}}
+                {{#if isCoupon}}
+                <div class="confirmOrder-list-box clearfix">
+                    <label class="confirmOrder-item">
+                        代金券
+                    </label>
+                    <div class="confirmOrder-val">
+                        <ul class="clearfix goodsRule_coupon">
+                            {{#coupon}}
+                             <input type="hidden" id="hide-couponId" value="{{couponId}}" />
+                            <li>
+                              <a href="coupon.html?form=order">
+                               <label class="goodsRule_lab">
+                                  <input class="app-radio-rule" {{#if disabled}}disabled="disabled"{{/if}} {{#if checked}}checked="checked"{{/if}} type="radio" value="{{couponId}}" name="goodsRule_coupon" id="radiocoupon" />
+                                  <div class="price-now">
+									{{#js_compare "this.couponType=='1'"}}
+										<em class="unit">¥</em>{{couponPrice}}
+									{{else}}
+										{{couponPrice}}折
+									{{/js_compare}}
+                                  </div>
+                              </label>
+                            </a>
+                            <span class="icon icon-right"></span>
+                            </li>
+                            {{else}}
+                            <input type="hidden" id="hide-couponId" value="0" />
+                            <li>
+                              <a href="coupon.html?form=order">
+                               <p class="coupon-item-user">使用代金券</p>
+                              </a>
+                            <span class="icon icon-right"></span>
+                            </li>
+                            {{/coupon}}
+                        </ul>
+                    </div>
+                </div>
+                {{/if}}
+                <div class="confirmOrder-list-box clearfix">
+                    <label class="confirmOrder-item">
+                        订单合计
+                    </label>
+                    <div class="confirmOrder-val">
+                        {{#if total}}
+                        <span class="rmb"><em class="unit">¥</em>{{total}}</span>
+                        {{#unless point}}{{else}}<i class="unit-i">+</i>{{/unless}}
+                        {{/if}} 
+                        {{#if point}}
+                        <span class="int"><span class="i">{{point}}</span>积分</span>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/account}}
+            </div>
+          </div>
+        </div>
+        {{/item}}
+    {{else}}
+        <div class="page-upDate">
+            <p>{{updateInfo}}</p>
+        </div>
+    {{/unless}}
+    </script>
+    <!-- 添加编辑地址 -->
+    <div class="popup popup-address" id="goodsAddressOpr_tpl_data"></div>
+    <!-- 地址模板 -->
+    <script id="goodsAddressOpr_tpl" type="text/template7">
+      <div class="app-btn-fixed-bottom bar bar-tab app-btn-fixed-address">
+      <div class="address-btn-group">
+        <div class="row">
+          <div class="col-50">
+          <button type="button" class="app-btn btn-cancel close-popup">取消</button>
+          </div>
+          <div class="col-50">
+            <button type="button" class="app-btn btn-save" id="order-address-save">保存并使用</button>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="content">
+      <div class="addressAddEdit-box">
+         <div class="app-form-box">
+              <div class="app-form-list">
+                  <div class="app-form-item">收货人</div>
+                  <div class="app-form-val"><input type="text" maxlength="20" value="" id="userName" class="app-txt" placeholder="请输入收货人姓名" /></div>
+              </div>
+              <div class="app-form-list">
+                  <div class="app-form-item">联系电话</div>
+                  <div class="app-form-val"><input type="text" maxlength="11" value="" id="userTel" class="app-txt" placeholder="请输入联系电话"/></div>
+              </div>
+              
+              <div class="app-form-list">
+                  <div class="app-form-item">所在省/市</div>
+                  <div class="app-form-val">
+                    <div class="app-form-val-sel">
+                      <div class="row">
+                        <div class="col-33">
+                          <input type="hidden" id="hid-userProvince" value="{{provAreaId}}" />
+                          <select name="" id="userProvince" class="app-select">
+                            <option value="-1">请选择</option>
+                          </select>
+                        </div>
+                        <div class="col-33">
+                           <input type="hidden" id="hid-userCity" value="{{dijiAreaId}}" />
+                           <select name="" id="userCity" class="app-select">
+                            <option value="-1">请选择</option>
+                          </select>
+                        </div>
+                        <div class="col-33">
+                          <input type="hidden" id="hid-userArea" value="{{quxianAreaId}}" />
+                          <select name="" id="userArea" class="app-select">
+                        <option value="-1">请选择</option>
+                      </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <div class="app-form-list">
+                  <div class="app-form-item">详细地址</div>
+                  <div class="app-form-val">
+                    <textarea class="app-txtArea" id="userAreaDes" placeholder="请输入详细地址"></textarea>
+                  </div>
+              </div>
+              <div class="app-form-list">
+                  <div class="app-form-item">设置为默认地址</div>
+                  <div class="app-form-val">
+                    <label class="label-switch">
+                    <input type="checkbox" id="userAddressDefault">
+                    <div class="checkbox"></div>
+                  </label>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    </script>
+</div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/shop.config" src= "style/js/require.js"></script>
+</body>
+</html>

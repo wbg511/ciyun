@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-headhand" id="category">
+        <!-- app 微信引导下载 -->
+        <div id="page-appDown" class="bar bar-nav none">
+            <div class="appDown-box">
+                <a href="javascript:;" id="appDownClose" class="appDown-close">关闭</a>
+                <div class="appDown-logo"><img src="style/images/logo/logo.png" alt="慈云健康" /></div>
+                <div class="appDown-info">
+                    <p>下载APP，更多惊喜等你！</p>
+                </div>
+                <div class="appDown-action"><a class="external" href="http://a.app.qq.com/o/simple.jsp?pkgname=com.ciyun.lovehealth&g_f=991653">立即下载</a></div>
+            </div>
+        </div>
+        <!-- 微信导航 -->
+        <div class="app-btn-fixed-bottom bar bar-tab none" id="wx-bar-tab">
+             <ul class="row wx-bar-tab">
+                 <li class="col-50"><a href="index.html" class="wx-bar-tab-item"><span class="icon icon-home"></span><span class="icon-item">商城首页</span></a></li>
+                 <li class="col-50"><a href="userCenter.html"class="wx-bar-tab-item"><span class="icon icon-me"></span><span class="icon-item">个人中心</span></a></li>
+             </ul>
+        </div>
+        <div id="category_tpl_data" class="content infinite-scroll infinite-scroll-bottom" data-distance="55">
+        </div>
+        <input type="hidden" id="showBack"  value="1"/>
+    </div>
+     <script id="category_tpl" type="text/template7">
+     <input type="hidden" name="hideTitle" id="hideTitle" value="{{title}}"/>
+    {{#unless isUpdate}}
+        {{#item}}
+        {{#share}}
+        <span id="shareShop" data-linkUrl="{{shareurl}}"  data-title="{{sharename}}" data-imgUrl="{{shareimage}}" data-desc="{{sharedesc}}" data-type="" data-dataUrl=""></span>
+        {{/share}}
+        <span id="page-val" data-pageNo="{{pageNo}}" data-pageLast="{{last}}" data-pageSize="{{pageSize}}"></span>
+        <div id="category-content">
+            <!-- 欧姆龙 -->
+            <div id="category_swiper" class="none">
+                <img src="style/images/banner/oml.gif" alt="" />
+            </div>
+            <!-- 分类商品 -->
+            <div class="content-category-goods">
+                <div class="category-goods">
+                    <div class="category-goods-box">
+                        <ul class="category-list">
+                            {{#each good}}  
+                                <li>
+                                    <a href="goods.html?goodsId={{goodsId}}" data-no-cache="true" class="goods-item">
+                                    {{#if isPreview}}
+                                        <span class="goods-status">预发布</span>
+                                    {{/if}}
+                                    {{#if isSnap}}
+                                        <span class="goods-tagSnap">限时抢购</span>
+                                    {{/if}}
+                                    <div class="goods-img">
+                                        <div class="img-128">
+                                            <img data-original="{{img}}" src="style/images/lazyload/default-goods.gif" alt="{{name}}" class="lazy" />
+                                        </div>
+                                    </div>
+                                    <div class="goods-cont">
+                                        <div class="goods-name">{{name}}</div>
+                                        <div class="goods-price">
+                                            <p class="price-now">
+                                            {{#if price}}
+                                            <span class="now"><em class="unit">¥</em>{{price}}</span>
+                                            {{#unless point}}{{else}}<i class="unit-i">+</i>{{/unless}}
+                                            {{/if}}
+                                            {{#if point}}
+                                            <span class="int"><span class="i">{{point}}</span>积分</span>
+                                            {{/if}}
+                                            </p>
+                                            <!-- 原价 -->
+                                            {{#js_compare "this.price != this.priceOld"}}
+                        					<p class="price-old">原价<del><em class="unit">¥</em>{{priceOld}}</del></p>
+											{{/js_compare}}
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 加载商品 -->
+            <div class="infinite-scroll-preloader">
+                <div class="preloader"></div>
+            </div>
+            <!-- 版权 -->
+            <div class="copyright">
+               <p>{{copyright}}</p>
+            </div>
+        </div>
+        {{/item}}
+    {{else}}
+        <div class="page-upDate">
+            <p>{{updateInfo}}</p>
+        </div>
+    {{/unless}}
+    </script>
+     <script id="categoryGoods_tpl" type="text/template7">
+        {{#each good}}  
+            <li>
+                <a href="goods.html?goodsId={{goodsId}}" data-no-cache="true" class="goods-item">
+                {{#if isPreview}}
+                    <span class="goods-status">预发布</span>
+                {{/if}}
+                {{#if isSnap}}
+                    <span class="goods-tagSnap">限时抢购</span>
+                {{/if}}
+                <div class="goods-img">
+                    <div class="img-128">
+                        <img data-original="{{img}}" src="style/images/lazyload/default-goods.gif" alt="{{name}}" class="lazy" />
+                    </div>
+                </div>
+                <div class="goods-cont">
+                    <div class="goods-name">{{name}}</div>
+                    <div class="goods-price">
+                        <p class="price-now">
+                        {{#if price}}
+                        <span class="now"><em class="unit">¥</em>{{price}}</span>
+                        {{#unless int}}{{else}}<i class="unit-i">+</i>{{/unless}}
+                        {{/if}}
+                        {{#if int}}
+                        <span class="int"><span class="i">{{int}}</span>积分</span>
+                        {{/if}}
+                        </p>
+                        <!-- 原价 -->
+                        {{#js_compare "this.price != this.priceOld"}}
+                        					<p class="price-old">原价<del><em class="unit">¥</em>{{priceOld}}</del></p>
+											{{/js_compare}}
+                    </div>
+                </div>
+            </a>
+         </li>
+        {{/each}}
+    </script>
+</div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/shop.config" src= "style/js/require.js"></script>
+</body>
+</html>

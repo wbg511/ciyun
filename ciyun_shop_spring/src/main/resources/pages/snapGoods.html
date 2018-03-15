@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-headhand" id="snapGoods">
+        <!-- 微信导航 -->
+        <div class="app-btn-fixed-bottom bar bar-tab none" id="wx-bar-tab">
+             <ul class="row wx-bar-tab">
+                 <li class="col-50"><a href="index.html" class="wx-bar-tab-item"><span class="icon icon-home"></span><span class="icon-item">商城首页</span></a></li>
+                 <li class="col-50"><a href="userCenter.html"class="wx-bar-tab-item"><span class="icon icon-me"></span><span class="icon-item">个人中心</span></a></li>
+             </ul>
+        </div>
+        <div id="snapGoods_tpl_data" class="content infinite-scroll infinite-scroll-bottom" data-distance="55">
+        </div>
+        <input type="hidden" id="showBack"  value="1"/>
+        <input type="hidden" id="share"  value="0"/>
+    </div>
+    <script id="snapGoods_tpl" type="text/template7">
+     <input type="hidden" name="hideTitle" id="hideTitle" value="{{title}}"/>
+    {{#unless isUpdate}}
+        {{#item}}
+            {{#share}}
+            <span id="shareShop" data-linkUrl="{{shareurl}}"  data-title="{{sharename}}" data-imgUrl="{{shareimage}}" data-desc="{{sharedesc}}" data-type="" data-dataUrl=""></span>
+            {{/share}}
+             <div class="snapGoods-content">
+                <ul class="snapGoods-list">
+                    {{#each snapBuyList}} 
+                    <li>
+                        <div class="snapGoods-box">
+                            <div class="snapGoods-hd"></div>
+                            <div class="snapGoods-bd">
+                                 <div class="snapBuy-hd snapBuy-status-{{code}}">
+                                    <h4>{{status}}</h4>
+                                    <!-- 已抢光 1-->
+                                    <!-- 火热进行中 0-->
+                                    {{#js_compare "this.code == '0'"}}
+                                        <span class="countTime countTime-{{code}}" showDate="yes" endtime="{{endTime}}"></span>
+                                        <span class="countTime-tip">后结束</span>
+                                    {{/js_compare}}
+                                    <!-- 即将开始 -1 -->
+                                    {{#js_compare "this.code == '-1'"}}
+                                        <span class="countTime countTime-{{code}}" showDate="yes" endtime="{{startTime}}"></span>
+                                        <span class="countTime-tip">后开抢</span>
+                                    {{/js_compare}}
+                                </div>
+                                <a href="goods.html?goodsId={{goodsId}}" class="snapBuy-item external" >
+                                    <img data-original="{{img}}" src="style/images/lazyload/default-snapBuy.gif" alt="{{name}}" class="lazy" />
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/item}}
+    {{else}}
+        <div class="page-upDate">
+            <p>{{updateInfo}}</p>
+        </div>
+    {{/unless}}
+    </script>
+</div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/shop.config" src= "style/js/require.js"></script>
+</body>
+</html>

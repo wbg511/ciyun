@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+<div class="page-group">
+	<!-- app 微信引导下载 -->
+    <div class="page" id="appWellCareList">
+        <!-- app 微信引导下载 -->
+        <div id="page-appDown" class="bar bar-nav none">
+            <div class="appDown-box">
+                <a href="javascript:;" id="appDownClose" class="appDown-close">关闭</a>
+                <div class="appDown-logo"><img src="style/images/logo/logo.png" alt="慈云健康" /></div>
+                <div class="appDown-info">
+                    <p>下载APP，更多惊喜等你！</p>
+                </div>
+                <div class="appDown-action"><a class="external" href="http://a.app.qq.com/o/simple.jsp?pkgname=com.ciyun.lovehealth&g_f=991653">立即下载</a></div>
+            </div>
+        </div>     
+        <div id="appWellCareList_tpl_data"></div>
+        <input type="hidden" id="share" name="share"  value="1"/>
+    </div>
+    <!-- 服务模板 -->
+    <script id="appWellCareList_tpl" type="text/template7">
+        <div class="app-btn-fixed-order bar bar-tab bar bar-tab">
+            {{#item}}
+                {{#share}}
+                <span id="shareShop" data-linkUrl="{{shareurl}}"  data-title="{{sharename}}" data-imgUrl="{{shareimage}}" data-desc="{{sharedesc}}" data-type="" data-dataUrl=""></span>
+                <!-- app 调用 -->
+                <!-- 新分享 ID name 一致-->
+                <input type="hidden" id="share" name="share"  value="1"/>
+                <input type="hidden" name="sharename" id="sharename" value="{{sharename}}" />
+                <input type="hidden" name="shareimage" id="shareimage" value="{{shareimage}}"/>
+                <input type="hidden" name="shareurl" id="shareurl" value="{{shareurl}}"/>
+                <input type="hidden" name="sharedesc" id="sharedesc" value="{{sharedesc}}"/>
+                <input type="hidden" name="shareremark" id="shareremark" value="{{sharemark}}"/>
+                <!-- 返回逻辑 -->
+                <!-- 0 或者H5没有设置字段：正常返回 1  直接返回列表 2  提示，由用户确定后返回列表 -->
+                <input type="hidden" name="backTo" id="backTo" value="1"/>
+                <input type="hidden" name="backTips" id="backTips" value="您还没有完成评测确定要退出吗？"/>
+
+                {{/share}}
+            <div class="appWellCarePrice">
+                <div class="appWellCarePrice_totalBox">
+                    <div class="price-now">
+                         <span class="now"><em class="unit">¥</em><span>{{price}}<em class="unit-t">/次</em></span></span>
+                    </div>
+                </div>
+            </div>
+            {{/item}}
+            <div class="app-btn-group">
+                {{#js_compare "this.os == 'wx'"}}
+                <!-- 微信支付 -->
+                        <button type="button" id="app-btn-wxpay" class="shop-pay-order" data-type="wx"><span class="icon-wx">微信支付</span></button>
+                {{else}}
+                <!-- app 支付 -->
+                        <button type="button" id="app-btn-alipay" class="shop-pay-order" data-type="app-ali"><span class="icon-ali">支付宝支付</span></button>
+                        <button type="button" id="app-btn-wxpay" class="shop-pay-order" data-type="app-wx"><span class="icon-wx">微信支付</span></button>
+                {{/js_compare}}
+            </div>
+        </div>
+    {{#unless isUpdate}}
+        {{#item}}
+            <div class="content">
+                <input type="hidden" id="hide-goTolUrl" value="{{url}}" />
+                <input type="hidden" id="hide-isBuy" value="{{isBuy}}" />
+                <!-- 中新惠尔 -->
+                <div class="content-appWellCare">
+                     <img data-original="style/app/wellcare/1.jpg" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" alt="" />
+                    <img data-original="style/app/wellcare/2.jpg" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" alt="" />
+                    <img data-original="style/app/wellcare/3.jpg" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" alt="" />
+                    <img data-original="style/app/wellcare/4.jpg" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" alt="" />
+                    <img data-original="style/app/wellcare/5.jpg" src="style/images/lazyload/default-goods-swiper.gif" class="lazy" alt="" />
+                </div>
+            </div>
+        {{else}}
+            <div class="page-noDate">
+                <p>{{itemInfo}}</p>
+            </div>
+        {{/item}}
+    {{else}}
+        <div class="page-upDate">
+            <p>{{updateInfo}}</p>
+        </div>
+    {{/unless}}
+    </script>
+</div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/appWellCare.config" src= "style/js/require.js"></script>
+</body>
+</html>

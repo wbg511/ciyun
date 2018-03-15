@@ -1,0 +1,214 @@
+ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,figure,form,fieldset,legend,input,textarea,button,p,blockquote,th,td,pre,xmp{margin:0;padding:0;}
+input,textarea,button,select,pre,xmp,tt,code,kbd,samp{line-height:inherit;font-family:inherit;}
+h1,h2,h3,h4,h5,h6{font-weight:400}
+h1,h2,h3,h4,h5,h6,small,big,input,textarea,button,select{font-size:inherit;}
+address,cite,dfn,em,i,optgroup,var{font-style:normal;}
+table{border-collapse:collapse;border-spacing:0;table-layout:fixed;text-align:left;}
+ul,ol,menu{list-style:none;}
+fieldset,img{border:0;vertical-align:middle;}
+article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block;}
+audio,canvas,video{display:inline-block;}
+blockquote:before,blockquote:after,q:before,q:after{content:"\0020";}
+textarea,pre,xmp{overflow:auto;-webkit-overflow-scrolling:touch;}
+textarea{resize:vertical;}
+input,textarea,button,select a{outline:0 none;}
+input,textarea,button,select{color:inherit;}
+input:disabled,textarea:disabled,button:disabled,select:disabled{opacity:.5;background:#ccc;}
+input,
+textarea {
+  border: 0;
+  -webkit-appearance: none; 
+}
+button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0;}
+input[type="button"],input[type="submit"],input[type="reset"],input[type="file"]::-webkit-file-upload-button{-webkit-appearance:none;appearance:none;}
+:focus{outline:0;-webkit-tap-highlight-color:transparent}
+img{width:auto\9;height:auto;max-width:100%;vertical-align:middle;border:0;}
+a,ins,s,u,del{text-decoration:none;}
+a,img{-webkit-touch-callout:none;}
+.none {display:none;}
+.link {color:#4CAF50;}
+*,::before,::after{-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+
+
+.icon-item {font-family:"Helvetica Neue", Helvetica, STHeiTi,"Microsoft YaHei",微软雅黑,"Apple LiGothic Medium",\5b8b\4f53,SimSun,STSong,tahoma,arial,simsun,sans-serif;
+   font-size: 0.75rem;
+  font-weight: 400;
+  color: #666;
+}
+.dropload-up,
+.dropload-down { position: relative; height: 0; overflow: hidden; font-size: 12px; -webkit-transform: translateZ(0); transform: translateZ(0); }
+.dropload-down { height: 50px; }
+.dropload-refresh,
+.dropload-update,
+.dropload-load,
+.dropload-noData { height: 50px; line-height: 50px; text-align: center; }
+.dropload-load .loading { display: inline-block; height: 15px; width: 15px; border-radius: 100%; margin: 6px; border: 2px solid #666; border-bottom-color: transparent; vertical-align: middle; -webkit-animation: rotate 0.75s linear infinite; animation: rotate 0.75s linear infinite; }
+@-webkit-keyframes rotate {
+    0% { -webkit-transform: rotate(0deg); }
+    50% { -webkit-transform: rotate(180deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.order-list-noData {position:absolute;background-color: #fff;top:0px;width:100%;height:100%;z-index: 10;}
+.content-error,
+.page-noDate,
+.page-upDate {
+    position: absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+    background-color:#f8f8f8;
+    color:#999;
+    font-size: .85rem;
+    display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+        -webkit-box-sizing: border-box;
+        text-align: center;
+}
+.popup-eror .content-error {padding:0;}
+.content-error {padding:1rem 0;}
+.content-error a,
+.page-noDate a,
+.page-upDate a {color:#75AC47;} 
+.imgQcode img {border:1px solid #ddd;padding:.2rem;background-color: #fff;}
+.page-current .bar-nav .title span{position:relative;width:200px;white-space:nowrap;text-overflow:ellipsis;margin:0 auto;display:block;}
+
+/*版权*/
+.copyright{height:30px!important;}
+
+.price-now {}
+.price-now > .now{color:#ff6600;font-size:1.3rem;}
+.price-num {font-size: .7rem;}
+.price-num > .num{color:#EE1C25;font-size:.9rem;margin-right:.2rem;}
+.unit {font-size:.6rem;}
+.unit-t {font-size:.75rem;}
+.int {color:#0FB2B1;margin-right:.2rem;font-size:.6rem;}
+.int .i {font-size:.9rem;margin-right:.2rem;}
+.price-now > .int .i{font-size:1.3rem;}
+.unit-i {color:#999;}
+.unit-i,
+.i,
+.unit {font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;}
+.price-old {color:#8E8E8E;font-size: 14px;}
+.price-old del {text-decoration: line-through;padding-left:.2rem;}
+
+
+.page-bg ,
+.page-bg .page, .page-bg.page-group{
+    background: #fff !important;
+}
+.tpl-preloader{position:absolute;left:50%;top:50%;padding:0.4rem;margin-left:-1.25rem;margin-top:-1.25rem;background:rgba(0,0,0,0.8);z-index:11000;border-radius:0.25rem;}
+.tpl-preloader .preloader{display:block;width:1.7rem;height:1.7rem;}
+
+.preloader-load {font-size: .7rem;color:#999;text-align: center;}
+.preloader-more {background-color: #f8f8f8;display: block;line-height:2rem;}
+.preloader-noDate {font-size: .6rem;color:#999;text-align: center;}
+
+
+.shop-loading-overlay{position:absolute;left:0;top:0;width:100%;height:100%;background:none;z-index:10600;visibility:visible;}
+.shop-loading{position:absolute;left:50%;top:50%;padding:0.4rem;margin-left:-1.25rem;margin-top:-1.25rem;background:rgba(0,0,0,0.8);z-index:11000;border-radius:0.25rem;}
+.shop-loading .loading{display:block;width:1.7rem;height:1.7rem;}
+
+
+
+.app-btn-group{display:-webkit-box;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-box-align:center}
+.app-btn-group button{display:block;-webkit-box-flex:1;margin-right:.3rem;width:100%;}
+.app-btn-group button:first-child{margin-left:.3rem}
+
+#app-btn-zeropay {background:#8CB208;border:1px solid #8CB208;}
+#app-btn-wxpay {background:#8CB208;border:1px solid #8CB208;}
+#app-btn-pointpay {background:#8CB208;border:1px solid #8CB208;}
+#app-btn-alipay {background:#009FE8;border:1px solid #009FE8;}
+
+#app-btn-zeropay:disabled ,
+#app-btn-wxpay:disabled,
+#app-btn-pointpay:disabled ,
+#app-btn-alipay:disabled {background:#ccc;border:1px solid #ccc;}
+
+.icon-wx {background:url(../images/pay/ico-wx.png) no-repeat 0 center;padding-left:1.5rem;}
+.icon-ali {background:url(../images/pay/ico-ali.png) no-repeat 0 center;padding-left:1.5rem;}
+
+.icon-zero,
+.icon-point,
+.icon-wx,
+.icon-ali {background-size:auto 100%;color:#fff;font-size:.8rem;line-height:1.9rem;}
+
+.btn-buy{width:100%;border:none;height:2.5rem;line-height:2.5rem;font-size:1.2rem;text-align:center;display:block;background-color:#75AC47;color:#fff;font-size:.9rem;}
+.btn-buy:active{background-color:#75AC47;color:#fff;}
+
+/*imgzoom*/
+.imgzoom-pack{width:100%;height:100%;position:fixed;left:0;top:0;background:rgba(0,0,0,.7);display:none;z-index:99999}
+.imgzoom-pack .imgzoom-x{color:#fff;height:36px;line-height:36px;background:#000;text-align:center;position:absolute;right:10px;top:10px;z-index:99999;cursor:pointer;border-radius:.1rem;padding:0 .5rem;font-size:.7rem;opacity:0.7;display:none;}
+.imgzoom-pack .imgzoom-img{width:100%;height:100%;position:absolute;left:0;top:0;overflow:hidden;}
+.imgzoom-pack .imgzoom-img img{width:100%;position:absolute;top:50%;height:auto;!important;max-width:none;!important;vertical-align:inherit;!important;}
+.zoomImgpic img{width:100%;height:auto;}
+
+
+.content-appWellCare-doctor {
+  background-color:#1CCCCA;
+}
+
+.appWellCare-doctor-info {text-align: center;padding:1rem 0;}
+.appWellCare-doctor-info h2 {font-weight:700;font-size:1.1rem;color:#fff;margin-bottom:.8rem;}
+.appWellCare-doctor-info p {color:#D1F5F4;display: inline-block;border:1px solid #fff;border-radius:1.2rem;line-height: 1.2rem;padding:.3rem 1rem;}
+
+
+.modal-orderPayCallBack{width:15rem;}
+.orderPayCallBack{font-size:.75rem;}
+.orderPayCallBack .orderPayOrder{font-size: .8rem;}
+.orderPayCallBack .orderPayOrder span{font-weight:700;}
+.orderPayCallBack-info{text-align:left;text-indent:1rem;line-height:1rem;}
+.orderPayCallBack-info p{font-size:.75rem;}
+
+.orderPayCallBackError-info{text-align:center;line-height:1rem;}
+.orderPayCallBackError-info p{font-size:.75rem;}
+
+
+
+
+.orderPayCallBackHelp-info{text-align:left;}
+.orderPayCallBackHelp-info p{font-size:.65rem;line-height:1.2rem;}
+.orderPayCallBackHelp-info p  a {color:#658007;}
+
+.appWellCarePrice{}
+.appWellCarePrice_totalBox{line-height:2rem;height:2rem;padding:0 .5rem;}
+.content-appWellCare{background-color:#fff;}
+.content-appWellCare img {width:100%;}
+#appWellCareList .bar-tab {height:4.5rem;}
+#appWellCareList .bar-tab ~ .content{bottom:4.5rem;}
+.content-appWellCare-doctor-list {}
+.content-appWellCare-doctor-list h4 {margin-bottom: 1rem;}
+.content-appWellCare-doctor-list h4 span {background: #D4F6F5;line-height:1.4rem;font-weight:700;font-size:1rem;color:#4D4D4D;padding:.5rem 1rem;border-radius: 0 1.4rem 1.4rem 0; }
+
+
+
+.app-fixed-buy{background-color:#F9FCF6}
+.app-fixed-buy .goodsRule_totalBox{line-height:2.5rem;border-top:1px solid #eee;}
+.app-fixed-buy .price-now {padding:0 8rem 0 .5rem;line-height:2.5rem}
+.app-fixed-buy .btn-buy{width:8rem;position:absolute;right:0;bottom:0;}
+
+
+
+/* app下载引导 */
+.appDown-box{position:relative;height:2.2rem;padding:0 32% 0 28px;background-color:#000;}
+.appDown-close{text-indent:-999em;position:absolute;left:8px;top:12px;width:18px;height:18px;border-radius:18px;border:1px solid #eee;}
+.appDown-close:before{content:'';width:10px;height:1px;background:#fff;position:absolute;top:7px;left:3px;transform:rotate(-45deg) translateZ(0);}
+.appDown-close:after{content:'';width:10px;height:1px;background:#fff;position:absolute;top:7px;left:3px;transform:rotate(45deg) translateZ(0);}
+.appDown-logo{float:left;padding:.3rem .5rem;}
+.appDown-logo img{width:1.6rem;height:1.6rem;}
+.appDown-info{color:#fff;height:2.2rem;padding:0 .25rem;}
+.appDown-info p{height:2.2rem;line-height:2.2rem;display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;-webkit-line-clamp:2;font-size:.7rem;}
+.appDown-action{position:absolute;right:0;top:0;width:32%;line-height:2.2rem;}
+.appDown-action a{font-size:.8rem;background-color:#689F38;color:#fff;display:block;height:2.2rem;width:100%;line-height:2.2rem;text-align:center;}
+@media all and (max-width:374px){
+  .appDown-info{height:2rem;padding:.25rem;}
+  .appDown-info p{line-height:.9rem;font-size:.7rem;}
+}

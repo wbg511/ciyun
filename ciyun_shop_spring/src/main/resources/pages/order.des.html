@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+<div class="page-group">
+    <!-- page 容器 -->
+    <div class="page page-headhand" id="orderDes">
+        <div id="orderDes_tpl_data"></div>
+        <input type="hidden" id="showBack"  value="1"/>
+    </div>
+    <script id="orderDes_tpl" type="text/template7">
+    <input type="hidden" name="hideTitle" id="hideTitle" value="{{title}}"/>
+    {{#unless isUpdate}}
+        <!-- 支付 -->
+                    {{#js_compare "this.os == 'wx'"}}
+                        <!-- 微信支付 -->
+                        {{#item}}
+                            {{#js_compare "this.state == '1'"}}
+                                <div class="app-btn-fixed-order bar bar-tab bar bar-tab">
+                                    <div class="orderDes-fixed-btn">
+                                        <div class="app-btn-group">
+                                        {{#if isPointPay}}
+                                            <button type="button" data-type="point" class="shop-pay-order" id="app-btn-pointpay"><span class="icon-point">积分兑换</span></button>
+                                        {{/if}}
+                                        {{#if isNormalPay}}
+                                            <button type="button" data-type="wx" class="shop-pay-order" id="app-btn-wxpay"><span class="icon-wx">微信支付</span></button>
+                                        {{/if}}
+                                        {{#if isZeroPay}}
+                                         <button type="button" id="app-btn-zeropay" class="shop-pay-order" data-type="zero"><span class="icon-zero">0元支付</span></button>
+                                        {{/if}}
+                                        </div>
+                                    </div>
+                                </div>
+                            {{else}}
+                               <!--  <p class="app-btn-group-state">
+                                   <span class="status-{{state}}">{{status}}</span>
+                               </p> -->
+                            {{/js_compare}}
+                        {{/item}}
+                    {{else}}
+                        <!-- app 支付 -->
+                        {{#item}}
+                            {{#js_compare "this.state == '1'"}}
+                                <div class="app-btn-fixed-order bar bar-tab bar bar-tab">
+                                    <div class="orderDes-fixed-btn">
+                                        <div class="app-btn-group">
+                                        {{#if isPointPay}}
+                                                <button type="button" id="app-btn-pointpay" class="shop-pay-order" data-type="point"><span class="icon-point">积分兑换</span></button>
+                                        {{/if}}
+                                        {{#if isZeroPay}}
+                                             <button type="button" id="app-btn-zeropay" class="shop-pay-order" data-type="zero"><span class="icon-zero">0元支付</span></button>
+                                        {{/if}}
+                                        {{#if isNormalPay}}
+                                            <button type="button" id="app-btn-alipay" class="shop-pay-order" data-type="app-ali"><span class="icon-ali">支付宝支付</span></button>
+                                            <button type="button" id="app-btn-wxpay" class="shop-pay-order" data-type="app-wx"><span class="icon-wx">微信支付</span></button>
+                                        {{/if}}
+                                        </div>
+                                    </div>
+                                </div>
+                            {{else}}
+                                <!-- <p class="app-btn-group-state">
+                                    <span class="status-{{state}}">{{status}}</span>
+                                </p> -->
+                            {{/js_compare}}
+                        {{/item}}
+                    {{/js_compare}}
+        {{#item}}
+        {{#share}}
+        <span id="shareShop" data-linkUrl="{{shareurl}}"  data-title="{{sharename}}" data-imgUrl="{{shareimage}}" data-desc="{{sharedesc}}" data-type="" data-dataUrl=""></span>
+        {{/share}}
+        <div class="content">
+        <input type="hidden"  id="hide-orderId" value="{{orderId}}" /> 
+        <input type="hidden"  id="hide-yaofang" value="{{isYaoFang}}" /> 
+        {{#orderAfterSaleApplyDetail}}
+        <input type="hidden" name="applyState" id="applyState" value="{{applyState}}"/>
+        <input type="hidden" name="afterSaleApplyId" id="afterSaleApplyId" value="{{afterSaleApplyId}}"/>
+        {{/orderAfterSaleApplyDetail}}
+            <!-- 订单号信息 -->
+            <div class="orderDes-introInfo app-shop-box">
+                <span class="orderDes-introStatus">
+                    <span class="status-{{state}}">{{status}}</span>
+                </span>
+                <p class="orderDes-no">订单号：<span class="app-enNo">{{orderId}}</span></p>
+                <p class="orderDes-date">订单提交日期：<span class="app-enNo">{{orderTime}}</span></p>
+            </div>
+            <!-- 收货地址信息 -->
+            {{#address}}
+            <div class="orderDes-addressInfo">
+                <div class="app-address-box">
+                    <div class="address-info clearfix">
+                        <span class="name">{{name}}</span><span class="tel">{{tel}}</span>
+                     </div>
+                     <div class="address-info clearfix">
+                        <p class="address"><em class="address-defTip">{{#if isDefault}}[默认地址]{{/if}}</em>{{address}}</p>
+                    </div>
+                </div>
+            </div>
+            {{/address}}
+            <!-- 订单商品明细 -->
+            <div class="orderDes-shopInfo app-shop-box">
+                <div class="app-shop-box-hd">订单明细</div>
+                <div class="app-shop-box-bd-list">
+                    <div class="order-goods-info">
+                        {{#each goods}}
+                        <div class="order-goods-info-list">
+                            <div class="order-goods-img">
+                                <div class="img-64"><img src="{{img}}" alt="{{name}}" /></div>
+                            </div>
+                            <div class="order-goods-intro">
+                                <div class="order-goods-name">{{name}}</div>
+                                <div class="order-goods-price">
+                                    <p class="price-now">
+                                    {{#if price}}
+                                    <span class="now"><em class="unit">¥</em>{{price}}</span>
+                                    {{#unless point}}{{else}}<i class="unit-i">+</i>{{/unless}}
+                                    {{/if}}
+                                    {{#if point}}
+                                    <span class="int"><span class="i">{{point}}</span>积分</span>
+                                    {{/if}}
+                                    </p>
+                                    <p class="price-count"><span class="unit">x</span>{{count}}</p>
+                                </div>
+                            </div>
+                            <div class="order-goods-refund clearfix">
+                                <!-- 退款申请 -->
+                               {{#js_compare "this.type != '4' && this.type != '3'"}}
+                                <div class="refund-btn public-btn refunding" data-state="{{../../this.state}}" data-activated="{{../../this.activated}}">申请退款</div>
+                               {{/js_compare}}
+                               <!-- 人工客服 -->
+                                <div class="artificial-services-btn public-btn">人工客服</div>
+
+                            </div>
+                        </div>
+                        {{/each}}
+                        
+                    </div>
+                </div>
+                {{#account}}
+                <div class="app-shop-box-ft">
+                    <div class="app-form-box">
+                        <div class="app-form-list">
+                            <div class="app-form-item">共计</div>
+                            <div class="app-form-val">{{number}}件商品</div>
+                        </div>
+                        {{#if point}}
+                        <div class="app-form-list">
+                            <div class="app-form-item">积分</div>
+                            <div class="app-form-val"><span class="points">{{point}}</span></div>
+                        </div>
+                        {{/if}}
+                        {{#if couponAmount}}
+                        <div class="app-form-list">
+                            <div class="app-form-item">代金券抵扣</div>
+                            <div class="app-form-val"><span class="rmb"><em>¥</em>{{couponAmount}}</span></div>
+                        </div>
+                        {{/if}}
+                        {{#if total}}
+                        <div class="app-form-list">
+                            <div class="app-form-item">应付</div>
+                            <div class="app-form-val"><span class=""><em class="unit">¥</em>{{total}}</span></div>
+                        </div>
+                        {{/if}}
+                        <div class="app-form-list">
+                            <div class="app-form-item">实付</div>
+                            <div class="app-form-val"><span class="rmb"><em class="unit">¥</em>{{pay}}</span></div>
+                        </div>
+                    </div>
+                </div>
+                {{/account}}
+            </div>
+            {{#invoice}}
+            <!-- 发票信息 -->
+            <div class="orderDes-payInfo app-shop-box">
+                <div class="app-shop-box-hd">
+                    发票信息
+                </div>
+                <div class="app-shop-box-ft-list">
+                    <div class="app-shop-box-ft-invoice">
+                        <div class="app-form-list">
+                            <div class="app-form-item">发票抬头</div>
+                            <div class="app-form-val">
+                                {{#if isCompany}}
+                                    {{#js_compare "'titleType === 2'"}}公司发票{{/js_compare}}
+                                {{/if}}
+                                {{#if isPerson}}
+                                    {{#js_compare "'titleType === 1'"}}个人发票{{/js_compare}}
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="app-form-list">
+                            <div class="app-form-item">发票内容</div>
+                            <div class="app-form-val">{{title}}</div>
+                        </div>
+						{{#if isCompany}}
+						<div class="app-form-list">
+                            <div class="app-form-item">纳税人识别号</div>
+                            <div class="app-form-val">{{taxpayerIdNumber}}</div>
+                        </div>
+						{{/if}}
+                    </div>
+                </div>
+            </div>
+            {{/invoice}}
+            <!-- 消费记录 -->
+            {{#js_compare "this.orderConsumes"}}
+                <div class="orderDes-payInfo app-shop-box">
+                    <div class="app-shop-box-hd">
+                        消费记录
+                    </div>
+                    <div class="app-shop-box-bd">
+                        <div class="order-pay-status-list">
+                            <ul class="app-shop-list">
+                                {{#each orderConsumes}}
+                                <li>
+                                    <span class="code">验证码{{@index+1}}：{{code}} </span>
+                                    {{#unless time}}
+                                     <div class="code-ways no-pay-status">
+                                    {{else}}
+                                    <div class="code-ways yes-pay-status">
+                                    {{/unless}}
+                                        <span class="code-status">{{status}}</span>
+                                        <p class="code-time">{{time}}</p>
+                                    </div>
+                                </li>
+    							{{else}}
+    							<li>
+                                    <span class="code">验证码：{{code}} </span>
+                                    {{#unless time}}
+                                     <div class="code-ways no-pay-status">
+                                    {{else}}
+                                    <div class="code-ways yes-pay-status">
+                                    {{/unless}}
+                                        <span class="code-status">{{status}}</span>
+                                        <p class="code-time">{{time}}</p>
+                                    </div>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+             {{/js_compare}}
+            <!-- 新增健康卡 -->
+            {{#js_compare "this.healthCards"}}
+            <div class="orderDes-healthCard app-shop-box">
+                <div class="app-shop-box-hd">
+                    健康卡
+                </div>
+                <div class="app-shop-box-bd">
+                    <div class="order-healthCard-status-list">
+                        <ul class="app-shop-list">
+                            {{#each healthCards}}
+                            <li>
+                                <div class="healthCard-code">激活码：{{cardNo}}</div>
+                                {{#js_compare "this.cardStatus == '0'"}}
+                                    <p class="healthCard-status status-none">待激活</p>
+                                    <div class="healthCard-active">
+                                        <button class="btn-healthCard healthCard-activate" type="button" data-id="{{cardNo}}" data-cardid="{{id}}">立即激活</button>
+                                    </div>
+                                 {{/js_compare}}
+                                 {{#js_compare "this.cardStatus == '1'"}}
+                                    <p class="healthCard-status status-yes">已激活</p>
+                                 {{/js_compare}}
+                                 {{#js_compare "this.cardStatus == '3'"}}
+                                    <p class="healthCard-status status-exp">已过期</p>
+                                 {{/js_compare}}
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <div class="app-shop-box-ft">
+                    <div class="order-healthCard-tips">
+                        <h5>激活说明：</h5>
+                        <div class="healthCard-tips">
+                            <p>1、如本人使用，可以在订单中激活，也可以在[慈云健康APP]v3.2以上版本-[健康卡]模块中激活；</p>
+                            <p>2、如赠予亲友，请将激活码告知亲友，亲友使用本人手机号登录[慈云健康APP]v3.2以上版本-[健康卡]模块激活健康卡。</p>
+                        </div>
+                        <h5>使用说明：</h5>
+                        <div class="healthCard-tips">
+                            <p>1、只能在[慈云健康APP]v3.2版本-[健康卡]模块使用健康卡；</p>
+                            <p>2、成功激活后，不能转赠他人；</p>
+                            <p>3、健康卡为非实名卡，丢失不补，请妥善保存。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/js_compare}}
+            
+            <!-- 订单状态 -->
+            <div class="orderDes-statusInfo app-shop-box">
+                <div class="app-shop-box-hd">
+                    订单状态
+                </div>
+                <div class="app-shop-box-bd">
+                    <ul class="order-status-lis">
+                        {{#each orderLogs}}
+                        <li {{#if highlight}} class="cur"{{/if}}>
+                            {{#if highlight}}
+                            <span class="pointer-first"></span>
+                            {{else}}
+                            <span class="ways-step"></span>
+                            {{/if}}
+                            <div class="ways-lis">
+                                <div class="ways">
+                                    {{logInfo}}
+                                </div>
+                                <p>{{createTime}}</p>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{else}}
+            <div class="page-noDate">
+                <p>{{itemInfo}}</p>
+            </div>
+        {{/item}}
+        {{else}}
+            <div class="page-upDate">
+                <p>{{updateInfo}}</p>
+            </div>
+        {{/unless}}
+    </script>
+</div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/shop.config" src= "style/js/require.js"></script>
+</body>
+</html>

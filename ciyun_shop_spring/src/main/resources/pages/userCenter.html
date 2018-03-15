@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+<!-- page 容器 -->
+<div class="page-group">
+    <div class="page page-headhand" id="userCenter">
+        <!-- 微信导航 -->
+        <div class="app-btn-fixed-bottom bar bar-tab" id="wx-bar-tab">
+             <ul class="row wx-bar-tab">
+                 <li class="col-50"><a href="index.html" class="wx-bar-tab-item"><span class="icon icon-home"></span><span class="icon-item">商城首页</span></a></li>
+                 <li class="col-50 cur"><a href="userCenter.html"class="wx-bar-tab-item"><span class="icon icon-me"></span><span class="icon-item">个人中心</span></a></li>
+             </ul>
+        </div>
+        <div class="content" id="userCenter_tpl_data">
+        </div>
+        <input type="hidden" id="showBack"  value="1"/>
+        <span id="shareShop" data-linkUrl="http://newshop.lovehealth.com.cn/" data-title="慈云健康商城" data-imgUrl="http://static.ciyun.cn/staticpage/zixun/logo-for-share.jpg" data-desc="高端就医服务、私人定制健康管理服务、健康智能硬件等精选产品，尽在慈云健康商城" data-type="" data-dataUrl=""></span>
+    </div>
+    <script id="userCenter_tpl" type="text/template7">
+    <input type="hidden" name="hideTitle" id="hideTitle" value="{{title}}"/>
+        {{#item}}
+        {{#share}}
+        <span id="shareShop" data-linkUrl="{{shareurl}}"  data-title="{{sharename}}" data-imgUrl="{{shareimage}}" data-desc="{{sharedesc}}" data-type="" data-dataUrl=""></span>
+        {{/share}}
+         <div class="app-userCenter">
+            <div class="user-img">
+                <!-- 默认头像 -->
+                <img src="{{picUrl}}" width="72" height="72" alt="" />
+            </div>
+            <p class="user-name">{{nickName}}</p>
+        </div>
+        <div class="app-userAcount">
+            <h2 class="icon-accounts">我的资产</h2>
+            <div class="app-userAcount-info">
+                <ul class="userAcount-info">
+                    <li>
+                        <a href="coupon.myself.html" title="">
+                            <em>{{couponCount}}</em>
+                            <p>代金券</p>
+                        </a>
+                        </li>
+                    <li>
+                         <a href="vend.html?vendId=0" title="">
+                            <em>{{totalPoint}}</em>
+                            <p>积分</p>
+                        </a> 
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="app-userClass">
+            <ul class="app-list">
+                <li class="list-item"><a href="order.html" title="" class="item">
+                <div class="icon-orders">
+                    我的订单
+                </div>
+                <span class="item-arr-num arr-bage"></span>
+                <span class="item-arr-right item-arr"></span></a></li>
+                <li class="list-item"><a href="address.html" title="" class="item">
+                <div class="icon-address">
+                    我的地址
+                </div>
+                <span class="item-arr-right item-arr"></span></a></li>
+            </ul>
+        </div>
+        <input type="hidden" id="payingCount" value="{{payingCount}}" />
+        {{/item}}
+    </script>
+</div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/shop.config" src= "style/js/require.js"></script>
+</body>
+</html>

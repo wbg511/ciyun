@@ -1,0 +1,104 @@
+/* pages/list/list.wxss */
+Page{
+  background:#f3f5f6;
+}
+.container{
+  padding:24rpx;
+  padding-top:0;
+  margin-bottom:88rpx;
+}
+.list_box{
+  width:100%;
+  height:auto;
+  margin-top:20px;
+}
+
+.list_centent{
+  height:206rpx;
+  position: relative;
+  padding-left:29rpx;
+  padding-right:29rpx;
+  padding-top:17rpx;
+  padding-bottom:0;
+  background: #fff;
+  border-radius: 6rpx;
+}
+.list_right{
+  display:block;
+  width:642rpx;
+  height:100%;
+  margin:0 auto;
+  position: relative;
+}
+.list_title{
+  width: 100%;
+  height:60rpx;
+  line-height: 60rpx;
+  color:#222222;
+  font-size:30rpx;
+}
+.list_mechanism{
+  width:100%;
+  height:56rpx;
+  line-height: 56rpx;
+  color:#666666;
+  padding-bottom:21rpx;
+  border-bottom:1px solid #e5e5e5;
+  font-size: 26rpx;
+}
+.list_times{
+  width:100%;
+  height:76rpx;
+  line-height: 76rpx;
+  color:#999999;
+  font-size:24rpx;
+}
+.list_times_left{
+  float: left;
+  line-height: 76rpx;
+  font-size: 24rpx;
+}
+.list_times_right{
+  float:right;
+  line-height: 76rpx;
+  font-size:24rpx;
+}
+.list_details{
+  width:9%;
+  height:120%;
+  position: absolute;
+  top:-20rpx;
+  right:0
+}
+.btn_box{
+  width:100%;
+  height:auto;
+  overflow: hidden;
+  padding-bottom:20rpx;
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+  position: fixed;
+  bottom: 0;
+  left:0;
+  background:#f3f5f6;
+}
+
+.title{
+  display:block;
+  float: left;
+  line-height: 60rpx
+}
+.shi{
+  display:block;
+  float: left;
+  border:1rpx solid #ff9307;
+  color:#ff9307;
+  margin-left:20rpx;
+  height:30rpx;
+  font-size:20rpx;
+  line-height:30rpx;
+  padding-left:12rpx;
+  padding-right:12rpx;
+  border-radius: 5rpx;
+  margin-top:15rpx
+}

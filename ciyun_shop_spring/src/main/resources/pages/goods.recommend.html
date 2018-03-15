@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+<div class="page-group">
+    <!-- page 容器 -->
+    <div class="page page-headhand" id="goodsRecommend">
+        <div class="content infinite-scroll infinite-scroll-bottom " data-distance="55" id="goodsRecommend_tpl_data"></div>
+        <input type="hidden" id="showBack"  value="1"/>
+    </div>
+    <!-- 推荐类似商品 -->
+    <script id="goodsRecommend_tpl" type="text/template7">
+            <div class="goodsSimilar-goods">
+                {{#item}}
+                    <span id="page-val" data-pageNo="{{pageNo}}" data-pageLast="{{last}}" data-pageSize="{{pageSize}}"></span>
+                    <div class="category-goods-box">
+                        {{#js_compare "this.good"}}
+                            <ul class="category-goods-list">
+                                {{#each good}}
+                                    <li>
+                                        <a href="goods.html?goodsId={{goodsId}}" data-id="{{goodsId}}"  class="goods-item external">
+                                            {{#if isPreview}}
+                                                <span class="goods-status">预发布</span>
+                                            {{/if}}
+                                            {{#if isSnap}}
+                                                <span class="goods-tagSnap">限时抢购</span>
+                                            {{/if}}
+                                            <div class="goods-img">
+                                                <div class="img-128">
+                                                    <img data-original="{{img}}" src="style/images/lazyload/default-goods.gif" alt="{{name}}" class="lazy" />
+                                                </div>
+                                            </div>
+                                            <div class="goods-cont">
+                                                <div class="goods-name">{{name}}</div>
+                                                <div class="goods-price">
+                                                    <p class="price-now">
+                                                    {{#if price}}
+                                                    <span class="now"><em class="unit">¥</em>{{price}}</span>
+                                                    {{#unless point}}{{else}}<i class="unit-i">+</i>{{/unless}}
+                                                    {{/if}}
+                                                    {{#if point}}
+                                                    <span class="int"><span class="i">{{point}}</span>积分</span>
+                                                    {{/if}}
+                                                    </p>
+                                                    <!-- 原价 -->
+                                                    {{#js_compare "this.price != this.priceOld"}}
+                        					<p class="price-old">原价<del><em class="unit">¥</em>{{priceOld}}</del></p>
+											{{/js_compare}}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                {{else}}
+                                    
+                                {{/each}}
+                            </ul>
+                        {{else}}
+                        <div class="page-noDate">
+                            <p>暂无相关商品</p>
+                        </div>
+                        {{/js_compare}}
+                    </div>
+                {{/item}}
+            </div>
+            <!-- 加载商品 -->
+            <div class="infinite-scroll-preloader">
+                <div class="preloader"></div>
+            </div>
+    </script>
+    <script id="moreGoods_tpl" type="text/template7">
+        {{#each good}}  
+            <li>
+                <a href="goods.html?goodsId={{goodsId}}"  class="goods-item external">
+                    {{#if isPreview}}
+                        <span class="goods-status">预发布</span>
+                    {{/if}}
+                    {{#if isSnap}}
+                        <span class="goods-tagSnap">限时抢购</span>
+                    {{/if}}
+                    <div class="goods-img">
+                        <div class="img-128">
+                            <img data-original="{{img}}" src="style/images/lazyload/default-goods.gif" alt="{{name}}" class="lazy" />
+                        </div>
+                    </div>
+                    <div class="goods-cont">
+                        <div class="goods-name">{{name}}</div>
+                        <div class="goods-price">
+                            <p class="price-now">
+                            {{#if price}}
+                            <span class="now"><em class="unit">¥</em>{{price}}</span>
+                            {{#unless point}}{{else}}<i class="unit-i">+</i>{{/unless}}
+                            {{/if}}
+                            {{#if point}}
+                            <span class="int"><span class="i">{{point}}</span>积分</span>
+                            {{/if}}
+                            </p>
+                            <!-- 原价 -->
+                            {{#js_compare "this.price != this.priceOld"}}
+                        					<p class="price-old">原价<del><em class="unit">¥</em>{{priceOld}}</del></p>
+											{{/js_compare}}
+                        </div>
+                    </div>
+                </a>
+         </li>
+        {{/each}}
+    </script>
+</div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/shop.config" src= "style/js/require.js"></script>
+</body>
+</html>

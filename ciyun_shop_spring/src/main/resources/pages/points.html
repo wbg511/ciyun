@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no"/>
+<link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-headhand" id="points">
+        <div id="points_tpl_data" class="content infinite-scroll infinite-scroll-bottom" data-distance="55">
+        </div>
+        <input type="hidden" id="showBack"  value="1"/>
+        <span id="shareShop" data-linkUrl="http://newshop.lovehealth.com.cn/" data-title="慈云健康商城" data-imgUrl="http://static.ciyun.cn/staticpage/zixun/logo-for-share.jpg" data-desc="高端就医服务、私人定制健康管理服务、健康智能硬件等精选产品，尽在慈云健康商城" data-type="" data-dataUrl=""></span>
+    </div>
+     <script id="points_tpl" type="text/template7">
+     <input type="hidden" name="hideTitle" id="hideTitle" value="{{title}}"/>
+    {{#unless isUpdate}}
+        {{#item}}
+        {{#share}}
+        <span id="shareShop" data-linkUrl="{{shareurl}}"  data-title="{{sharename}}" data-imgUrl="{{shareimage}}" data-desc="{{sharedesc}}" data-type="" data-dataUrl=""></span>
+        {{/share}}
+        <span id="page-val" data-pageNo="{{pageNo}}" data-pageLast="{{last}}" data-pageSize="{{pageSize}}"></span>
+        <div id="category-content">
+            <!-- 积分 -->
+            <div class="content-category-goods">
+                <div class="category-goods">
+                    <div class="category-goods-box">
+                        <ul class="category-list">
+                            {{#each good}}  
+                                <li>
+                                    <a href="goods.html?goodsId={{goodsId}}" data-no-cache="true" class="goods-item">
+                                    {{#if isPreview}}
+                                        <span class="goods-status">预发布</span>
+                                    {{/if}}
+                                    <div class="goods-img">
+                                        <div class="img-128">
+                                            <img data-original="{{img}}" src="style/images/lazyload/default-goods.gif" alt="{{name}}" class="lazy" />
+                                        </div>
+                                    </div>
+                                    <div class="goods-cont">
+                                        <div class="goods-name">{{name}}</div>
+                                        <div class="goods-price">
+                                            <p class="price-now">
+                                            {{#if point}}
+                                            <span class="int"><span class="i">{{point}}</span>积分</span>
+                                            {{#unless price}}{{else}}<i class="unit-i">+</i>{{/unless}}
+                                            {{/if}}
+                                            {{#if price}}
+                                            <span class="now"><em class="unit">¥</em>{{price}}</span>
+                                            {{/if}}
+                                            </p>
+                                            <!-- 原价 -->
+                                            {{#js_compare "this.price != this.priceOld"}}
+                                <p class="price-old">原价<del><em class="unit">¥</em>{{priceOld}}</del></p>
+								{{/js_compare}}
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 加载商品 -->
+            <div class="infinite-scroll-preloader">
+                <div class="preloader"></div>
+            </div>
+            <!-- 版权 -->
+            <div class="copyright">
+               <p>{{copyright}}</p>
+            </div>
+        </div>
+        {{/item}}
+    {{else}}
+        <div class="page-upDate">
+            <p>{{updateInfo}}</p>
+        </div>
+    {{/unless}}
+    </script>
+     <script id="pointsMore_tpl" type="text/template7">
+        {{#each good}}  
+            <li>
+                <a href="goods.html?goodsId={{goodsId}}" data-no-cache="true" class="goods-item">
+                {{#if isPreview}}
+                    <span class="goods-status">预发布</span>
+                {{/if}}
+                <div class="goods-img">
+                    <div class="img-128">
+                        <img data-original="{{img}}" src="style/images/lazyload/default-goods.gif" alt="{{name}}" class="lazy" />
+                    </div>
+                </div>
+                <div class="goods-cont">
+                    <div class="goods-name">{{name}}</div>
+                    <div class="goods-price">
+                        <p class="price-now">
+                        {{#if point}}
+                        <span class="int"><span class="i">{{point}}</span>积分</span>
+                        {{#unless point}}{{else}}<i class="unit-i">+</i>{{/unless}}
+                        {{/if}}
+                        {{#if price}}
+                        <span class="now"><em class="unit">¥</em>{{price}}</span>
+                        {{/if}}
+                        </p>
+                        <!-- 原价 -->
+                        {{#js_compare "this.price != this.priceOld"}}
+                                <p class="price-old">原价<del><em class="unit">¥</em>{{priceOld}}</del></p>
+								{{/js_compare}}
+                    </div>
+                </div>
+            </a>
+         </li>
+        {{/each}}
+    </script>
+</div>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-main="style/js/shop.config" src= "style/js/require.js"></script>
+</body>
+</html>

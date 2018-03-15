@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <link rel="stylesheet" href="style/css/sm.sm-extend.css">
+</head>
+
+<body>
+    <div class="page-group">
+        <!-- page 容器 -->
+        <div class="page page-headhand" id="refundApply">
+            <div id="refundApply_tpl_data">
+
+            </div>
+            <input type="hidden" id="showBack" value="1" />
+        </div>
+        <script id="refundApply_tpl" type="text/template7">
+            {{#unless isUpdate}} {{#item}}
+            <div class="app-btn-fixed-bottom bar bar-tab">
+                <button type="button" data-no-cache="true" class="btn-buy" id="submit_btn">提交</button>
+
+            </div>
+            <div class="content infinite-scroll infinite-scroll-bottom" data-distance="55">
+                <input type="hidden" name="hideTitle" id="hideTitle" value="{{title}}" />
+                <input type="hidden" name="hide-orderId" id="hide-orderId" value="{{orderId}}" />
+                <div class="app-shop-box">
+                    <div class="app-shop-box-bd-list orderDes-shopInfo">
+                        <div class="order-goods-info">
+
+                            <div class="order-goods-info-list">
+                                <div class="order-goods-img">
+                                    <div class="img-64"><img src="{{listPic}}" alt="{{goodsName}}"></div>
+                                </div>
+                                <div class="order-goods-intro">
+                                    <div class="order-goods-name">{{goodsName}}</div>
+                                    <div class="order-goods-price">
+                                        <p class="price-count"><span class="unit">x</span>{{goodsCount}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="app-shop-box-hd price-now">
+                        {{#if actualPayTotal}}
+                        <span>退款金额</span><span class='mg-l-5 now'><em class="unit">¥</em>{{actualPayTotal}}</span> {{/if}}
+                    </div>
+                </div>
+                <div class="app-shop-box">
+                    <div class="app-shop-box-hd">退款原因</div>
+                    <div class="text-warrper app-shop-box-bd">
+                        <textarea maxlength="300" placeholder="请输入退款原因" id="reason"></textarea>
+                        <div class="code-len"><span class="change-size">{{#js_compare "this.refundApplyReason"}}
+                        {{refundApplyReason.length}}
+                        {{else}}
+                        0
+                        {{/js_compare}}</span><span>/300</span></div>
+                    </div>
+                </div>
+                <div class="app-shop-box">
+                    <div class="app-shop-box-hd clearfix" style="border: none;">
+                        <div class="item-title label">联系方式</div>
+                        <div class="item-input">
+                            <input type="text" placeholder="请输入11位的手机号码" id="tel" value="{{applicantMobile}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="pd-lr-5 ft">
+                    提交申请后,客服人员将会在1-3个工作日内联系您
+                </div>
+                    </div>
+                {{/item}} {{#unless}}
+        </script>
+        </div>
+
+        <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script data-main="style/js/shop.config" src="style/js/require.js"></script>
+</body>
+
+</html>

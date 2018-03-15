@@ -1,0 +1,21 @@
+/**index.wxss**/
+
+.bg{
+  width:750rpx;
+  height:1040rpx;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bg-img{
+  width: 72rpx;
+  height: 72rpx;
+}
+.btn{
+  display: block;
+  width:650rpx;
+  height:88rpx;
+  position: fixed;
+  bottom: 20rpx;
+  left:50rpx;
+}
